@@ -57,6 +57,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Lan" type="VBoxContainer" parent="NetworkSetup"]
+margin_left = 337.0
+margin_top = 210.0
+margin_right = 687.0
+margin_bottom = 390.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IpAddress" type="LineEdit" parent="NetworkSetup/Lan"]
+margin_right = 350.0
+margin_bottom = 24.0
+align = 1
+placeholder_text = "IP Address"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Host" type="Button" parent="NetworkSetup/Lan"]
+margin_top = 28.0
+margin_right = 350.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 60 )
+text = "Host"
+
+[node name="Join" type="Button" parent="NetworkSetup/Lan"]
+margin_top = 92.0
+margin_right = 350.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 0, 60 )
+text = "Join"
+
+[node name="IpShow" type="Label" parent="NetworkSetup/Lan"]
+margin_top = 156.0
+margin_right = 350.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 0, 40 )
+align = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="NetworkSetup"]
 margin_left = 337.0
 margin_top = 210.0
@@ -66,27 +104,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IpAddress" type="LineEdit" parent="NetworkSetup/VBoxContainer"]
+[node name="Online" type="Button" parent="NetworkSetup/VBoxContainer"]
 margin_right = 350.0
-margin_bottom = 24.0
-align = 1
-placeholder_text = "IP Address"
-caret_blink = true
-caret_blink_speed = 0.5
-
-[node name="Host" type="Button" parent="NetworkSetup/VBoxContainer"]
-margin_top = 28.0
-margin_right = 350.0
-margin_bottom = 88.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
-text = "Host"
+text = "Online Server"
 
-[node name="Join" type="Button" parent="NetworkSetup/VBoxContainer"]
-margin_top = 92.0
+[node name="Local" type="Button" parent="NetworkSetup/VBoxContainer"]
+margin_top = 64.0
 margin_right = 350.0
-margin_bottom = 152.0
+margin_bottom = 124.0
 rect_min_size = Vector2( 0, 60 )
-text = "Join"
-[connection signal="text_changed" from="NetworkSetup/VBoxContainer/IpAddress" to="NetworkSetup" method="_on_IpAddress_text_changed"]
-[connection signal="pressed" from="NetworkSetup/VBoxContainer/Host" to="NetworkSetup" method="_on_Host_pressed"]
-[connection signal="pressed" from="NetworkSetup/VBoxContainer/Join" to="NetworkSetup" method="_on_Join_pressed"]
+text = "Local (Lan)"
+[connection signal="text_changed" from="NetworkSetup/Lan/IpAddress" to="NetworkSetup" method="_on_IpAddress_text_changed"]
+[connection signal="pressed" from="NetworkSetup/Lan/Host" to="NetworkSetup" method="_on_Host_pressed"]
+[connection signal="pressed" from="NetworkSetup/Lan/Join" to="NetworkSetup" method="_on_Join_pressed"]
+[connection signal="pressed" from="NetworkSetup/VBoxContainer/Online" to="NetworkSetup" method="_on_Online_pressed"]
+[connection signal="pressed" from="NetworkSetup/VBoxContainer/Local" to="NetworkSetup" method="_on_Local_pressed"]

@@ -6,7 +6,7 @@ export var speed = 1
 export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
-var health = 100
+var health = 50
 var fire_cooldown = false
 var dead = false
 onready var cam = get_node("Head_Pivot")
@@ -24,7 +24,9 @@ func _ready():
 	
 func _input(event):
 	if !is_network_master():
-		pass
+		return
+	if dead:
+		return
 	if event is InputEventMouseMotion:
 		var movement = event.relative
 		cam.rotation.x += -deg2rad(movement.y*sensitivity) # rotating virticaly
@@ -36,6 +38,8 @@ func _physics_process(delta):
 	if is_network_master():
 		if Input.is_key_pressed(KEY_ESCAPE):
 			get_tree().quit()
+		if dead:
+			return
 		# We create a local variable to store the input direction.
 		var body_dir = Vector3.ZERO
 	
@@ -88,6 +92,12 @@ func _physics_process(delta):
 func _on_FireCooldown_timeout():
 	fire_cooldown = false
 
+func _on_ReviveTimer_timeout():
+	dead = false
+	$ReviveTimer.stop()
+	print("revived")
+	rpc_unreliable("revived")
+
 func _on_PanalHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet"):
@@ -98,6 +108,8 @@ func _on_PanalHitbox_body_entered(body):
 				$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
 				print("dead")
 				dead = true
+				$ReviveTimer.start()
+				rpc_unreliable("killed_player")
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
@@ -108,6 +120,12 @@ puppet func update_beyblade():
 	$Pivot.rotation.y -= .08
 	$CollisionShape.rotation.y -= .08
 	$PanalHitbox.rotation.y -= .08
+
+puppet func killed_player():
+	print("killed player")
+
+puppet func revived():
+	print("player revived")
 
 puppet func update_state(p_position, p_velocity, p_rotation):
 	puppet_position = p_position
@@ -122,3 +140,6 @@ func _on_NetworkTickRate_timeout():
 		rpc_unreliable("update_state", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
 	else:
 		$NetworkTickRate.stop()
+
+
+
