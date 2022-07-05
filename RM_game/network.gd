@@ -1,18 +1,21 @@
 extends Node
 
-const DEFAULT_PORT = 28960
+const DEFAULT_PORT = 10567
 const MAX_CLIENTS = 6
 
 var server = null
 var client = null
 
 var ip_address = "127.0.0.1"
+#var ip_address = "24.5.169.14"
 
 func _ready():
 	get_tree().connect("connected_to_server", self, "_connected_to_server")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 	get_tree().connect("connection_failed", self, "_connection_failed")
 	get_tree().connect("network_peer_connected", self, "_player_connected")
+	
+	print(IP.get_local_addresses())
 	
 
 func create_server():

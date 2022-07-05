@@ -17,7 +17,8 @@ func _instance_player(id):
 	player_instance.name = str(id)
 	
 	add_child(player_instance)
-	player_instance.global_transform.origin = Vector3(0, 15, 0)
+	print("added player")
+	player_instance.global_transform.origin = Vector3(0, 5, 0)
 	
 func _player_connected(id):
 	print("Player "+str(id)+ " has connected")
