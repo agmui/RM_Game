@@ -8,7 +8,7 @@
 extents = Vector3( 0.430125, 0.26897, 0.576146 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 1.01398, 7.571, 3.80446 )
+extents = Vector3( 0.401719, 1.58732, 6.49904 )
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0520018, 0 )
@@ -44,16 +44,20 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape2" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
+[node name="right" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
 transform = Transform( 0.061546, -0.0188704, 0, 0.0164912, 0.0704254, 0, 0, 0, 0.0181041, 0.423, 0.351, 0 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape3" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
-transform = Transform( -1.86265e-09, 5.82077e-10, -0.203499, 0.0217925, 0.0685128, -4.87021e-10, 0.0598745, -0.0249366, -5.56667e-09, -0.000117183, 0.351, 0.554325 )
+[node name="left" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
+transform = Transform( 0.061546, 0.0188704, 0, -0.0164912, 0.0704254, 0, 0, 0, 0.0181041, -0.423, 0.351, 0 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape4" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
-transform = Transform( -9.7548e-09, -4.06269e-09, -0.203499, -0.0217925, 0.0685128, 0, 0.0598745, 0.0249366, -3.31541e-08, 0, 0.351, -0.554 )
+[node name="back" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
+transform = Transform( -2.6172e-09, -1.09001e-09, 0.0181041, -0.0217925, 0.0685127, 0, -0.0598745, -0.0249366, -7.91355e-10, 0, 0.351, 0.55 )
+shape = SubResource( 2 )
+
+[node name="front" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
+transform = Transform( -2.6172e-09, 1.09001e-09, 0.0181041, 0.0217925, 0.0685127, 0, -0.0598745, 0.0249366, -7.91355e-10, 0, 0.351, -0.55 )
 shape = SubResource( 2 )
 
 [node name="NetworkTickRate" type="Timer" parent="."]
