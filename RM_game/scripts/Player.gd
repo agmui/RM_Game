@@ -10,7 +10,7 @@ export var health = 600
 var fire_cooldown = false
 var dead = false
 onready var cam = get_node("Head_Pivot")
-onready var bullet = preload("res://Bullet.tscn") # loading in bullet into var
+onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
 var UI = preload("res://scenes/UI.tscn").instance()
 
 var sensitivity = .2

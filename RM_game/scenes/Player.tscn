@@ -8,7 +8,7 @@
 extents = Vector3( 0.430125, 0.26897, 0.576146 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.21683, 8.74417, 3.19289 )
+extents = Vector3( 0.21683, 1.64451, 0.49313 )
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0520018, 0 )
