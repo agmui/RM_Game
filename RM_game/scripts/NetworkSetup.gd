@@ -31,6 +31,7 @@ func _on_Host_pressed():
 
 func _on_Join_pressed():
 	$Lan.hide()
+	$Connections/HBoxContainer/StartButton.disabled = true
 	$Connections.show()
 
 func _toggle_network_setup(visible_toggle):
@@ -60,4 +61,3 @@ func refresh_lobby():
 	$Connections/PlayerList.add_item(Network.get_player_name() + "(You)")
 	for player in player_list:
 		$Connections/PlayerList.add_item(player)
-	$Connections/HBoxContainer/StartButton.disabled = not get_tree().is_network_server()
