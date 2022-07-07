@@ -1,4 +1,3 @@
-# Godot Networking
+# Godot Robomasters game
 
-Intro networking guide for Godot from the PlugWorld youtube channel
-[video](https://www.youtube.com/watch?v=CT7FmCmfxrw)
+An online robomasters fps game
