@@ -6,6 +6,7 @@ export var speed = 1
 export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
+var id
 export var health = 600
 var fire_cooldown = false
 var dead = false
@@ -115,18 +116,21 @@ func _on_ReviveTimer_timeout():
 
 func _on_PanelHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
-	if body.is_in_group("bullet") and is_network_master():
-		print("hit")
-		if !dead:
-			print("taking dmg")
-			health -= 10
-			UI.change_health(health)
-			if health == 0:
-				$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
-				print("dead")
-				dead = true
-				$ReviveTimer.start()
-				rpc_unreliable("killed_player")
+	if body.is_in_group("bullet") and !is_network_master():
+		print("hit"+ str(id))
+		hit_panel(id)
+
+puppet func hit_panel(sent_id):
+	if sent_id == id and !dead:
+		print("taking dmg")
+		health -= 10
+		UI.change_health(health)
+		if health == 0:
+			$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
+			print("dead")
+			dead = true
+			$ReviveTimer.start()
+			rpc_unreliable("killed_player")
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
@@ -144,8 +148,6 @@ puppet func killed_player():
 puppet func revived():
 	print("player revived")
 
-
-
 puppet func update_state(p_position, p_velocity, p_rotation):
 	puppet_position = p_position
 	puppet_velocity = p_velocity
@@ -156,7 +158,7 @@ puppet func update_state(p_position, p_velocity, p_rotation):
 
 func _on_NetworkTickRate_timeout():
 	if is_network_master():
-		rpc_unreliable("update_state", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
+		rpc_unreliable("update_state_server", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
 	else:
 		$NetworkTickRate.stop()
 

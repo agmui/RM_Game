@@ -15,6 +15,7 @@ func _instance_player(id):
 	var player_instance = player.instance()
 	player_instance.set_network_master(id)
 	player_instance.name = str(id)
+	player_instance.id = id
 	
 	add_child(player_instance)
 	print("added player")

@@ -16,8 +16,6 @@ func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	
 
-	
-
 func create_server():
 	print("Creating server")
 	
@@ -51,3 +49,4 @@ func _player_connected(id):
 func reset_network_connection():
 	if get_tree().has_network_peer():
 		get_tree().network_peer = null
+		
