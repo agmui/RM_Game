@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Skybox.tscn" type="PackedScene" id=2]
@@ -14,10 +14,31 @@ material = SubResource( 2 )
 size = Vector3( 60, 2, 60 )
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 1.5, 1.5, 0.2 )
+extents = Vector3( 1.5, 1.5, 0.1 )
 
 [sub_resource type="CubeMesh" id=5]
-size = Vector3( 3, 3, 0.4 )
+size = Vector3( 3, 3, 0.2 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0, 0.529412, 1, 1 )
+
+[sub_resource type="PlaneMesh" id=6]
+material = SubResource( 7 )
+size = Vector2( 6, 6 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=9]
+material = SubResource( 8 )
+size = Vector2( 6, 6 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.384314, 0.384314, 0.384314, 1 )
+
+[sub_resource type="PlaneMesh" id=10]
+material = SubResource( 11 )
+size = Vector2( 4, 4 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -37,13 +58,146 @@ transform = Transform( -1, 8.74228e-08, 3.55271e-15, 7.26071e-08, 0.830528, 0.55
 shadow_enabled = true
 
 [node name="Wall" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, -3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall"]
 shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Wall"]
 mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Wall2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall2"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall2"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Wall3" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall3"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall3"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Wall4" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall4"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall4"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="arena" type="StaticBody" parent="Spatial"]
+transform = Transform( 6, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0.5, -14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/arena"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/arena"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="arena2" type="StaticBody" parent="Spatial"]
+transform = Transform( 6, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0.5, 14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/arena2"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/arena2"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="arena3" type="StaticBody" parent="Spatial"]
+transform = Transform( -4.03893e-07, 0, -1, 0, 0.4, 0, 9.24, 0, -4.37114e-08, 9, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/arena3"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/arena3"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="arena4" type="StaticBody" parent="Spatial"]
+transform = Transform( -4.03893e-07, 0, -1, 0, 0.4, 0, 9.24, 0, -4.37114e-08, -9, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/arena4"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/arena4"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="arena5" type="StaticBody" parent="Spatial"]
+transform = Transform( -4.03893e-07, 0, -1, 0, 0.4, 0, 1.2936, 0, -6.11959e-09, -3, 0.5, -12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/arena5"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/arena5"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="arena6" type="StaticBody" parent="Spatial"]
+transform = Transform( -1.2936, 0, 4.9831e-08, 0, 0.4, 0, -4.60438e-07, 0, -1, -7, 0.5, -8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/arena6"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/arena6"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="arena7" type="StaticBody" parent="Spatial"]
+transform = Transform( 2.90803e-07, 0, 1, 0, 0.4, 0, -1.2936, 0, -8.13032e-08, 3, 0.5, 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/arena7"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/arena7"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="arena8" type="StaticBody" parent="Spatial"]
+transform = Transform( 1.2936, 0, 3.75918e-08, 0, 0.4, 0, 3.47348e-07, 0, 1, 7, 0.5, 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/arena8"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/arena8"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="BlueBase" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -11 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="RedBase" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, 11 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../BlueBase")
+material/0 = null
+
+[node name="BlueStore" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.01, -12 )
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="RedStore" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.01, 12 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="Skybox" parent="." instance=ExtResource( 2 )]
