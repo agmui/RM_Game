@@ -117,7 +117,7 @@ func _on_ReviveTimer_timeout():
 func _on_PanelHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet") and !is_network_master():
-		print("hit"+ str(id))
+		print("hit "+ str(id))
 		hit_panel(id)
 
 puppet func hit_panel(sent_id):
@@ -158,7 +158,7 @@ puppet func update_state(p_position, p_velocity, p_rotation):
 
 func _on_NetworkTickRate_timeout():
 	if is_network_master():
-		rpc_unreliable("update_state_server", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
+		rpc_unreliable("update_state", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
 	else:
 		$NetworkTickRate.stop()
 

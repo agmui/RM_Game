@@ -12,6 +12,8 @@ func _ready():
 		Global.emit_signal("toggle_network_setup", false)
 
 func _instance_player(id):
+	if Global.public_server and id == 1:
+		return
 	var player_instance = player.instance()
 	player_instance.set_network_master(id)
 	player_instance.name = str(id)

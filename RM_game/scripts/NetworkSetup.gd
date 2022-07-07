@@ -7,6 +7,7 @@ func _ready():
 
 func _on_Online_pressed():
 	Network.ip_address = "24.5.169.14"
+	Global.public_server = true
 	_on_Join_pressed()
 
 
