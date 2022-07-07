@@ -29,12 +29,14 @@ func _on_Host_pressed():
 	Network.create_server()
 	$Lan.hide()
 	$Connections.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_Join_pressed():
 	Network.join_server()
 	$Lan.hide()
 	$Connections/HBoxContainer/StartButton.disabled = true
 	$Connections.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _toggle_network_setup(visible_toggle):
 	visible = visible_toggle
