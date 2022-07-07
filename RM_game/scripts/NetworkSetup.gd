@@ -15,7 +15,8 @@ func _ready():
 
 func _on_Online_pressed():
 	Network.ip_address = "24.5.169.14"
-	hide()
+	Global.public_server = true
+	_on_Join_pressed()
 
 
 func _on_Local_pressed():

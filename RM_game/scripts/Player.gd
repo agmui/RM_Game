@@ -117,7 +117,7 @@ func _on_ReviveTimer_timeout():
 func _on_PanelHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet") and !is_network_master():
-		print("hit"+ str(id))
+		print("hit "+ str(id))
 		hit_panel(id)
 
 puppet func hit_panel(sent_id):

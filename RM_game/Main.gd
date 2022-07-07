@@ -19,6 +19,8 @@ func _ready():
 		add_child(cam)
 
 func _instance_player(id):
+	if Global.public_server and id == 1:
+		return
 	var player_instance = player.instance()
 	player_instance.set_network_master(id)
 	player_instance.name = str(id)
