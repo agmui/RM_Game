@@ -28,7 +28,7 @@ func _instance_player(id):
 func _player_connected(id):
 	print("Player "+str(id)+ " has connected")
 	
-	_instance_player(id)
+	#_instance_player(id)
 	
 func _player_disconnected(id):
 	print("Player " + str(id) + " has disconnected")
