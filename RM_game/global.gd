@@ -3,9 +3,7 @@ extends Node
 signal instance_player(id)
 signal toggle_network_setup(toggle)
 
-var server = true
-
-var public_server = false
+var server:bool = false
 
 func _input(event):
 	if event is InputEventKey:

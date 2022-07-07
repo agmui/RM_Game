@@ -6,16 +6,10 @@ func _ready():
 	$Lan.hide()
 	Global.connect("toggle_network_setup", self, "_toggle_network_setup")
 	
-	if Global.server:
-		Network.ip_address = "24.5.169.14"
-		Network.create_server()
-		# may of may not need
-		Global.connect("toggle_network_setup", self, "_toggle_network_setup")
-		hide()
 
 func _on_Online_pressed():
 	Network.ip_address = "24.5.169.14"
-	Global.public_server = true
+	Global.server = true
 	_on_Join_pressed()
 
 
