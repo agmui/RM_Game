@@ -10,6 +10,13 @@ func _ready():
 	
 	if get_tree().network_peer != null:
 		Global.emit_signal("toggle_network_setup", false)
+	if Global.server:
+		var cam = Camera.new()
+		cam.translation.z = 5
+		cam.translation.y = 7
+		cam.rotation.x = deg2rad(-45)
+		cam.name = "cam"
+		add_child(cam)
 
 func _instance_player(id):
 	var player_instance = player.instance()

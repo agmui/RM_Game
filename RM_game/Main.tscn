@@ -116,6 +116,7 @@ margin_right = 350.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 0, 60 )
 text = "Local (Lan)"
+
 [connection signal="text_changed" from="NetworkSetup/Lan/IpAddress" to="NetworkSetup" method="_on_IpAddress_text_changed"]
 [connection signal="pressed" from="NetworkSetup/Lan/Host" to="NetworkSetup" method="_on_Host_pressed"]
 [connection signal="pressed" from="NetworkSetup/Lan/Join" to="NetworkSetup" method="_on_Join_pressed"]

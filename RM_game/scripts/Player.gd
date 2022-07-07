@@ -158,7 +158,7 @@ puppet func update_state(p_position, p_velocity, p_rotation):
 
 func _on_NetworkTickRate_timeout():
 	if is_network_master():
-		rpc_unreliable("update_state_server", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
+		rpc_unreliable("update_state", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
 	else:
 		$NetworkTickRate.stop()
 
