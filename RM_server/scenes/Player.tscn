@@ -56,13 +56,8 @@ shape = SubResource( 2 )
 transform = Transform( -9.7548e-09, -4.06269e-09, -0.203499, -0.0217925, 0.0685128, 0, 0.0598745, 0.0249366, -3.31541e-08, 0, 0.351, -0.554 )
 shape = SubResource( 2 )
 
-[node name="NetworkTickRate" type="Timer" parent="."]
-wait_time = 0.03
-autostart = true
-
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="timeout" from="FireCooldown" to="." method="_on_FireCooldown_timeout"]
 [connection signal="timeout" from="ReviveTimer" to="." method="_on_ReviveTimer_timeout"]
 [connection signal="body_entered" from="PanelHitbox" to="." method="_on_PanelHitbox_body_entered"]
-[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]

@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="RM_Server"
+config/name="RM_server"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 

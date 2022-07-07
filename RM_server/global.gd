@@ -5,8 +5,6 @@ signal toggle_network_setup(toggle)
 
 var server = true
 
-var public_server = false
-
 func _input(event):
 	if event is InputEventKey:
 		if event.scancode == KEY_ESCAPE:
