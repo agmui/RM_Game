@@ -50,6 +50,7 @@ func _player_connected(id):
 
 func _player_disconnected(id):
 	unregister_player(id)
+	print("Player disconnected " + player_name + " " + str(id))
 
 func reset_network_connection():
 	if get_tree().has_network_peer():

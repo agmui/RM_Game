@@ -1,5 +1,6 @@
 extends Control
 
+
 func _ready():
 	$Lan.hide()
 	$Connections.hide()
@@ -51,12 +52,14 @@ func _on_ContinueButton_pressed(): #Continues after adding name
 
 func _on_StartButton_pressed():
 	$Connections.hide()
-	Global.emit_signal("instance_player", get_tree().get_network_unique_id())
+	Global.emit_signal("instance_player", get_tree().get_network_unique_id()) # instance own player
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 	rpc_unreliable("spawn_player")
 
 puppet func spawn_player():
 	$Connections.hide()
-	Global.emit_signal("instance_player", get_tree().get_network_unique_id())
+	Global.emit_signal("instance_player", get_tree().get_network_unique_id())# instance own player
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
