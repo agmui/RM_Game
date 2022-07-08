@@ -27,7 +27,6 @@ func create_server():
 	
 func join_server():
 	print("Joining Server")
-	
 	client = NetworkedMultiplayerENet.new()
 	client.create_client(ip_address, DEFAULT_PORT)
 	get_tree().set_network_peer(client)
@@ -67,7 +66,6 @@ func set_player_name(cplayer_name):
 
 remote func register_player(cplayer_name):
 	var id = get_tree().get_rpc_sender_id()
-	print(id)
 	player_list[id] = cplayer_name
 	emit_signal("player_list_changed")
 

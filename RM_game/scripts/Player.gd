@@ -23,6 +23,7 @@ var puppet_rotation = Vector2()
 #export(NodePath) onready var health_bar = get_node(health_bar) as TextureProgress
 
 func _ready():
+	print("Script loaded")
 	if is_network_master():
 		$Head_Pivot/Camera.add_child(UI)
 	UI.change_health(600)
