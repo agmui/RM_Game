@@ -1,8 +1,7 @@
 extends Spatial
 
 var player = preload("scenes/Player.tscn")
-var red_spawn = []
-var blue_spawn = []
+
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
@@ -24,7 +23,8 @@ func _instance_player(id):
 	
 	player_instance.global_transform.origin = Vector3(0, 5, 0)
 
-	
+
+
 func _player_connected(id):
 	print("Player "+str(id)+ " has connected")
 	
