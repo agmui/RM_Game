@@ -72,3 +72,20 @@ func refresh_lobby():
 	$Connections/PlayerList.add_item(Network.get_player_name() + "(You)")
 	for player in player_list:
 		$Connections/PlayerList.add_item(player)
+
+#Order of Menus:
+#PlayerSetup, Online/Local, Host/Join, Connection
+func _on_LanBackButton_pressed():
+	$VBoxContainer.show()
+	$Lan.hide()
+
+
+func _on_ServerBack_pressed():
+	$PlayerSetup.show()
+	$VBoxContainer.hide()
+
+func _on_ConnectBackButton_pressed():
+	$Connections.hide()
+	$Lan.show()
+	Network.unregister_player(get_tree().get_network_unique_id())
+	get_tree().network_peer = null
