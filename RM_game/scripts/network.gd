@@ -10,6 +10,7 @@ var ip_address = "127.0.0.1"
 
 var player_name
 var player_list = {}
+var player_teams = {}
 
 signal player_list_changed()
 
@@ -63,6 +64,12 @@ func get_player_name():
 
 func set_player_name(cplayer_name):
 	player_name = cplayer_name
+
+func get_player_team_list():
+	return player_teams.values();
+	
+func set_player_team(id, index):
+	player_teams[id] = index
 
 remote func register_player(cplayer_name):
 	var id = get_tree().get_rpc_sender_id()

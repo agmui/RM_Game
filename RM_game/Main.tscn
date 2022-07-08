@@ -366,10 +366,17 @@ margin_right = 354.0
 margin_bottom = 318.0
 rect_min_size = Vector2( 0, 300 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NetworkSetup/Connections"]
+[node name="TeamButton" type="OptionButton" parent="NetworkSetup/Connections"]
 margin_top = 322.0
 margin_right = 354.0
 margin_bottom = 382.0
+rect_min_size = Vector2( 350, 60 )
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NetworkSetup/Connections"]
+margin_top = 386.0
+margin_right = 354.0
+margin_bottom = 446.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -387,9 +394,9 @@ rect_min_size = Vector2( 175, 60 )
 text = "Start"
 
 [node name="QuitButton" type="Button" parent="NetworkSetup/Connections"]
-margin_top = 386.0
+margin_top = 450.0
 margin_right = 354.0
-margin_bottom = 446.0
+margin_bottom = 510.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 175, 60 )
@@ -403,6 +410,7 @@ text = "Quit"
 [connection signal="pressed" from="NetworkSetup/Lan/Host" to="NetworkSetup" method="_on_Host_pressed"]
 [connection signal="pressed" from="NetworkSetup/Lan/Join" to="NetworkSetup" method="_on_Join_pressed"]
 [connection signal="pressed" from="NetworkSetup/Lan/LanBackButton" to="NetworkSetup" method="_on_LanBackButton_pressed"]
+[connection signal="item_selected" from="NetworkSetup/Connections/TeamButton" to="NetworkSetup" method="_on_TeamButton_item_selected"]
 [connection signal="pressed" from="NetworkSetup/Connections/HBoxContainer/ConnectBackButton" to="NetworkSetup" method="_on_ConnectBackButton_pressed"]
 [connection signal="pressed" from="NetworkSetup/Connections/HBoxContainer/StartButton" to="NetworkSetup" method="_on_StartButton_pressed"]
 [connection signal="pressed" from="NetworkSetup/Connections/QuitButton" to="NetworkSetup" method="_on_QuitButton_pressed"]
