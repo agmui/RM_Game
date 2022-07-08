@@ -5,7 +5,7 @@ var teams = ["Red", "Blue"]
 func _ready():
 	$Lan.hide()
 	$Connections.hide()
-	$VBoxContainer.hide()
+	$Server_or_LAN.hide()
 	$PlayerSetup.show()
 	$Connections/TeamButton.add_item("Red")
 	$Connections/TeamButton.add_item("Blue")
@@ -20,10 +20,16 @@ func _ready():
 func _on_Online_pressed():
 	Network.ip_address = "24.5.169.14"
 	Global.server = true
-	_on_Join_pressed()
+	Network.join_server()
+	$Lan.hide()
+	$Server_or_LAN.hide()
+	$Connections/HBoxContainer/StartButton.text = "Join"
+	Network.set_player_team(get_tree().get_network_unique_id(), 0)
+	refresh_lobby()
+	$Connections.show()
 
 func _on_Local_pressed():
-	$VBoxContainer.hide()
+	$Server_or_LAN.hide()
 	$Lan.show()
 	$Lan/IpShow.text = "Your local IP: "+IP.get_local_addresses()[0]
 
@@ -54,16 +60,28 @@ func _on_ContinueButton_pressed(): #Continues after adding name
 	else:
 		Network.set_player_name($PlayerSetup/NameEdit.text)
 		$PlayerSetup.hide()
-		$VBoxContainer.show()
+		$Server_or_LAN.show()
 
 func _on_StartButton_pressed():
-	$Connections.hide()
-	Global.emit_signal("instance_player", get_tree().get_network_unique_id())
-	rpc_unreliable("spawn_player")
+	# ask server for spawn info
+	var id = get_tree().get_network_unique_id()
+	rpc_id(1,"spawn_location_server", id, Network.player_teams[id])
+	print("hi")
+	
+remote func spawn_location(id, cord):
+	# get info back
+	# puppet players locations already are provided when entering in on server with update_state
+	if id == get_tree().get_network_unique_id():
+		$Connections.hide()
+		Global.emit_signal("instance_player", get_tree().get_network_unique_id(), cord)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
+		if !Global.server:
+			rpc_unreliable("spawn_player")
 
 puppet func spawn_player():
 	$Connections.hide()
 	Global.emit_signal("instance_player", get_tree().get_network_unique_id())
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 
 func _on_QuitButton_pressed():
 	print("Quitting Game")
@@ -79,17 +97,17 @@ func refresh_lobby():
 	$Connections/PlayerList.clear()
 	$Connections/PlayerList.add_item(teams[$Connections/TeamButton.get_selected_id()] + " " + Network.get_player_name() + " (You)")
 	for i in range(player_list.size()):
-		$Connections/PlayerList.add_item(team_list[i] + player_list[i])
+		$Connections/PlayerList.add_item(str(team_list[i]) + player_list[i])
 
 #Order of Menus:
 #PlayerSetup, Online/Local, Host/Join, Connection
 func _on_LanBackButton_pressed():
-	$VBoxContainer.show()
+	$Server_or_LAN.show()
 	$Lan.hide()
 
 func _on_ServerBack_pressed():
 	$PlayerSetup.show()
-	$VBoxContainer.hide()
+	$Server_or_LAN.hide()
 
 func _on_ConnectBackButton_pressed():
 	$Connections/HBoxContainer/StartButton.disabled = false

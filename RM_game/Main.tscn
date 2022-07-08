@@ -259,7 +259,7 @@ rect_min_size = Vector2( 350, 60 )
 align = 1
 valign = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NetworkSetup"]
+[node name="Server_or_LAN" type="VBoxContainer" parent="NetworkSetup"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -270,20 +270,20 @@ margin_top = -90.0
 margin_right = 175.0
 margin_bottom = 90.0
 
-[node name="Online" type="Button" parent="NetworkSetup/VBoxContainer"]
+[node name="Online" type="Button" parent="NetworkSetup/Server_or_LAN"]
 margin_right = 350.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 text = "Online Server"
 
-[node name="Local" type="Button" parent="NetworkSetup/VBoxContainer"]
+[node name="Local" type="Button" parent="NetworkSetup/Server_or_LAN"]
 margin_top = 64.0
 margin_right = 350.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 0, 60 )
 text = "Local (Lan)"
 
-[node name="ServerBack" type="Button" parent="NetworkSetup/VBoxContainer"]
+[node name="ServerBack" type="Button" parent="NetworkSetup/Server_or_LAN"]
 margin_top = 128.0
 margin_right = 350.0
 margin_bottom = 188.0
@@ -299,7 +299,8 @@ anchor_bottom = 0.5
 margin_left = -175.0
 margin_top = -98.0
 margin_right = 175.0
-margin_bottom = 98.0
+margin_bottom = 162.0
+alignment = 1
 
 [node name="IpAddress" type="LineEdit" parent="NetworkSetup/Lan"]
 margin_right = 350.0
@@ -403,9 +404,9 @@ rect_min_size = Vector2( 175, 60 )
 text = "Quit"
 
 [connection signal="pressed" from="NetworkSetup/PlayerSetup/ContinueButton" to="NetworkSetup" method="_on_ContinueButton_pressed"]
-[connection signal="pressed" from="NetworkSetup/VBoxContainer/Online" to="NetworkSetup" method="_on_Online_pressed"]
-[connection signal="pressed" from="NetworkSetup/VBoxContainer/Local" to="NetworkSetup" method="_on_Local_pressed"]
-[connection signal="pressed" from="NetworkSetup/VBoxContainer/ServerBack" to="NetworkSetup" method="_on_ServerBack_pressed"]
+[connection signal="pressed" from="NetworkSetup/Server_or_LAN/Online" to="NetworkSetup" method="_on_Online_pressed"]
+[connection signal="pressed" from="NetworkSetup/Server_or_LAN/Local" to="NetworkSetup" method="_on_Local_pressed"]
+[connection signal="pressed" from="NetworkSetup/Server_or_LAN/ServerBack" to="NetworkSetup" method="_on_ServerBack_pressed"]
 [connection signal="text_changed" from="NetworkSetup/Lan/IpAddress" to="NetworkSetup" method="_on_IpAddress_text_changed"]
 [connection signal="pressed" from="NetworkSetup/Lan/Host" to="NetworkSetup" method="_on_Host_pressed"]
 [connection signal="pressed" from="NetworkSetup/Lan/Join" to="NetworkSetup" method="_on_Join_pressed"]

@@ -29,10 +29,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
 [node name="head" parent="Head_Pivot" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2 )
 
-[node name="Camera" type="Camera" parent="Head_Pivot"]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.2, -0.218068 )
-current = true
-
 [node name="FireCooldown" type="Timer" parent="."]
 wait_time = 0.4
 
