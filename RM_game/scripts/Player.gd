@@ -27,9 +27,10 @@ func _ready():
 	print("Script loaded")
 	if is_network_master():
 		$Head_Pivot/Camera.add_child(UI)
-		UI.change_health(health)
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
+	UI.change_health(health)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 	$Head_Pivot/Camera.current = is_network_master()
+
 	
 func _input(event):
 	if !is_network_master():
@@ -110,8 +111,6 @@ func _on_FireCooldown_timeout():
 
 func _on_ReviveTimer_timeout():
 	dead = false
-	health  = 100
-	UI.change_health(health)
 	$ReviveTimer.stop()
 	print("revived")
 	rpc_unreliable("revived")

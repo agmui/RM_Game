@@ -26,12 +26,12 @@ func _instance_player(id):
 	player_instance.global_transform.origin = Vector3(0, 5, 0)
 
 func _player_connected(id):
-	#print("Player "+str(id)+ " has connected")
+	print("Player "+str(id)+ " has connected")
 	
-	_instance_player(id)# instance other player
+	#_instance_player(id)
 	
 func _player_disconnected(id):
-	#print("Player " + str(id) + " has disconnected")
+	print("Player " + str(id) + " has disconnected")
 	
 	if has_node(str(id)):
 		get_node(str(id)).queue_free()
