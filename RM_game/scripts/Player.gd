@@ -13,6 +13,7 @@ var dead = false
 onready var cam = get_node("Head_Pivot")
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
 var UI = preload("res://scenes/UI.tscn").instance()
+var PauseMenu = preload("res://scenes/PauseMenu.tscn").instance()
 
 var sensitivity = .2
 var track = true
@@ -46,8 +47,6 @@ func _input(event):
 
 func _physics_process(delta):
 	if is_network_master():
-		if Input.is_key_pressed(KEY_ESCAPE):
-			get_tree().quit()
 		if Input.is_key_pressed(KEY_TAB):
 			track = !track
 			if track:
@@ -84,7 +83,9 @@ func _physics_process(delta):
 			b.shoot = true # lets bullet move
 			$FireCooldown.start()
 			fire_cooldown = true
-		
+		if Input.is_action_pressed("pause_menu"):
+			add_child(PauseMenu)
+			get_tree().paused = true
 		body_dir = body_dir.normalized()
 		body_dir = body_dir.rotated(Vector3.UP, cam.rotation.y) # rotating the vector we are moving in
 		

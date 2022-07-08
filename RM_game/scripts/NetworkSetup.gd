@@ -66,7 +66,8 @@ puppet func spawn_player():
 	Global.emit_signal("instance_player", get_tree().get_network_unique_id())
 
 func _on_QuitButton_pressed():
-		get_tree().quit()
+	print("Quitting Game")
+	get_tree().quit()
 
 func refresh_lobby():
 	print("lobby has been refreshed")
@@ -91,6 +92,7 @@ func _on_ServerBack_pressed():
 	$VBoxContainer.hide()
 
 func _on_ConnectBackButton_pressed():
+	$Connections/HBoxContainer/StartButton.disabled = false
 	$Connections.hide()
 	$Lan.show()
 	Network.unregister_player(get_tree().get_network_unique_id())
