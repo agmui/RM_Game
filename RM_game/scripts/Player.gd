@@ -110,6 +110,8 @@ func _on_FireCooldown_timeout():
 
 func _on_ReviveTimer_timeout():
 	dead = false
+	health  = 100
+	UI.change_health(health)
 	$ReviveTimer.stop()
 	print("revived")
 	rpc_unreliable("revived")

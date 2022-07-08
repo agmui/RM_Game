@@ -17,7 +17,10 @@ func _ready():
 func _on_Online_pressed():
 	Network.ip_address = "24.5.169.14"
 	Global.server = true
+	hide()
 	_on_Join_pressed()
+	Global.emit_signal("instance_player", get_tree().get_network_unique_id()) # instance own player
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 
 func _on_Local_pressed():
 	$VBoxContainer.hide()
@@ -36,7 +39,8 @@ func _on_Join_pressed():
 	Network.join_server()
 	$Lan.hide()
 	$Connections/HBoxContainer/StartButton.disabled = true
-	$Connections.show()
+	if !Global.server:
+		$Connections.show()
 
 func _toggle_network_setup(visible_toggle):
 	visible = visible_toggle
