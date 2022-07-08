@@ -26,10 +26,12 @@ func _on_IpAddress_text_changed(new_text):
 	Network.ip_address = new_text
 
 func _on_Host_pressed():
+	Network.create_server()
 	$Lan.hide()
 	$Connections.show()
 
 func _on_Join_pressed():
+	Network.join_server()
 	$Lan.hide()
 	$Connections/HBoxContainer/StartButton.disabled = true
 	$Connections.show()
@@ -46,7 +48,7 @@ func _on_ContinueButton_pressed(): #Continues after adding name
 		$VBoxContainer.show()
 		refresh_lobby()
 
-func _on_StartButton_pressed(): #Starts the game
+func _on_StartButton_pressed():
 	$Connections.hide()
 	Global.emit_signal("instance_player", get_tree().get_network_unique_id())
 
