@@ -29,14 +29,12 @@ func _on_Host_pressed():
 	Network.create_server()
 	$Lan.hide()
 	$Connections.show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_Join_pressed():
 	Network.join_server()
 	$Lan.hide()
 	$Connections/HBoxContainer/StartButton.disabled = true
 	$Connections.show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _toggle_network_setup(visible_toggle):
 	visible = visible_toggle
@@ -56,6 +54,7 @@ func _on_StartButton_pressed():
 	rpc_unreliable("spawn_player")
 
 puppet func spawn_player():
+	$Connections.hide()
 	Global.emit_signal("instance_player", get_tree().get_network_unique_id())
 
 func _on_QuitButton_pressed():
