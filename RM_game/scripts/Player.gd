@@ -13,9 +13,8 @@ var dead = false
 onready var cam = get_node("Head_Pivot")
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
 var UI = preload("res://scenes/UI.tscn").instance()
-
+var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
 var sensitivity = .2
-var track = true
 
 var puppet_position = Vector3()
 var puppet_velocity = Vector3()
@@ -26,17 +25,23 @@ var puppet_rotation = Vector2()
 func _ready():
 	print("Script loaded")
 	if is_network_master():
+		var cam = Camera.new()
+		cam.name = "Camera"
+		cam.translate(Vector3(0, 0.2, -0.218))
+		$Head_Pivot.add_child(cam)
 		$Head_Pivot/Camera.add_child(UI)
 		UI.change_health(health)
+		$Head_Pivot/Camera.add_child(pause_menu)
+		pause_menu.hide()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
-	$Head_Pivot/Camera.current = is_network_master()
+
 	
 func _input(event):
 	if !is_network_master():
 		return
 	if dead:
 		return
-	if event is InputEventMouseMotion and track:
+	if event is InputEventMouseMotion and !pause_menu.paused:
 		var movement = event.relative
 		cam.rotation.x += -deg2rad(movement.y*sensitivity) # rotating virticaly
 		cam.rotation.x = clamp(cam.rotation.x, deg2rad(-30), deg2rad(60)) #limit cam rotation
@@ -45,14 +50,6 @@ func _input(event):
 
 func _physics_process(delta):
 	if is_network_master():
-		if Input.is_key_pressed(KEY_ESCAPE):
-			get_tree().quit()
-		if Input.is_key_pressed(KEY_TAB):
-			track = !track
-			if track:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			else:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 		if dead:
 			return
@@ -76,14 +73,21 @@ func _physics_process(delta):
 			$CollisionShape.rotation.y -= .08
 			$PanelHitbox.rotation.y -= .08
 			rpc_unreliable("update_beyblade")
-		if Input.is_action_pressed("fire") and !fire_cooldown:
+		if Input.is_action_pressed("fire") and !fire_cooldown and !pause_menu.paused:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
 			$Head_Pivot/head.add_child(b) # spawning bullet to head
 			rpc_unreliable("fired")
 			b.shoot = true # lets bullet move
 			$FireCooldown.start()
 			fire_cooldown = true
-		
+		if Input.is_action_just_pressed("pause_menu"):
+			if !pause_menu.paused:
+				pause_menu.show()
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			else:
+				pause_menu.hide()
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			pause_menu.paused = !pause_menu.paused
 		body_dir = body_dir.normalized()
 		body_dir = body_dir.rotated(Vector3.UP, cam.rotation.y) # rotating the vector we are moving in
 		
@@ -110,8 +114,6 @@ func _on_FireCooldown_timeout():
 
 func _on_ReviveTimer_timeout():
 	dead = false
-	health  = 100
-	UI.change_health(health)
 	$ReviveTimer.stop()
 	print("revived")
 	rpc_unreliable("revived")
