@@ -14,6 +14,8 @@ onready var cam = get_node("Head_Pivot")
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
 var UI = preload("res://scenes/UI.tscn").instance()
 var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
+var red_skin = preload("res://art/red_standard.glb").instance()
+var blue_skin = preload("res://art/blue_standard.glb").instance()
 var sensitivity = .2
 
 var puppet_position = Vector3()
@@ -33,7 +35,6 @@ func _ready():
 		UI.change_health(health)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
-		#TODO change skin color
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 
 	

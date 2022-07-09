@@ -86,13 +86,12 @@ func refresh_lobby():
 	print("lobby has been refreshed")
 	var player_list = Network.get_player_list()
 	var team_list = Network.get_player_team_list()
-	print(player_list)
-	print(team_list)
 	player_list.sort()
 	$Connections/PlayerList.clear()
 	$Connections/PlayerList.add_item(teams[$Connections/TeamButton.get_selected_id()] + " " + Network.get_player_name() + " (You)")
 	for i in range(player_list.size()):
-		$Connections/PlayerList.add_item(str(team_list[i]) + player_list[i])
+		if Network.get_player_name() != player_list[i].name:
+			$Connections/PlayerList.add_item(str(player_list[i].team)+" "+str(player_list[i].name))
 
 #Order of Menus:
 #PlayerSetup, Online/Local, Host/Join, Connection
