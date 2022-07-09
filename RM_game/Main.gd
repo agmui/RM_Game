@@ -7,9 +7,13 @@ func _ready():
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
 	
 	Global.connect("instance_player", self, "_instance_player")
+	Network.connect("recived_location", self, "_recived_location")
 	
 	if get_tree().network_peer != null:
 		Global.emit_signal("toggle_network_setup", false)
+
+func _recived_location(id, cord):
+	_instance_player(id, cord)
 
 func _instance_player(id, cord):
 	if Global.server and id == 1:
@@ -22,6 +26,7 @@ func _instance_player(id, cord):
 	add_child(player_instance)
 	print("added player")
 	player_instance.global_transform.origin = Vector3(0, cord[0], cord[1])
+
 
 func _player_connected(id):
 	print("Player "+str(id)+ " has connected")

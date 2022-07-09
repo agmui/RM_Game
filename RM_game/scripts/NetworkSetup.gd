@@ -65,18 +65,13 @@ func _on_ContinueButton_pressed(): #Continues after adding name
 func _on_StartButton_pressed():
 	# ask server for spawn info
 	var id = get_tree().get_network_unique_id()
-	rpc_id(1,"spawn_location_server", id, Network.player_teams[id])
-	print("hi")
-	
-remote func spawn_location(id, cord):
-	# get info back
-	# puppet players locations already are provided when entering in on server with update_state
-	if id == get_tree().get_network_unique_id():
-		$Connections.hide()
-		Global.emit_signal("instance_player", get_tree().get_network_unique_id(), cord)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
-		if !Global.server:
-			rpc_unreliable("spawn_player")
+	Network.get_spawn(id)
+	print("getting spawn")
+	$Connections.hide()
+	# Global.emit_signal("instance_player", get_tree().get_network_unique_id(), cord)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
+	if !Global.server:
+		rpc_unreliable("spawn_player")
 
 puppet func spawn_player():
 	$Connections.hide()

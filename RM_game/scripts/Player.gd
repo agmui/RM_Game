@@ -21,6 +21,8 @@ var puppet_velocity = Vector3()
 var puppet_rotation = Vector2()
 
 #export(NodePath) onready var health_bar = get_node(health_bar) as TextureProgress
+func get_spawn():
+	rpc_id(1, "spawn_location_server", id, Network.player_teams[id])
 
 func _ready():
 	print("Script loaded")
@@ -124,10 +126,10 @@ func _on_PanelHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet") and !is_network_master():
 		print("hit "+ str(id))
-		hit_panel(id)
+		hit_panel()
 
-remote func hit_panel(sent_id):
-	if sent_id == id and !dead: # FIXME send_id is not working
+remote func hit_panel():
+	if !dead: # FIXME send_id is not working
 		print("taking dmg")
 		health -= 10
 		UI.change_health(health)
@@ -137,7 +139,7 @@ remote func hit_panel(sent_id):
 			print("dead")
 			dead = true
 			$ReviveTimer.start()
-			if Global.server:
+			if !Global.server:
 				rpc_unreliable("killed_player")
 	else:
 		# deplete upper UI health
@@ -172,8 +174,10 @@ remote func update_state(p_position, p_velocity, p_rotation):
 
 func _on_NetworkTickRate_timeout():
 	if is_network_master():
-		var destination = "update_state" + ("_server" if Global.server else "")
-		rpc_unreliable(destination, global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
+		if Global.server:
+			rpc_unreliable_id(1,"update_state_server", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
+		else:
+			rpc_unreliable("update_state", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
 	else:
 		$NetworkTickRate.stop()
 

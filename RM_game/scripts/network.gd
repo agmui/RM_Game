@@ -13,6 +13,7 @@ var player_list = {}
 var player_teams = {}
 
 signal player_list_changed()
+signal recived_location
 
 func _ready():
 	get_tree().connect("connected_to_server", self, "_connected_to_server")
@@ -79,3 +80,10 @@ remote func register_player(cplayer_name):
 func unregister_player(id):
 	player_list.erase(id)
 	emit_signal("player_list_changed")
+
+func get_spawn(id):
+	rpc_id(1, "spawn_location_server", id, Network.player_teams[id])
+
+remote func recived_spawn(cord):
+	emit_signal("recived_location", cord)
+
