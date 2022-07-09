@@ -32,6 +32,6 @@ func _player_connected(id):
 	
 func _player_disconnected(id):
 	print("Player " + str(id) + " has disconnected")
-	
+	Network.unregister_player(id)
 	if has_node(str(id)):
 		get_node(str(id)).queue_free()

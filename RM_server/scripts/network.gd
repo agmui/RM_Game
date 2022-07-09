@@ -6,6 +6,7 @@ const ip_address = "24.5.169.14"
 var server = null
 
 var player_list = {}
+var team_size = {"red":0, "blue": 0}
 
 func _ready():
 	print("Creating server")
@@ -25,14 +26,18 @@ remote func register_player(cplayer_name):
 	player_list.id = {"name":cplayer_name, "team":"no_team"}
 
 remote func unregister_player(id):
+	print("unreg")
+	team_size[player_list.id.team] -= 1
 	player_list.erase(id)
 
-puppet func spawn_location_server(id, team):
-	print("deciding spawn")
-	for p in player_list.values():
-		if p.team == team+"1":
-			player_list.id.team = team+"2"
-			rpc("spawn_location", id, [10,10])
-		else:
-			player_list.id.team = team+"1"
-			rpc("recived_spawn", id, [-10,10])
+remote func spawn_location_server(id, team):
+	team = "red" if team==0 else "blue"
+	var cord = [0,0]
+	if team_size[team]:
+		player_list.id.team = team
+		cord = [7, 9.5] if team == "red" else [-7,-9.5]
+	else:
+		player_list.id.team = team
+		cord = [3.5, 11.5] if team == "red" else [-3.5,-11.5]
+	team_size[team] += 1
+	rpc_id(id,  "recived_spawn", id, cord)
