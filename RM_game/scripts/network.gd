@@ -10,7 +10,7 @@ var ip_address = "127.0.0.1"
 
 var player_name
 var player_list = {}
-var team_size = {"red":0, "blue":0}
+var player_teams = {}
 
 signal player_list_changed()
 
@@ -67,21 +67,19 @@ func set_player_name(cplayer_name):
 	player_name = cplayer_name
 
 func get_player_team_list():
-	return team_size.values();
+	return player_teams.values();
 	
-func set_player_team(id,index):
-	var team ="blue" if index else "red"
-	team_size[team] += 1
-	player_list[id] = {"name":player_name, "team":team}
+func set_player_team(id, index):
+	player_teams[id] = index
 
 remote func register_player(cplayer_name):
 	var id = get_tree().get_rpc_sender_id()
-	player_list[id] = {"name":cplayer_name, "team":"no_team"}
+	player_list[id] = cplayer_name
 	emit_signal("player_list_changed")
 
 func unregister_player(id):
 	player_list.erase(id)
-	team_size.erase(id)
+	player_teams.erase(id)
 	emit_signal("player_list_changed")
 
 func get_spawn(id):
