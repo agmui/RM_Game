@@ -79,6 +79,7 @@ remote func register_player(cplayer_name):
 
 func unregister_player(id):
 	player_list.erase(id)
+	player_teams.erase(id)
 	emit_signal("player_list_changed")
 
 func get_spawn(id):

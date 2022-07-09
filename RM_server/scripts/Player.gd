@@ -23,29 +23,12 @@ var puppet_rotation = Vector2()
 
 #export(NodePath) onready var health_bar = get_node(health_bar) as TextureProgress
 
-puppet func spawn_location_server(id, team):
-	print("deciding spawn")
-	if team == "blue":
-		if Global.player_log.has("blue"):
-			Global.player_log["blue"][1] = id
-			rpc("spawn_location", id, [10,10])
-		else:
-			Global.player_log["blue"] = [id, null]
-			rpc("spawn_location", id, [-10,10])
-	else:
-		if Global.player_log.has("red"):
-			Global.player_log["red"][1] = id
-			rpc("spawn_location", id, [10,-10])
-		else:
-			Global.player_log["red"] = [id, null]
-			rpc("spawn_location", id, [-10,-10])
-		
 
 func _ready():
 	if is_network_master():
 		$Head_Pivot/Camera.add_child(UI)
 	UI.change_health(600)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 	$Head_Pivot/Camera.current = is_network_master()
 
 
@@ -83,7 +66,7 @@ func hit_panel():
 		print("taking dmg")
 		health -= 10
 		UI.change_health(health)
-		rpc_unreliable("hit_panel", id)
+		rpc_unreliable_id(id, "hit_panel")
 		if health == 0:
 			$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
 			print(id, " dead")
