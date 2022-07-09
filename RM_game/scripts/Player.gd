@@ -21,20 +21,19 @@ var puppet_velocity = Vector3()
 var puppet_rotation = Vector2()
 
 #export(NodePath) onready var health_bar = get_node(health_bar) as TextureProgress
-func get_spawn():
-	rpc_id(1, "spawn_location_server", id, Network.player_teams[id])
 
 func _ready():
-	print("Script loaded")
+	print(is_network_master())
 	if is_network_master():
-		var cam = Camera.new()
-		cam.name = "Camera"
-		cam.translate(Vector3(0, 0.2, -0.218))
-		$Head_Pivot.add_child(cam)
+		var camera = Camera.new()
+		camera.name = "Camera"
+		camera.translate(Vector3(0, 0.2, -0.218))
+		$Head_Pivot.add_child(camera)
 		$Head_Pivot/Camera.add_child(UI)
 		UI.change_health(health)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
+		#TODO change skin color
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 
 	
