@@ -65,11 +65,11 @@ func _on_ContinueButton_pressed(): #Continues after adding name
 func _on_StartButton_pressed():
 	# ask server for spawn info
 	var id = get_tree().get_network_unique_id()
-	Network.get_spawn(id)
-	print("getting spawn")
 	$Connections.hide()
 	# Global.emit_signal("instance_player", get_tree().get_network_unique_id(), cord)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
+
+	Network.get_spawn(id)
 	if !Global.server:
 		rpc_unreliable("spawn_player")
 
