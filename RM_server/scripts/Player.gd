@@ -25,11 +25,10 @@ var puppet_rotation = Vector2()
 
 
 func _ready():
-	if is_network_master():
-		$Head_Pivot/Camera.add_child(UI)
+	$Head_Pivot/Camera.add_child(UI)
 	UI.change_health(600)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
-	$Head_Pivot/Camera.current = is_network_master()
+	$Head_Pivot/Camera.current = false#is_network_master()
 
 
 func _physics_process(delta):

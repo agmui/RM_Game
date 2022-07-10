@@ -18,14 +18,14 @@ func _ready():
 	Network.connect("player_list_changed", self, "refresh_lobby")
 
 func _on_Online_pressed():
-	Network.ip_address = "24.5.169.14"
+	Network.ip_address = "127.0.0.1" #"24.5.169.14"
 	Global.server = true
 	Network.join_server()
 	$Lan.hide()
 	$Server_or_LAN.hide()
-	$Connections/HBoxContainer/StartButton.text = "Join"
-	Network.set_player_team(get_tree().get_network_unique_id(), 0)
+	#Network.register_player($PlayerSetup/NameEdit.text)
 	refresh_lobby()
+
 	$Connections.show()
 
 func _on_Local_pressed():
@@ -39,7 +39,7 @@ func _on_IpAddress_text_changed(new_text):
 func _on_Host_pressed():
 	Network.create_server()
 	$Lan.hide()
-	Network.set_player_team(get_tree().get_network_unique_id(), 0)
+	Network.set_player_team(0)
 	refresh_lobby()
 	$Connections.show()
 
@@ -47,7 +47,7 @@ func _on_Join_pressed():
 	Network.join_server()
 	$Lan.hide()
 	$Connections/HBoxContainer/StartButton.disabled = true
-	Network.set_player_team(get_tree().get_network_unique_id(), 0)
+	Network.set_player_team(0)
 	refresh_lobby()
 	$Connections.show()
 
@@ -65,11 +65,11 @@ func _on_ContinueButton_pressed(): #Continues after adding name
 func _on_StartButton_pressed():
 	# ask server for spawn info
 	var id = get_tree().get_network_unique_id()
-	$Connections.hide()
+	#$Connections.hide()
 	# Global.emit_signal("instance_player", get_tree().get_network_unique_id(), cord)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 
-	Network.get_spawn(id)
+	Network.start_game(id)
 	if !Global.server:
 		rpc_unreliable("spawn_player")
 
@@ -85,14 +85,14 @@ func _on_QuitButton_pressed():
 func refresh_lobby():
 	print("lobby has been refreshed")
 	var player_list = Network.get_player_list()
-	var team_list = Network.get_player_team_list()
-	print(player_list)
-	print(team_list)
 	player_list.sort()
 	$Connections/PlayerList.clear()
-	$Connections/PlayerList.add_item(teams[$Connections/TeamButton.get_selected_id()] + " " + Network.get_player_name() + " (You)")
-	for i in range(player_list.size()):
-		$Connections/PlayerList.add_item(str(team_list[i]) + player_list[i])
+	$Connections/PlayerList.add_item(teams[$Connections/TeamButton.get_selected_id()] +
+	 " " + Network.get_player_name() +
+	 " (You)"+("(HOST)"if Network.is_host else ""))
+	for p in player_list:
+		$Connections/PlayerList.add_item(p.team+" "+p.name+("(HOST)"if p.host else ""))
+	$Connections/HBoxContainer/StartButton.disabled = !Network.is_host
 
 #Order of Menus:
 #PlayerSetup, Online/Local, Host/Join, Connection
@@ -112,5 +112,5 @@ func _on_ConnectBackButton_pressed():
 	get_tree().network_peer = null
 
 func _on_TeamButton_item_selected(index):
-	Network.set_player_team(get_tree().get_network_unique_id(), index)
+	Network.set_player_team(index)
 	Network.emit_signal("player_list_changed")

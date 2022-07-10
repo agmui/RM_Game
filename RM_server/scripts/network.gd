@@ -2,7 +2,7 @@ extends Node
 
 const DEFAULT_PORT = 10567
 const MAX_CLIENTS = 6
-const ip_address = "24.5.169.14"
+const ip_address = "127.0.0.1" #"24.5.169.14"
 var server = null
 
 var player_list = {}
@@ -19,25 +19,28 @@ func _ready():
 func reset_network_connection():
 	if get_tree().has_network_peer():
 		get_tree().network_peer = null
-		
 
-remote func register_player(cplayer_name):
+remote func register_player(cplayer_name, host):
 	var id = get_tree().get_rpc_sender_id()
-	player_list.id = {"name":cplayer_name, "team":"no_team"}
+	player_list[id] = {"name":cplayer_name, "team":"red", "host": host}
+	if player_list.size() == 1:
+		rpc_id(id, "set_host", true)
 
 remote func unregister_player(id):
-	print("unreg")
-	team_size[player_list.id.team] -= 1
 	player_list.erase(id)
 
-remote func spawn_location_server(id, team):
-	team = "red" if team==0 else "blue"
-	var cord = [0,0]
-	if team_size[team]:
-		player_list.id.team = team
-		cord = [7, 9.5] if team == "red" else [-7,-9.5]
-	else:
-		player_list.id.team = team
-		cord = [3.5, 11.5] if team == "red" else [-3.5,-11.5]
-	team_size[team] += 1
-	rpc_id(id,  "recived_spawn", id, cord)
+remote func change_player_values(id, values):
+	player_list[id] = values
+
+remote func start_game_server():
+	var spawn_locations = []
+	for id in player_list.keys():
+		var cord = [0,0]
+		var player=player_list[id]
+		if team_size[player.team]:
+			cord = [7, 9.5] if player.team == "red" else [-7,-9.5]
+		else:
+			cord = [3.5, 11.5] if player.team == "red" else [-3.5,-11.5]
+		team_size[player.team] += 1
+		spawn_locations.append([id, cord])
+	rpc("recived_spawn", spawn_locations)

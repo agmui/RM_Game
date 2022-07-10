@@ -7,14 +7,19 @@ export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
 var id
+var team
 export var health = 60
 var fire_cooldown = false
 var dead = false
-onready var cam = get_node("Head_Pivot")
-onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
+var sensitivity = .2
+
 var UI = preload("res://scenes/UI.tscn").instance()
 var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
-var sensitivity = .2
+var blue_standard = preload("res://art/blue_standard.glb").instance()
+var red_standard = preload("res://art/red_standard.glb").instance()
+
+onready var cam = get_node("Head_Pivot")
+onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
 
 var puppet_position = Vector3()
 var puppet_velocity = Vector3()
@@ -23,7 +28,6 @@ var puppet_rotation = Vector2()
 #export(NodePath) onready var health_bar = get_node(health_bar) as TextureProgress
 
 func _ready():
-	print(is_network_master())
 	if is_network_master():
 		var camera = Camera.new()
 		camera.name = "Camera"
@@ -33,10 +37,10 @@ func _ready():
 		UI.change_health(health)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
-		#TODO change skin color
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
+	# changes skin color
+	$Pivot.add_child(blue_standard if team=="blue" else red_standard)
 
-	
+
 func _input(event):
 	if !is_network_master():
 		return

@@ -1,6 +1,6 @@
 extends Node
 
-signal instance_player(id)
+signal instance_player(id, cord, team)
 signal toggle_network_setup(toggle)
 
 var server:bool = false
