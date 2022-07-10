@@ -98,6 +98,10 @@ func start_game(id):
 
 remote func recived_spawn(cord):
 	Global.emit_signal("toggle_network_setup", false)
+	#TODO maybe add current player into player_list
 	for i in cord:
+		if i[0] == get_tree().get_network_unique_id():
+			Global.emit_signal("instance_player", i[0], i[1], team)
+			continue
 		Global.emit_signal("instance_player", i[0], i[1], player_list[i[0]].team)
 

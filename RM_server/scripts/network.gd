@@ -20,11 +20,12 @@ func reset_network_connection():
 	if get_tree().has_network_peer():
 		get_tree().network_peer = null
 
-remote func register_player(cplayer_name, host):
+remote func register_player(cplayer_name, team, host):
 	var id = get_tree().get_rpc_sender_id()
-	player_list[id] = {"name":cplayer_name, "team":"red", "host": host}
+	player_list[id] = {"name":cplayer_name, "team":team, "host": host}
 	if player_list.size() == 1:
 		rpc_id(id, "set_host", true)
+	print("set host")
 
 remote func unregister_player(id):
 	player_list.erase(id)
@@ -35,6 +36,7 @@ remote func change_player_values(id, values):
 remote func start_game_server():
 	var spawn_locations = []
 	for id in player_list.keys():
+		print(team_size)
 		var cord = [0,0]
 		var player=player_list[id]
 		if team_size[player.team]:
