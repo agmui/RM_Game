@@ -12,7 +12,8 @@ export var health = 60
 var fire_cooldown = false
 var dead = false
 var sensitivity = .2
-var barral_heat = 0
+var barrel_heat = 0
+var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
 
 var UI = preload("res://scenes/UI.tscn").instance()
 var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
@@ -56,8 +57,19 @@ func _input(event):
 
 func _physics_process(delta):
 	if is_network_master():
-		
+		if Input.is_action_just_pressed("pause_menu"):
+			if !pause_menu.paused:
+				pause_menu.show()
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			else:
+				pause_menu.hide()
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			pause_menu.paused = !pause_menu.paused
+# ==============================================================
 		if dead:
+			if $Head_Pivot.rotation_degrees.x > -30:
+				head_acc-= deg2rad(35)*delta
+				$Head_Pivot.rotation.x += head_acc
 			return
 		# We create a local variable to store the input direction.
 		var body_dir = Vector3.ZERO
@@ -86,20 +98,16 @@ func _physics_process(delta):
 			b.shoot = true # lets bullet move
 			$FireCooldown.start()
 			fire_cooldown = true
-			if barral_heat >= 100:
+			if barrel_heat >= 100:
 				#overhead shut down
-				pass
+				print("overheating")
+				dead = true
+				$OverheatTimer.start()
+				rpc_unreliable("overheat")
 			else:
-				barral_heat += 10
-				UI.set_heat(barral_heat)
-		if Input.is_action_just_pressed("pause_menu"):
-			if !pause_menu.paused:
-				pause_menu.show()
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			else:
-				pause_menu.hide()
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			pause_menu.paused = !pause_menu.paused
+				barrel_heat += 10
+				UI.set_heat(barrel_heat)
+
 		body_dir = body_dir.normalized()
 		body_dir = body_dir.rotated(Vector3.UP, cam.rotation.y) # rotating the vector we are moving in
 		
@@ -120,11 +128,16 @@ func _physics_process(delta):
 		# Moving the character	
 		velocity = move_and_slide(velocity, Vector3.UP)
 
+func _on_OverheatTimer_timeout():
+	head_acc = 0
+	dead = false
+	rpc_unreliable("revived")
 
 func _on_FireCooldown_timeout():
 	fire_cooldown = false
 
 func _on_ReviveTimer_timeout():
+	head_acc = 0
 	dead = false
 	$ReviveTimer.stop()
 	health = 600
@@ -147,7 +160,7 @@ remote func hit_panel():
 		UI.change_health(health)
 		if health == 0:
 			# TODO use lerp
-			$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
+			#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
 			print("dead")
 			dead = true
 			$ReviveTimer.start()
@@ -165,11 +178,14 @@ puppet func update_beyblade():
 	$CollisionShape.rotation.y -= .08
 	$PanelHitbox.rotation.y -= .08
 
+puppet func overheat():
+	print(Network.player_list[get_tree().get_rpc_sender_id()]," overheated")
+
 puppet func killed_player():
-	print("killed player")
+	print(Network.player_list[get_tree().get_rpc_sender_id()]," was killed")
 
 puppet func revived():
-	print("player revived")
+	print(Network.player_list[get_tree().get_rpc_sender_id()]," revived")
 	health = 100
 	UI.change_health(health)
 	
@@ -189,10 +205,8 @@ func _on_NetworkTickRate_timeout():
 			rpc_unreliable_id(1,"update_state_server", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
 		else:
 			rpc_unreliable("update_state", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
-		if barral_heat > 0:
-			barral_heat -= .5
-			UI.set_heat(barral_heat)
+		if barrel_heat > 0:
+			barrel_heat -= .5
+			UI.set_heat(barrel_heat)
 	else:
 		$NetworkTickRate.stop()
-
-
