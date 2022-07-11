@@ -1,6 +1,7 @@
 extends Control
 
 var teams = ["Red", "Blue"]
+var connection = 0 #0 for none, 1 for online, 2 for lan
 
 func _ready():
 	$Lan.hide()
@@ -26,6 +27,7 @@ func _on_ContinueButton_pressed(): #Continues after adding name
 		$Server_or_LAN.show()
 
 func _on_Online_pressed():
+	connection = 1
 	Network.ip_address = "127.0.0.1" #"24.5.169.14"
 	Global.server = true
 	Network.join_server()
@@ -35,6 +37,7 @@ func _on_Online_pressed():
 	$Connections.show()
 
 func _on_Local_pressed():
+	connection = 2
 	$Server_or_LAN.hide()
 	$Lan.show()
 	$Lan/IpShow.text = "Your local IP: "+IP.get_local_addresses()[0]
@@ -97,6 +100,7 @@ func refresh_lobby():
 #Order of Menus:
 #PlayerSetup, Online/Local, Host/Join, Connection
 func _on_LanBackButton_pressed():
+	connection = 0
 	$Server_or_LAN.show()
 	$Lan.hide()
 
@@ -107,7 +111,11 @@ func _on_ServerBack_pressed():
 func _on_ConnectBackButton_pressed():
 	$Connections/HBoxContainer/StartButton.disabled = false
 	$Connections.hide()
-	$Lan.show()
+	if (connection == 1):
+		connection = 0
+		$Server_or_LAN.show()
+	elif (connection == 2):
+		$Lan.show()
 	Network.unregister_player(get_tree().get_network_unique_id())
 	get_tree().network_peer = null
 
