@@ -28,6 +28,7 @@ remote func register_player(cplayer_name, team, host):
 	print("set host")
 
 remote func unregister_player(id):
+	team_size[player_list[id].team] -= 1
 	player_list.erase(id)
 
 remote func change_player_values(id, values):

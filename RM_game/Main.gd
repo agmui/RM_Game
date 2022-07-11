@@ -25,12 +25,8 @@ func _instance_player(id, cord, team):
 
 
 func _player_connected(id):
-	#print("Player "+str(id)+ " has connected")
 	pass
-	#_instance_player(id, [0,0])
 	
 func _player_disconnected(id):
-	print("Player " + str(id) + " has disconnected")
-	
 	if has_node(str(id)):
 		get_node(str(id)).queue_free()
