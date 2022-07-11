@@ -66,19 +66,8 @@ func _toggle_network_setup(visible_toggle):
 
 
 func _on_StartButton_pressed():
-	# var id = get_tree().get_network_unique_id()
-	# Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
-
 	# ask server for spawn info if online
 	Network.start_game()
-
-# 	if !Global.server:
-# 		rpc_unreliable("spawn_player")
-
-# puppet func spawn_player():
-# 	$Connections.hide()
-# 	Global.emit_signal("instance_player", get_tree().get_network_unique_id())
-# 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 
 func _on_QuitButton_pressed():
 	print("Quitting Game")

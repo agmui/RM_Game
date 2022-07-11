@@ -89,10 +89,9 @@ func get_team_size_list():
 	return team_size.values();
 	
 func set_player_team(index):
-	team = "red" if index==0 else "blue"
-	rpc("change_player_values",
-	 get_tree().get_network_unique_id(),
-	 {"name":player_name, "team":team, "host":is_host})
+	var id = get_tree().get_network_unique_id()
+	player_list[id].team = "red" if index==0 else "blue"
+	rpc("change_player_values", id, player_list[id])
 
 remote func set_host(host):
 	is_host = host

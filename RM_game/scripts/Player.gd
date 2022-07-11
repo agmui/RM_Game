@@ -120,6 +120,8 @@ func _on_FireCooldown_timeout():
 func _on_ReviveTimer_timeout():
 	dead = false
 	$ReviveTimer.stop()
+	health = 600
+	UI.change_health(health)
 	print("revived")
 	rpc_unreliable("revived")
 
@@ -127,13 +129,13 @@ func _on_PanelHitbox_body_entered(body):
 	if Global.server: # TODO disconnect when not LAN
 		return
 	#TODO check if bullet is moving fast enough
-	if body.is_in_group("bullet") and !is_network_master():
-		print("hit "+ str(id))
+	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
 		hit_panel()
+		rpc_unreliable("hit_panel")
 
 remote func hit_panel():
-	if !dead: # FIXME send_id is not working
-		print("taking dmg")
+	if !dead:
+		print(Network.player_list[id], " is taking dmg")
 		health -= 10
 		UI.change_health(health)
 		if health == 0:
@@ -144,9 +146,6 @@ remote func hit_panel():
 			$ReviveTimer.start()
 			if !Global.server:
 				rpc_unreliable("killed_player")
-	else:
-		# deplete upper UI health
-		pass
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
@@ -163,7 +162,8 @@ puppet func killed_player():
 
 puppet func revived():
 	print("player revived")
-	health = 600
+	health = 100
+	UI.change_health(health)
 	
 # may cause problems when running LAN because it is suppose to be puppet
 remote func update_state(p_position, p_velocity, p_rotation):

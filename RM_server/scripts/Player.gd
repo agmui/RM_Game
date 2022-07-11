@@ -56,22 +56,18 @@ func _on_ReviveTimer_timeout():
 
 func _on_PanelHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
-	if body.is_in_group("bullet") and !is_network_master():
-		print("hit "+ str(id))
-		hit_panel()
-
-func hit_panel():
-	if !dead:
-		print("taking dmg")
-		health -= 10
-		UI.change_health(health)
-		rpc_unreliable_id(id, "hit_panel")
-		if health == 0:
-			$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
-			print(id, " dead")
-			dead = true
-			$ReviveTimer.start()
-			rpc_unreliable("killed_player")
+	if body.is_in_group("bullet"):# and !is_network_master():
+		if !dead:
+			print(Network.player_list[id], " is taking dmg")
+			health -= 10
+			UI.change_health(health)
+			rpc_unreliable_id(id, "hit_panel")
+			if health == 0:
+				$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
+				print(id, " dead")
+				dead = true
+				$ReviveTimer.start()
+				rpc_unreliable("killed_player")
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
