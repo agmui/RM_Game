@@ -26,7 +26,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2 )
 
 [node name="FireCooldown" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.1
+one_shot = true
 
 [node name="ReviveTimer" type="Timer" parent="."]
 wait_time = 10.0

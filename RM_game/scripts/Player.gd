@@ -12,6 +12,7 @@ export var health = 60
 var fire_cooldown = false
 var dead = false
 var sensitivity = .2
+var barral_heat = 0
 
 var UI = preload("res://scenes/UI.tscn").instance()
 var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
@@ -85,6 +86,12 @@ func _physics_process(delta):
 			b.shoot = true # lets bullet move
 			$FireCooldown.start()
 			fire_cooldown = true
+			if barral_heat >= 100:
+				#overhead shut down
+				pass
+			else:
+				barral_heat += 10
+				UI.set_heat(barral_heat)
 		if Input.is_action_just_pressed("pause_menu"):
 			if !pause_menu.paused:
 				pause_menu.show()
@@ -152,6 +159,7 @@ puppet func fired():
 	$Head_Pivot/head.add_child(b) # spawning bullet to head
 	b.shoot = true # lets bullet move
 
+
 puppet func update_beyblade():
 	$Pivot.rotation.y -= .08
 	$CollisionShape.rotation.y -= .08
@@ -181,6 +189,9 @@ func _on_NetworkTickRate_timeout():
 			rpc_unreliable_id(1,"update_state_server", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
 		else:
 			rpc_unreliable("update_state", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
+		if barral_heat > 0:
+			barral_heat -= .5
+			UI.set_heat(barral_heat)
 	else:
 		$NetworkTickRate.stop()
 
