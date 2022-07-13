@@ -11,6 +11,7 @@ var ip_address = "127.0.0.1"
 var player_name
 var team = "red"
 var is_host = false
+# TODO move to global
 var player_list = {} # contains all players
 var team_size = {"red":0, "blue": 0}
 

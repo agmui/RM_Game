@@ -31,16 +31,17 @@ var puppet_rotation = Vector2()
 
 func _ready():
 	if is_network_master():
-		var camera = Camera.new()
-		camera.name = "Camera"
-		camera.translate(Vector3(0, 0.2, -0.218))
-		$Head_Pivot.add_child(camera)
+		#var camera = Camera.new()
+		#camera.name = "Camera"
+		#camera.translate(Vector3(0, 0.2, -0.218))
+		#$Head_Pivot.add_child(camera)
 		$Head_Pivot/Camera.add_child(UI)
-		UI.change_health(health)
+		UI.change_health(health, id)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
 	# changes skin color
 	$Pivot.add_child(blue_standard if team=="blue" else red_standard)
+	$Head_Pivot/Camera.current = is_network_master()
 
 
 func _input(event):
@@ -141,7 +142,7 @@ func _on_ReviveTimer_timeout():
 	dead = false
 	$ReviveTimer.stop()
 	health = 600
-	UI.change_health(health)
+	UI.change_health(health, id)
 	print("revived")
 	rpc_unreliable("revived")
 
@@ -157,7 +158,7 @@ remote func hit_panel():
 	if !dead:
 		print(Network.player_list[id], " is taking dmg")
 		health -= 10
-		UI.change_health(health)
+		UI.change_health(health, id)# FIXME should not be posible
 		if health == 0:
 			# TODO use lerp
 			#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
