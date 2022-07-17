@@ -4,9 +4,8 @@ extends Node2D
 func _ready():
 	pass
 
-func change_health(health, id):
+func change_health(id, health):
 	print("hi")
-	Global.emit_signal("change_enemy_health", id, health)
 	$Bars/HealthBar.value = health
 	$Bars/HealthBar/Health.text = str(health)+"/600"
 
@@ -29,6 +28,6 @@ func set_heat(heat_value):
 	else:
 		$Bars/HeatWhite.value = heat_value
 
-func _change_enemy_health(id, health):
-	print("hi2")
+func change_enemy_health(id, health):
+	print("hi2 ", health)
 	$Bars/enemyBar.value = health

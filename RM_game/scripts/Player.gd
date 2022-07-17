@@ -16,6 +16,7 @@ var barrel_heat = 0
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
 
 var UI = preload("res://scenes/UI.tscn").instance()
+
 var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
 #var blue_standard = preload("res://art/blue_standard.glb").instance()
 #var red_standard = preload("res://art/red_standard.glb").instance()
@@ -31,13 +32,15 @@ var puppet_rotation = Vector2()
 
 func _ready():
 	if is_network_master():
-		# Global.connect("change_enemy_health", self, "_change_enemy_health")
+		# UI = preload("res://scenes/UI.tscn").instance()
+
+		Global.connect("change_enemy_health", self, "hit_panel")
 		#var camera = Camera.new()
 		#camera.name = "Camera"
 		#camera.translate(Vector3(0, 0.2, -0.218))
 		#$Head_Pivot.add_child(camera)
 		$Head_Pivot/Camera.add_child(UI)
-		UI.change_health(health, id)
+		UI.change_health(id, health)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
 		
@@ -110,7 +113,7 @@ func _physics_process(delta):
 				$OverheatTimer.start()
 				rpc_unreliable("overheat")
 			else:
-				barrel_heat += 10
+				barrel_heat += 1
 				UI.set_heat(barrel_heat)
 
 		body_dir = body_dir.normalized()
@@ -146,7 +149,7 @@ func _on_ReviveTimer_timeout():
 	dead = false
 	$ReviveTimer.stop()
 	health = 600
-	UI.change_health(health, id)
+	UI.change_health(id, health)
 	print("revived")
 	rpc_unreliable("revived")
 
@@ -155,25 +158,31 @@ func _on_PanelHitbox_body_entered(body):
 		return
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
-		hit_panel()#change your ui to being hit
-		rpc_unreliable("hit_panel") #tell eveyonelse ui to you getting hit
+		if !dead:#if you get hit
+			print(Network.player_list[id].name, " is taking dmg")
+			health -= 10
+			UI.change_health(id, health)# FIXME should not be posible
+			if health == 0:
+				# TODO use lerp
+				#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
+				print("dead")
+				dead = true
+				$ReviveTimer.start()
+				if !Global.server:
+					rpc_unreliable("killed_player")
+			#STEP 1
+			rpc_unreliable("hit_panel", id, health) #tell eveyonelse ui to you getting hit
 
-remote func hit_panel():
-	if !is_network_master():#if enemy gets hit
-		#might not be root ui node to display
-		pass
-	elif !dead:#if you get hit
-		print(Network.player_list[id].name, " is taking dmg")
-		health -= 10
-		UI.change_health(health, id)# FIXME should not be posible
-		if health == 0:
-			# TODO use lerp
-			#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
-			print("dead")
-			dead = true
-			$ReviveTimer.start()
-			if !Global.server:
-				rpc_unreliable("killed_player")
+remote func hit_panel(player_id, current_health):
+	#STEP 2
+	if !is_network_master():
+		#go to global to find right node
+		Global.emit_signal("change_enemy_health", player_id, current_health)
+	else:
+		#STEP 3
+		#after returning from global
+		print("about to change health ",Network.player_list[player_id].name)
+		UI.change_enemy_health(null, current_health)
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
@@ -190,12 +199,12 @@ puppet func overheat():
 	print(Network.player_list[get_tree().get_rpc_sender_id()]," overheated")
 
 puppet func killed_player():
-	print(Network.player_list[get_tree().get_rpc_sender_id()]," was killed")
+	print(Network.player_list[get_tree().get_rpc_sender_id()].name," was killed")
 
 puppet func revived():
-	print(Network.player_list[get_tree().get_rpc_sender_id()]," revived")
+	print(Network.player_list[get_tree().get_rpc_sender_id()].name," revived")
 	health = 100
-	UI.change_health(health)
+	UI.change_health(id, health)
 	
 # may cause problems when running LAN because it is suppose to be puppet
 remote func update_state(p_position, p_velocity, p_rotation):
