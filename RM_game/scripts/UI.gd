@@ -2,9 +2,10 @@ extends Node2D
 
 
 func _ready():
-	Global.connect("change_enemy_health", self, "_change_enemy_health")
+	pass
 
 func change_health(health, id):
+	print("hi")
 	Global.emit_signal("change_enemy_health", id, health)
 	$Bars/HealthBar.value = health
 	$Bars/HealthBar/Health.text = str(health)+"/600"
@@ -29,5 +30,5 @@ func set_heat(heat_value):
 		$Bars/HeatWhite.value = heat_value
 
 func _change_enemy_health(id, health):
-	if is_network_master():
-		$Bars/enemyBar.value = health
+	print("hi2")
+	$Bars/enemyBar.value = health

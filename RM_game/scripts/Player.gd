@@ -31,6 +31,7 @@ var puppet_rotation = Vector2()
 
 func _ready():
 	if is_network_master():
+		# Global.connect("change_enemy_health", self, "_change_enemy_health")
 		#var camera = Camera.new()
 		#camera.name = "Camera"
 		#camera.translate(Vector3(0, 0.2, -0.218))
@@ -43,6 +44,8 @@ func _ready():
 	$Pivot.add_child(blue_standard if team=="blue" else red_standard)
 	$Head_Pivot/Camera.current = is_network_master()
 
+func _change_enemy_health(id, health):
+	UI._change_enemy_health(id, health)
 
 func _input(event):
 	if !is_network_master():
@@ -151,12 +154,15 @@ func _on_PanelHitbox_body_entered(body):
 		return
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
-		hit_panel()
-		rpc_unreliable("hit_panel")
+		hit_panel()#change your ui to being hit
+		rpc_unreliable("hit_panel") #tell eveyonelse ui to you getting hit
 
 remote func hit_panel():
-	if !dead:
-		print(Network.player_list[id], " is taking dmg")
+	if !is_network_master():#if enemy gets hit
+		#might not be root ui node to display
+		pass
+	elif !dead:#if you get hit
+		print(Network.player_list[id].name, " is taking dmg")
 		health -= 10
 		UI.change_health(health, id)# FIXME should not be posible
 		if health == 0:
