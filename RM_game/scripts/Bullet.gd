@@ -14,7 +14,7 @@ func _ready():
 
 func _physics_process(delta):
 	if shoot:
-		apply_impulse(transform.basis.z, -transform.basis.z * SPEED) # applys a sudden push to bullet
+		apply_impulse(-transform.basis.x, transform.basis.x * SPEED) # applys a sudden push to bullet
 		shoot = false
 		# TODO add air resistance
 

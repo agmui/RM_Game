@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://art/head.glb" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://art/red_standard.glb" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.430125, 0.26897, 0.576146 )
+extents = Vector3( 0.409, 0.269, 0.59 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.401719, 1.58732, 6.49904 )
@@ -15,18 +16,22 @@ script = ExtResource( 2 )
 
 [node name="Pivot" type="Spatial" parent="."]
 
+[node name="red_standard" parent="Pivot" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225977, 0 )
 shape = SubResource( 1 )
 
 [node name="Head_Pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.776, 0 )
 
 [node name="head" parent="Head_Pivot" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0388179, 0 )
 
 [node name="Camera" type="Camera" parent="Head_Pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.188, -0.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12281, -0.015863 )
+keep_aspect = 0
 
 [node name="FireCooldown" type="Timer" parent="."]
 wait_time = 0.1
@@ -44,19 +49,19 @@ collision_mask = 2
 monitorable = false
 
 [node name="right" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
-transform = Transform( 0.061546, -0.0188704, 0, 0.0164912, 0.0704254, 0, 0, 0, 0.0181041, 0.423, 0.351, 0 )
+transform = Transform( 0.0600635, -0.0243341, 0, 0.0212661, 0.068729, 0, 0, 0, 0.0181041, 0.316731, 0.316064, 0.05638 )
 shape = SubResource( 2 )
 
 [node name="left" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
-transform = Transform( 0.061546, 0.0188704, 0, -0.0164912, 0.0704254, 0, 0, 0, 0.0181041, -0.423, 0.351, 0 )
+transform = Transform( 0.0600635, 0.0243342, 0, -0.0212661, 0.068729, 0, 0, 0, 0.0181041, -0.317, 0.316, 0.056 )
 shape = SubResource( 2 )
 
 [node name="back" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
-transform = Transform( -2.6172e-09, -1.09001e-09, 0.0181041, -0.0217925, 0.0685127, 0, -0.0598745, -0.0249366, -7.91355e-10, 0, 0.351, 0.55 )
+transform = Transform( -2.62486e-09, -1.06562e-09, 0.0181041, -0.0213048, 0.0687133, 0, -0.0600497, -0.0243785, -7.91355e-10, 0, 0.301333, 0.589939 )
 shape = SubResource( 2 )
 
 [node name="front" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
-transform = Transform( -2.6172e-09, 1.09001e-09, 0.0181041, 0.0217925, 0.0685127, 0, -0.0598745, 0.0249366, -7.91355e-10, 0, 0.351, -0.55 )
+transform = Transform( -2.6172e-09, 1.09001e-09, 0.0181041, 0.0213048, 0.0687132, -6.4362e-12, -0.0600498, 0.0243786, -7.91329e-10, 0, 0.327359, -0.531177 )
 shape = SubResource( 2 )
 
 [node name="NetworkTickRate" type="Timer" parent="."]

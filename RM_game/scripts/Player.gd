@@ -17,8 +17,8 @@ var head_acc = 0 # when the player dies or overheats just have the head exponeta
 
 var UI = preload("res://scenes/UI.tscn").instance()
 var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
-var blue_standard = preload("res://art/blue_standard.glb").instance()
-var red_standard = preload("res://art/red_standard.glb").instance()
+#var blue_standard = preload("res://art/blue_standard.glb").instance()
+#var red_standard = preload("res://art/red_standard.glb").instance()
 
 onready var cam = get_node("Head_Pivot")
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
@@ -40,8 +40,9 @@ func _ready():
 		UI.change_health(health, id)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
+		
 	# changes skin color
-	$Pivot.add_child(blue_standard if team=="blue" else red_standard)
+	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
 	$Head_Pivot/Camera.current = is_network_master()
 
 func _change_enemy_health(id, health):
@@ -55,7 +56,7 @@ func _input(event):
 	if event is InputEventMouseMotion and !pause_menu.paused:
 		var movement = event.relative
 		cam.rotation.x += -deg2rad(movement.y*sensitivity) # rotating virticaly
-		cam.rotation.x = clamp(cam.rotation.x, deg2rad(-30), deg2rad(60)) #limit cam rotation
+		cam.rotation.x = clamp(cam.rotation.x, deg2rad(-40), deg2rad(60)) #limit cam rotation
 		cam.rotation.y += -deg2rad(movement.x*sensitivity) # rotating horizontaly
 
 
