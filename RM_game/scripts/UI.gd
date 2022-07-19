@@ -5,7 +5,6 @@ func _ready():
 	pass
 
 func change_health(id, health):
-	print("hi")
 	$Bars/HealthBar.value = health
 	$Bars/HealthBar/Health.text = str(health)+"/600"
 
@@ -29,5 +28,4 @@ func set_heat(heat_value):
 		$Bars/HeatWhite.value = heat_value
 
 func change_enemy_health(id, health):
-	print("hi2 ", health)
 	$Bars/enemyBar.value = health

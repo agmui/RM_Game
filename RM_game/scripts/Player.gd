@@ -34,22 +34,15 @@ func _ready():
 	if is_network_master():
 		# UI = preload("res://scenes/UI.tscn").instance()
 
-		Global.connect("change_enemy_health", self, "hit_panel")
-		#var camera = Camera.new()
-		#camera.name = "Camera"
-		#camera.translate(Vector3(0, 0.2, -0.218))
-		#$Head_Pivot.add_child(camera)
+		Global.connect("change_enemy_health", self, "change_health")
 		$Head_Pivot/Camera.add_child(UI)
 		UI.change_health(id, health)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
-		
+
 	# changes skin color
 	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
 	$Head_Pivot/Camera.current = is_network_master()
-
-func _change_enemy_health(id, health):
-	UI._change_enemy_health(id, health)
 
 func _input(event):
 	if !is_network_master():
@@ -171,18 +164,20 @@ func _on_PanelHitbox_body_entered(body):
 				if !Global.server:
 					rpc_unreliable("killed_player")
 			#STEP 1
-			rpc_unreliable("hit_panel", id, health) #tell eveyonelse ui to you getting hit
+			rpc_unreliable("hit_panel", health) #tell eveyonelse ui to you getting hit
 
-remote func hit_panel(player_id, current_health):
-	#STEP 2
+puppet func hit_panel(current_health):
 	if !is_network_master():
+		#STEP 2
 		#go to global to find right node
-		Global.emit_signal("change_enemy_health", player_id, current_health)
-	else:
-		#STEP 3
-		#after returning from global
-		print("about to change health ",Network.player_list[player_id].name)
-		UI.change_enemy_health(null, current_health)
+		Global.emit_signal("change_enemy_health", 
+		get_tree().get_rpc_sender_id(), current_health)
+
+master func change_health(player_id, current_health):
+	#STEP 3
+	#after returning from global
+	print("changing health for ",Network.player_list[player_id].name)
+	UI.change_enemy_health(player_id, current_health)
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
@@ -202,9 +197,10 @@ puppet func killed_player():
 	print(Network.player_list[get_tree().get_rpc_sender_id()].name," was killed")
 
 puppet func revived():
+	var player_id = get_tree().get_rpc_sender_id()
 	print(Network.player_list[get_tree().get_rpc_sender_id()].name," revived")
 	health = 100
-	UI.change_health(id, health)
+	Global.emit_signal("change_enemy_health", player_id, health)
 	
 # may cause problems when running LAN because it is suppose to be puppet
 remote func update_state(p_position, p_velocity, p_rotation):
