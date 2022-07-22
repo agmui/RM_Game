@@ -1,8 +1,14 @@
 extends Node2D
 
+var id_to_enemy = []
 
 func _ready():
-	pass
+	$Bars/enemyBar2.hide()
+	for id in Network.player_list.keys():
+		if Network.player_list[id].team != Network.player_list[get_tree().get_network_unique_id()].team:
+			id_to_enemy.append(id)
+	if len(id_to_enemy) == 2:
+		$Bars/enemyBar2.show()
 
 func change_health(id, health):
 	$Bars/HealthBar.value = health
@@ -28,4 +34,7 @@ func set_heat(heat_value):
 		$Bars/HeatWhite.value = heat_value
 
 func change_enemy_health(id, health):
-	$Bars/enemyBar.value = health
+	if id_to_enemy[0] == id:
+		$Bars/enemyBar.value = health
+	else:
+		$Bars/enemyBar2.value = health

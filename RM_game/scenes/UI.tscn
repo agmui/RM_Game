@@ -116,3 +116,13 @@ rect_scale = Vector2( 0.153126, 0.304055 )
 max_value = 70.0
 value = 50.0
 texture_progress = ExtResource( 2 )
+
+[node name="enemyBar2" type="TextureProgress" parent="Bars"]
+margin_left = 1499.7
+margin_top = 167.985
+margin_right = 2313.7
+margin_bottom = 259.985
+rect_scale = Vector2( 0.153126, 0.304055 )
+max_value = 70.0
+value = 50.0
+texture_progress = ExtResource( 2 )

@@ -33,6 +33,7 @@ func create_server():
 	player_list[get_tree().get_network_unique_id()] = {
 		"name":player_name,
 		 "team":team, 
+		 "team_id": 1,
 		 "host":is_host
 		}
 	
@@ -45,6 +46,7 @@ func join_server():
 	player_list[get_tree().get_network_unique_id()] = {
 		"name":player_name,
 		 "team":team, 
+		 "team_id": 1,
 		 "host":is_host
 		}
 
@@ -99,7 +101,11 @@ remote func set_host(host):
 
 remote func register_player(player_name, player_team, player_host):
 	var id = get_tree().get_rpc_sender_id()
-	player_list[id] = {"name":player_name, "team":player_team, "host":player_host}
+	player_list[id] = {
+		"name":player_name,
+		"team":player_team,
+		"team_id":1,
+		"host":player_host}
 	emit_signal("player_list_changed")
 
 func unregister_player(id):
