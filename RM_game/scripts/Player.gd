@@ -36,7 +36,7 @@ func _ready():
 
 		Global.connect("change_enemy_health", self, "change_health")
 		$Head_Pivot/Camera.add_child(UI)
-		UI.change_health(id, health)
+		UI.change_health(health)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
 
@@ -142,7 +142,7 @@ func _on_ReviveTimer_timeout():
 	dead = false
 	$ReviveTimer.stop()
 	health = 600
-	UI.change_health(id, health)
+	UI.change_health(health)
 	print("revived")
 	rpc_unreliable("revived")
 
@@ -154,7 +154,7 @@ func _on_PanelHitbox_body_entered(body):
 		if !dead:#if you get hit
 			print(Network.player_list[id].name, " is taking dmg")
 			health -= 10
-			UI.change_health(id, health)# FIXME should not be posible
+			UI.change_health(health)# FIXME should not be posible
 			if health == 0:
 				# TODO use lerp
 				#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement

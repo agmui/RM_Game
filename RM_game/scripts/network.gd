@@ -33,7 +33,7 @@ func create_server():
 	player_list[get_tree().get_network_unique_id()] = {
 		"name":player_name,
 		 "team":team, 
-		 "team_id": 1,
+		 "team_id": 0,
 		 "host":is_host
 		}
 	
@@ -46,7 +46,7 @@ func join_server():
 	player_list[get_tree().get_network_unique_id()] = {
 		"name":player_name,
 		 "team":team, 
-		 "team_id": 1,
+		 "team_id": 0,
 		 "host":is_host
 		}
 
@@ -104,7 +104,7 @@ remote func register_player(player_name, player_team, player_host):
 	player_list[id] = {
 		"name":player_name,
 		"team":player_team,
-		"team_id":1,
+		"team_id":0,
 		"host":player_host}
 	emit_signal("player_list_changed")
 
@@ -118,14 +118,17 @@ func start_game():
 		rpc_id(1, "start_game_server")
 	else: # ==LAN==
 		# same code as start_game_server() in server
+		# determans spawn location
 		var spawn_locations = []
 		for id in player_list.keys():
 			var cord = [0,0]
-			var player=player_list[id]
+			var player = player_list[id]
 			if team_size[player.team]:
 				cord = [7, 9.5] if player.team == "red" else [-7,-9.5]
-			else:
+				player.team_id = 1
+			else:# when there are no players in team_size
 				cord = [3.5, 11.5] if player.team == "red" else [-3.5,-11.5]
+				player.team_id = 0
 			team_size[player.team] += 1
 			spawn_locations.append([id, cord])
 		rpc("recived_spawn", spawn_locations)

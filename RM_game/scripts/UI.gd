@@ -10,7 +10,7 @@ func _ready():
 	if len(id_to_enemy) == 2:
 		$Bars/enemyBar2.show()
 
-func change_health(id, health):
+func change_health(health):
 	$Bars/HealthBar.value = health
 	$Bars/HealthBar/Health.text = str(health)+"/600"
 
