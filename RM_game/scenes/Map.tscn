@@ -60,7 +60,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.06333, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06333, 0 )
 
 [node name="Wall1" type="StaticBody" parent="."]
 transform = Transform( -4.37114e-08, 0, 40, 0, 2, 0, -1, 0, -1.74846e-06, 0, 3, 61 )
