@@ -3,6 +3,7 @@ extends RigidBody
 signal hit
 
 var shoot = false
+var collision_detection = false
 
 const DAMAGE = 10
 const SPEED = 13 # max speed of 30 m/s
@@ -14,11 +15,17 @@ func _ready():
 
 func _physics_process(delta):
 	if shoot:
-		apply_impulse(-transform.basis.x, transform.basis.x * SPEED) # applys a sudden push to bullet
+		apply_impulse(transform.basis.z, -transform.basis.z * SPEED) # applys a sudden push to bullet
 		shoot = false
 		# TODO add air resistance
 
 
 func _on_Area_body_entered(body): # collision detection
-	queue_free()
+	if collision_detection:
+		queue_free()
+		print(body)
 
+
+
+func _on_Timer_timeout():
+	collision_detection = true

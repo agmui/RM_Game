@@ -94,7 +94,7 @@ func _physics_process(delta):
 			rpc_unreliable("update_beyblade")
 		if Input.is_action_pressed("fire") and !fire_cooldown and !pause_menu.paused:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
-			$Head_Pivot/head.add_child(b) # spawning bullet to head
+			$Head_Pivot/Barrel_Spawn.add_child(b) # spawning bullet to head
 			rpc_unreliable("fired")
 			b.shoot = true # lets bullet move
 			$FireCooldown.start()
