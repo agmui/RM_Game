@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 
@@ -35,6 +35,10 @@ albedo_color = Color( 1, 0, 0, 1 )
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0, 0, 1, 1 )
 
+[sub_resource type="BoxShape" id=14]
+
+[sub_resource type="CubeMesh" id=15]
+
 [node name="Spatial" type="Spatial"]
 
 [node name="Blue Supply" type="MeshInstance" parent="."]
@@ -49,13 +53,14 @@ skeleton = NodePath("../Ground")
 material/0 = SubResource( 6 )
 
 [node name="Ground" type="StaticBody" parent="."]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 14, 0, 0, 0 )
+transform = Transform( 8.5, 0, 0, 0, 1, 0, 0, 0, 12.5, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017951, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -63,7 +68,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01799, 0 )
 
 [node name="Wall1" type="StaticBody" parent="."]
-transform = Transform( -4.37114e-08, 0, 10, 0, 2, 0, -1, 0, -4.37114e-07, 0, 3, 13 )
+transform = Transform( -1.09278e-08, 0, 8.5, 0, 2, 0, -0.25, 0, -3.71547e-07, 0, 3, 12.25 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall1"]
 transform = Transform( 1, 0, 3.55271e-16, 0, 1, 0, -3.55271e-16, 0, 1, 0, 0, 0 )
@@ -74,18 +79,19 @@ mesh = SubResource( 8 )
 material/0 = null
 
 [node name="Wall2" type="StaticBody" parent="."]
-transform = Transform( -4.37114e-08, 0, 10, 0, 2, 0, -1, 0, -4.37114e-07, 0, 3, -13 )
+transform = Transform( -1.09278e-08, 0, 8.5, 0, 2, 0, -0.25, 0, -3.71547e-07, 0, 3, -12.25 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall2"]
 shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Wall2"]
+transform = Transform( 1, 0, -1.13687e-13, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 8 )
 skeleton = NodePath("../../Wall2")
 material/0 = null
 
 [node name="Wall3" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 12, 9, 3, 0 )
+transform = Transform( 0.25, 0, 0, 0, 2, 0, 0, 0, 12, 8.25, 3, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall3"]
 shape = SubResource( 7 )
@@ -96,7 +102,7 @@ skeleton = NodePath("../../Wall2")
 material/0 = null
 
 [node name="Wall4" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 12, -9, 3, 0 )
+transform = Transform( 0.25, 0, 0, 0, 2, 0, 0, 0, 12, -8.25, 3, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall4"]
 shape = SubResource( 7 )
@@ -164,7 +170,6 @@ transform = Transform( 0.25, 0, 0, 0, 0.981, 0, 0, 0, 1.525, 0.96, 1.981, 10.525
 shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BlueBaseWall1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 8 )
 material/0 = null
 
@@ -182,3 +187,46 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.025, 9 )
 mesh = SubResource( 11 )
 material/0 = SubResource( 13 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15, 0 )
+
+[node name="InnerCurveWall1" type="StaticBody" parent="."]
+transform = Transform( 0.141421, 0, -0.141421, 0, 0.5, 0, 0.141421, 0, 0.141421, 2, 1.5, 2.7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="InnerCurveWall1"]
+shape = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="InnerCurveWall1"]
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="InnerCurveWall2" type="StaticBody" parent="."]
+transform = Transform( -0.141421, 0, -0.141421, 0, 0.5, 0, 0.141421, 0, -0.141421, -3.031, 1.5, 2.44 )
+
+[node name="CollisionShape" type="CollisionShape" parent="InnerCurveWall2"]
+shape = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="InnerCurveWall2"]
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="InnerCurveWall3" type="StaticBody" parent="."]
+transform = Transform( 0.141421, 0, -0.141421, 0, 0.5, 0, 0.141421, 0, 0.141421, -2.02886, 1.5, -2.70807 )
+
+[node name="CollisionShape" type="CollisionShape" parent="InnerCurveWall3"]
+shape = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="InnerCurveWall3"]
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="InnerCurveWall4" type="StaticBody" parent="."]
+transform = Transform( 0.141421, 0, -0.141421, 0, 0.5, 0, 0.141421, 0, 0.141421, 3.031, 1.5, -2.44 )
+
+[node name="CollisionShape" type="CollisionShape" parent="InnerCurveWall4"]
+shape = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="InnerCurveWall4"]
+mesh = SubResource( 15 )
+material/0 = null
