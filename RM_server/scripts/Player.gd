@@ -7,7 +7,7 @@ export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
 var id
-export var health = 600
+export var health = 60
 var fire_cooldown = false
 var dead = false
 onready var cam = get_node("Head_Pivot")
@@ -67,6 +67,7 @@ func _on_PanelHitbox_body_entered(body):
 				print(id, " dead")
 				dead = true
 				$ReviveTimer.start()
+				rpc_unreliable_id(id, "killed_server")
 				rpc_unreliable("killed_player")
 
 puppet func fired():

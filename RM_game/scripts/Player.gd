@@ -67,7 +67,7 @@ func _physics_process(delta):
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			pause_menu.paused = !pause_menu.paused
 # ==============================================================
-		if dead:
+		if dead: # power down animation
 			if $Head_Pivot.rotation_degrees.x > -30:
 				head_acc-= deg2rad(35)*delta
 				$Head_Pivot.rotation.x += head_acc
@@ -141,7 +141,7 @@ func _on_ReviveTimer_timeout():
 	head_acc = 0
 	dead = false
 	$ReviveTimer.stop()
-	health = 600
+	health = 100
 	UI.change_health(health)
 	print("revived")
 	rpc_unreliable("revived")
@@ -156,7 +156,6 @@ func _on_PanelHitbox_body_entered(body):
 			health -= 10
 			UI.change_health(health)# FIXME should not be posible
 			if health == 0:
-				# TODO use lerp
 				#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
 				print("dead")
 				dead = true
@@ -181,13 +180,20 @@ remote func hit_panel_server(p_id, current_health):
 		Global.emit_signal("change_enemy_health", 
 		p_id, current_health)
 	else:
-		change_health(id, current_health)
+		print(Network.player_list[id].name, " is taking dmg")
+		health -= 10
+		UI.change_health(health)# FIXME should not be posible
 
 master func change_health(player_id, current_health):
 	#STEP 3
 	#after returning from global
 	print("changing health for ",Network.player_list[player_id].name)
 	UI.change_enemy_health(player_id, current_health)
+
+master func killed_server():
+	print("dead")
+	dead = true
+	$ReviveTimer.start() # TODO make this server side
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
@@ -208,7 +214,7 @@ puppet func killed_player():
 
 puppet func revived():
 	var player_id = get_tree().get_rpc_sender_id()
-	print(Network.player_list[get_tree().get_rpc_sender_id()].name," revived")
+	print(Network.player_list[player_id].name," revived")
 	health = 100
 	Global.emit_signal("change_enemy_health", player_id, health)
 	
