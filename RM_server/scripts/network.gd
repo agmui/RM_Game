@@ -22,7 +22,7 @@ func reset_network_connection():
 
 remote func register_player(cplayer_name, team, host):
 	var id = get_tree().get_rpc_sender_id()
-	player_list[id] = {"name":cplayer_name, "team":team, "host": host}
+	player_list[id] = {"name":cplayer_name, "team":team, "team_id":0, "host": host}
 	if player_list.size() == 1:
 		rpc_id(id, "set_host", true)
 	print("set host")
@@ -37,13 +37,14 @@ remote func change_player_values(id, values):
 remote func start_game_server():
 	var spawn_locations = []
 	for id in player_list.keys():
-		print(team_size)
 		var cord = [0,0]
 		var player=player_list[id]
 		if team_size[player.team]:
 			cord = [-1.05, -5] if player.team == "red" else [3,3.2]
+			player.team_id = 1
 		else:
 			cord = [-3,-3.2] if player.team == "red" else [1.05, 5]
+			player.team_id = 0
 		team_size[player.team] += 1
 		spawn_locations.append([id, cord])
 	rpc("recived_spawn", spawn_locations)

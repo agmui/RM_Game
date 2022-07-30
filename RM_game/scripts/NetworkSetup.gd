@@ -133,7 +133,6 @@ func _on_debugButton2_pressed():
 
 
 func _on_debugButton3_pressed():
-	$PlayerSetup/NameEdit.text = str(get_tree().get_network_unique_id())
 	$PlayerSetup/ContinueButton.emit_signal("pressed")
 	$Server_or_LAN/Online.emit_signal("pressed")
 	$debugButton.hide()

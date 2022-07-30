@@ -173,6 +173,16 @@ puppet func hit_panel(current_health):
 		Global.emit_signal("change_enemy_health", 
 		get_tree().get_rpc_sender_id(), current_health)
 
+remote func hit_panel_server(p_id, current_health):
+	#STEP 2 for server
+	if !is_network_master():
+		#STEP 2
+		#go to global to find right node
+		Global.emit_signal("change_enemy_health", 
+		p_id, current_health)
+	else:
+		change_health(id, current_health)
+
 master func change_health(player_id, current_health):
 	#STEP 3
 	#after returning from global
