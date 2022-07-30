@@ -126,3 +126,13 @@ rect_scale = Vector2( 0.153126, 0.304055 )
 max_value = 70.0
 value = 50.0
 texture_progress = ExtResource( 2 )
+
+[node name="teamateBar" type="TextureProgress" parent="Bars"]
+margin_left = 448.401
+margin_top = 167.985
+margin_right = 1262.4
+margin_bottom = 259.985
+rect_scale = Vector2( 0.153126, 0.304055 )
+max_value = 70.0
+value = 50.0
+texture_progress = ExtResource( 2 )

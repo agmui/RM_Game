@@ -23,7 +23,6 @@ func _physics_process(delta):
 func _on_Area_body_entered(body): # collision detection
 	if collision_detection:
 		queue_free()
-		print(body)
 
 
 
