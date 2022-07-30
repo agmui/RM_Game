@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://art/Dark Gray.material" type="Material" id=1]
 [ext_resource path="res://art/Light Gray.tres" type="Material" id=2]
@@ -33,12 +33,6 @@ albedo_color = Color( 0, 1, 0, 1 )
 
 [sub_resource type="CubeMesh" id=10]
 material = SubResource( 9 )
-size = Vector3( 1, 1, 1 )
-
-[sub_resource type="BoxShape" id=14]
-extents = Vector3( 0.5, 0.5, 0.5 )
-
-[sub_resource type="CubeMesh" id=15]
 size = Vector3( 1, 1, 1 )
 
 [sub_resource type="CubeMesh" id=11]
@@ -147,26 +141,6 @@ shape = SubResource( 7 )
 mesh = SubResource( 8 )
 material/0 = ExtResource( 1 )
 
-[node name="InnerCurveWall3" type="StaticBody" parent="InnerWall1"]
-transform = Transform( -0.942807, 0, -0.942807, 0, 0.326584, 0, 0.0557654, 0, -0.0557654, 0.444, -0.337, -0.499 )
-
-[node name="CollisionShape" type="CollisionShape" parent="InnerWall1/InnerCurveWall3"]
-shape = SubResource( 14 )
-
-[node name="MeshInstance" type="MeshInstance" parent="InnerWall1/InnerCurveWall3"]
-mesh = SubResource( 15 )
-material/0 = ExtResource( 1 )
-
-[node name="InnerCurveWall4" type="StaticBody" parent="InnerWall1"]
-transform = Transform( -0.942807, 0, -0.942807, 0, 0.326584, 0, 0.0557654, 0, -0.0557654, -0.45, -0.337, 0.499 )
-
-[node name="CollisionShape" type="CollisionShape" parent="InnerWall1/InnerCurveWall4"]
-shape = SubResource( 14 )
-
-[node name="MeshInstance" type="MeshInstance" parent="InnerWall1/InnerCurveWall4"]
-mesh = SubResource( 15 )
-material/0 = ExtResource( 1 )
-
 [node name="InnerWall2" type="StaticBody" parent="."]
 transform = Transform( 2.536, 0, 0, 0, 1.531, 0, 0, 0, 0.15, -0.25, 1.266, 1.288 )
 
@@ -176,26 +150,6 @@ shape = SubResource( 7 )
 [node name="MeshInstance" type="MeshInstance" parent="InnerWall2"]
 mesh = SubResource( 8 )
 skeleton = NodePath("../../InnerWall2")
-material/0 = ExtResource( 1 )
-
-[node name="InnerCurveWall1" type="StaticBody" parent="InnerWall2"]
-transform = Transform( 0.0557654, 0, -0.0557654, 0, 0.326584, 0, 0.942807, 0, 0.942807, 0.493, -0.337, 0.417 )
-
-[node name="CollisionShape" type="CollisionShape" parent="InnerWall2/InnerCurveWall1"]
-shape = SubResource( 14 )
-
-[node name="MeshInstance" type="MeshInstance" parent="InnerWall2/InnerCurveWall1"]
-mesh = SubResource( 15 )
-material/0 = ExtResource( 1 )
-
-[node name="InnerCurveWall2" type="StaticBody" parent="InnerWall2"]
-transform = Transform( -0.0557654, 0, -0.0557654, 0, 0.326584, 0, 0.942807, 0, -0.942807, -0.499, -0.337, -0.45 )
-
-[node name="CollisionShape" type="CollisionShape" parent="InnerWall2/InnerCurveWall2"]
-shape = SubResource( 14 )
-
-[node name="MeshInstance" type="MeshInstance" parent="InnerWall2/InnerCurveWall2"]
-mesh = SubResource( 15 )
 material/0 = ExtResource( 1 )
 
 [node name="RedBase" type="Spatial" parent="."]
