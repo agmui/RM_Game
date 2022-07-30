@@ -114,6 +114,7 @@ func _on_TeamButton_item_selected(index):
 
 # ==========DEBUGGING===========
 func _on_debugButton_pressed():
+	$PlayerSetup/NameEdit.text = "host"
 	$PlayerSetup/ContinueButton.emit_signal("pressed")
 	$Server_or_LAN/Local.emit_signal("pressed")
 	$Lan/Host.emit_signal("pressed")
@@ -121,6 +122,7 @@ func _on_debugButton_pressed():
 	$debugButton2.hide()
 
 func _on_debugButton2_pressed():
+	$PlayerSetup/NameEdit.text = "player"
 	$PlayerSetup/ContinueButton.emit_signal("pressed")
 	$Server_or_LAN/Local.emit_signal("pressed")
 	$Lan/Join.emit_signal("pressed")
