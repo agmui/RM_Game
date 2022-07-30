@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/head.glb-42a706794a3ac645c9606634a41c27da.scn"
+path="res://.import/CarRed.glb-5613585f6105b1f1564e55095e71ae76.scn"
 
 [deps]
 
-source_file="res://art/head.glb"
-dest_files=[ "res://.import/head.glb-42a706794a3ac645c9606634a41c27da.scn" ]
+source_file="res://art/CarRed.glb"
+dest_files=[ "res://.import/CarRed.glb-5613585f6105b1f1564e55095e71ae76.scn" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/head.glb-42a706794a3ac645c9606634a41c27da.scn"
+path="res://.import/CarBlue.glb-36a68712cf0a1a90764dc80fc60f7e1e.scn"
 
 [deps]
 
-source_file="res://art/head.glb"
-dest_files=[ "res://.import/head.glb-42a706794a3ac645c9606634a41c27da.scn" ]
+source_file="res://art/CarBlue.glb"
+dest_files=[ "res://.import/CarBlue.glb-36a68712cf0a1a90764dc80fc60f7e1e.scn" ]
 
 [params]
 

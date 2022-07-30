@@ -41,9 +41,9 @@ remote func start_game_server():
 		var cord = [0,0]
 		var player=player_list[id]
 		if team_size[player.team]:
-			cord = [7, 9.5] if player.team == "red" else [-7,-9.5]
+			cord = [-1.05, -5] if player.team == "red" else [3,3.2]
 		else:
-			cord = [3.5, 11.5] if player.team == "red" else [-3.5,-11.5]
+			cord = [-3,-3.2] if player.team == "red" else [1.05, 5]
 		team_size[player.team] += 1
 		spawn_locations.append([id, cord])
 	rpc("recived_spawn", spawn_locations)

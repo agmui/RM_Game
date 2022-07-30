@@ -228,6 +228,14 @@ margin_bottom = 137.0
 rect_scale = Vector2( 4.16184, 4.16184 )
 text = "player"
 
+[node name="debugButton3" type="Button" parent="NetworkSetup"]
+margin_left = -109.0
+margin_top = 220.0
+margin_right = -57.0
+margin_bottom = 240.0
+rect_scale = Vector2( 5.01198, 5.01198 )
+text = "online"
+
 [connection signal="pressed" from="NetworkSetup/PlayerSetup/ContinueButton" to="NetworkSetup" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="NetworkSetup/Server_or_LAN/Online" to="NetworkSetup" method="_on_Online_pressed"]
 [connection signal="pressed" from="NetworkSetup/Server_or_LAN/Local" to="NetworkSetup" method="_on_Local_pressed"]
@@ -242,3 +250,4 @@ text = "player"
 [connection signal="pressed" from="NetworkSetup/Connections/QuitButton" to="NetworkSetup" method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="NetworkSetup/debugButton" to="NetworkSetup" method="_on_debugButton_pressed"]
 [connection signal="pressed" from="NetworkSetup/debugButton2" to="NetworkSetup" method="_on_debugButton2_pressed"]
+[connection signal="pressed" from="NetworkSetup/debugButton3" to="NetworkSetup" method="_on_debugButton3_pressed"]

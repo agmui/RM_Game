@@ -120,6 +120,7 @@ func _on_debugButton_pressed():
 	$Lan/Host.emit_signal("pressed")
 	$debugButton.hide()
 	$debugButton2.hide()
+	$debugButton3.hide()
 
 func _on_debugButton2_pressed():
 	$PlayerSetup/NameEdit.text = "player"
@@ -128,3 +129,13 @@ func _on_debugButton2_pressed():
 	$Lan/Join.emit_signal("pressed")
 	$debugButton.hide()
 	$debugButton2.hide()
+	$debugButton3.hide()
+
+
+func _on_debugButton3_pressed():
+	$PlayerSetup/NameEdit.text = str(get_tree().get_network_unique_id())
+	$PlayerSetup/ContinueButton.emit_signal("pressed")
+	$Server_or_LAN/Online.emit_signal("pressed")
+	$debugButton.hide()
+	$debugButton2.hide()
+	$debugButton3.hide()
