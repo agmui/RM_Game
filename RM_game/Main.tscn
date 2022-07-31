@@ -237,10 +237,10 @@ margin_bottom = 240.0
 rect_scale = Vector2( 5.01198, 5.01198 )
 text = "online"
 
-[node name="SentryBlue" parent="." instance=ExtResource( 5 )]
+[node name="SentryRed" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.65812, 1.65563, -3.41411 )
 
-[node name="SentryRed" parent="." instance=ExtResource( 5 )]
+[node name="SentryBlue" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 1.22907, 1.65563, 3.77036 )
 
 [connection signal="pressed" from="NetworkSetup/PlayerSetup/ContinueButton" to="NetworkSetup" method="_on_ContinueButton_pressed"]

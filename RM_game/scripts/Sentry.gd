@@ -3,6 +3,8 @@ extends KinematicBody
 # How fast the player moves in meters per second.
 export var speed = 1
 
+const rail_len = 100
+
 var velocity = Vector3.ZERO
 var team
 export var health = 60
@@ -11,16 +13,21 @@ var dead = false
 var sensitivity = .2
 var barrel_heat = 0
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
+var rng = RandomNumberGenerator.new()
+var current_offset = 0
+var offset = 0
+var move = 0
 
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
 
-var puppet_position = Vector3()
-var puppet_velocity = Vector3()
-var puppet_rotation = Vector2()
+var puppet_position = Vector3.ZERO
+var puppet_velocity = Vector3.ZERO
+var puppet_rotation = Vector2.ZERO
 
 func _ready():
 	if is_network_master():
 		Global.connect("change_enemy_health", self, "change_health")
+		rng.randomize()
 
 	# changes skin color
 	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
@@ -34,19 +41,26 @@ func _physics_process(delta):
 			return
 		# We create a local variable to store the input direction.
 		var body_dir = Vector3.ZERO
-	
-		# We check for each move input and update the direction accordingly.
-		if Input.is_action_pressed("move_right"):
-			body_dir.x += 1
-		if Input.is_action_pressed("move_left"):
-			body_dir.x -= 1
-		if Input.is_action_pressed("move_back"):
-			body_dir.z += 1
-		if Input.is_action_pressed("move_forward"):
-			body_dir.z -= 1
+
+		var random_number = rng.randf_range(-10.0, 10.0)	
+		# randomly change offset
+		if random_number<1 and random_number>-1:
+			offset = random_number#Vector2(random_number, random_number).dot(Vector2.RIGHT)
+		if offset+current_offset>rail_len/2 or offset+current_offset<(-rail_len+24)/2:
+			offset = -offset
+			# random_number = -random_number
+
+		if offset > 0:
+			body_dir.x += offset
+			body_dir.z -= offset
+		else:
+			body_dir.x += offset
+			body_dir.z -= offset
+		current_offset += offset
+
 		if Input.is_action_pressed("fire") and !fire_cooldown:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
-			$Head_Pivot/Barrel_Spawn.add_child(b) # spawning bullet to head
+			$Spatial/Pivot/Barrel.add_child(b) # spawning bullet to head
 			rpc_unreliable("fired")
 			b.shoot = true # lets bullet move
 			$FireCooldown.start()
@@ -59,20 +73,18 @@ func _physics_process(delta):
 				rpc_unreliable("overheat")
 			else:
 				barrel_heat += 1
-
-		body_dir = body_dir.normalized()
 		
 		# Ground velocity
 		velocity.x = body_dir.x
 		velocity.z = body_dir.z
 	else:
-		global_transform.origin = puppet_position
+		# global_transform.origin = puppet_position
 		
 		velocity.x = puppet_velocity.x
 		velocity.y = puppet_velocity.y
 		
-		cam.rotation.y = puppet_rotation.y
-		cam.rotation.x = puppet_rotation.x
+		$Spatial/Pivot.rotation.y = puppet_rotation.y
+		$Spatial/Pivot.rotation.x = puppet_rotation.x
 	if !$Tween.is_active():
 		# Moving the character	
 		velocity = move_and_slide(velocity, Vector3.UP)
@@ -159,16 +171,24 @@ puppet func revived():
 	print(Network.player_list[player_id].name," revived")
 	health = 100
 	Global.emit_signal("change_enemy_health", player_id, health)
-	
+
+puppet func update_state(p_position, p_velocity, p_rotation):
+	puppet_position = p_position
+	puppet_velocity = p_velocity
+	puppet_rotation = p_rotation
+	$Tween.interpolate_property(self, "global_transform", global_transform, Transform(global_transform.basis, p_position), 0.1)
+	$Tween.start()
+
 func _on_NetworkTickRate_timeout():
 	if is_network_master():
 		if Global.server:
-			rpc_unreliable_id(1,"update_state_server", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
+			rpc_unreliable_id(1,"update_state_server", global_transform.origin, velocity, Vector2($Spatial/Pivot.rotation.x, $Spatial/Pivot.rotation.y))
 		else:
-			rpc_unreliable("update_state", global_transform.origin, velocity, Vector2(cam.rotation.x, cam.rotation.y))
+			rpc_unreliable("update_state", global_transform.origin, velocity, Vector2($Spatial/Pivot.rotation.x, $Spatial/Pivot.rotation.y))
 		if barrel_heat > 0:
 			barrel_heat -= .5
 			# UI.set_heat(barrel_heat)
 	else:
 		$NetworkTickRate.stop()
+
 """

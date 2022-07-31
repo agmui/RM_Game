@@ -26,3 +26,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.27 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../../Body")
 material/0 = null
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="FireCooldown" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="ReviveTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="OverheatTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="NetworkTickRate" type="Timer" parent="."]
+wait_time = 0.03
+autostart = true
