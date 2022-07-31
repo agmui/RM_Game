@@ -145,9 +145,11 @@ material/0 = ExtResource( 1 )
 transform = Transform( 2.536, 0, 0, 0, 1.531, 0, 0, 0, 0.15, -0.25, 1.266, 1.288 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InnerWall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="InnerWall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 8 )
 skeleton = NodePath("../../InnerWall2")
 material/0 = ExtResource( 1 )

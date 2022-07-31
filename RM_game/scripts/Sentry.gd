@@ -11,7 +11,6 @@ export var health = 60
 var fire_cooldown = false
 var dead = false
 var sensitivity = .2
-var barrel_heat = 0
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
 var rng = RandomNumberGenerator.new()
 var current_offset = 0
@@ -35,14 +34,14 @@ func _ready():
 func _physics_process(delta):
 	if is_network_master():
 		if dead: # power down animation
-			if $Pivot.rotation_degrees.x > -30:
+			if $Spatial/Pivot.rotation_degrees.x > -30:
 				head_acc-= deg2rad(35)*delta
-				$Pivot.rotation.x += head_acc
+				$Spatial/Pivot.rotation.x += head_acc
 			return
 		# We create a local variable to store the input direction.
 		var body_dir = Vector3.ZERO
 
-		var random_number = rng.randf_range(-10.0, 10.0)	
+		var random_number = 0#rng.randf_range(-10.0, 10.0)	
 		# randomly change offset
 		if random_number<1 and random_number>-1:
 			offset = random_number#Vector2(random_number, random_number).dot(Vector2.RIGHT)
@@ -57,22 +56,17 @@ func _physics_process(delta):
 			body_dir.x += offset
 			body_dir.z -= offset
 		current_offset += offset
-
-		if Input.is_action_pressed("fire") and !fire_cooldown:
+		
+		"""
+		if !fire_cooldown:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
 			$Spatial/Pivot/Barrel.add_child(b) # spawning bullet to head
 			rpc_unreliable("fired")
 			b.shoot = true # lets bullet move
 			$FireCooldown.start()
 			fire_cooldown = true
-			if barrel_heat >= 100:
-				#overhead shut down
-				print("overheating")
-				dead = true
-				$OverheatTimer.start()
-				rpc_unreliable("overheat")
-			else:
-				barrel_heat += 1
+		"""
+
 		
 		# Ground velocity
 		velocity.x = body_dir.x
@@ -88,15 +82,11 @@ func _physics_process(delta):
 	if !$Tween.is_active():
 		# Moving the character	
 		velocity = move_and_slide(velocity, Vector3.UP)
-"""
-func _on_OverheatTimer_timeout():
-	head_acc = 0
-	dead = false
-	rpc_unreliable("revived")
 
 func _on_FireCooldown_timeout():
 	fire_cooldown = false
 
+"""
 func _on_ReviveTimer_timeout():
 	head_acc = 0
 	dead = false
@@ -185,9 +175,7 @@ func _on_NetworkTickRate_timeout():
 			rpc_unreliable_id(1,"update_state_server", global_transform.origin, velocity, Vector2($Spatial/Pivot.rotation.x, $Spatial/Pivot.rotation.y))
 		else:
 			rpc_unreliable("update_state", global_transform.origin, velocity, Vector2($Spatial/Pivot.rotation.x, $Spatial/Pivot.rotation.y))
-		if barrel_heat > 0:
-			barrel_heat -= .5
-			# UI.set_heat(barrel_heat)
+
 	else:
 		$NetworkTickRate.stop()
 
