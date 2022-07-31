@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Thing.glb-a8aac2082196d83726a4d8f93ac098a3.scn"
+path="res://.import/TwoThing.glb-0c1cdde83a68def9a967acc30bc9a32c.scn"
 
 [deps]
 
-source_file="res://art/Thing.glb"
-dest_files=[ "res://.import/Thing.glb-a8aac2082196d83726a4d8f93ac098a3.scn" ]
+source_file="res://art/Map/TwoThing.glb"
+dest_files=[ "res://.import/TwoThing.glb-0c1cdde83a68def9a967acc30bc9a32c.scn" ]
 
 [params]
 
