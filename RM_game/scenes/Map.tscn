@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://art/Map/RobomasterLogo.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://art/Light Gray.tres" type="Material" id=2]
+[ext_resource path="res://scenes/RedBase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/BlueBase.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.5, 0.5 )
@@ -35,12 +37,6 @@ albedo_color = Color( 0, 1, 0, 1 )
 material = SubResource( 9 )
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="CubeMesh" id=11]
-size = Vector3( 1, 1, 1 )
-
-[sub_resource type="SpatialMaterial" id=12]
-albedo_color = Color( 1, 0, 0, 1 )
-
 [sub_resource type="BoxShape" id=16]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
@@ -52,9 +48,6 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 
 [sub_resource type="CubeMesh" id=19]
 size = Vector3( 1, 1, 1 )
-
-[sub_resource type="SpatialMaterial" id=13]
-albedo_color = Color( 0, 0, 1, 1 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -175,11 +168,8 @@ shape = SubResource( 7 )
 mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
 
-[node name="RedSpawn" type="MeshInstance" parent="RedBase"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.025, -4.5 )
-mesh = SubResource( 11 )
-skeleton = NodePath("../..")
-material/0 = SubResource( 12 )
+[node name="RedBase" parent="RedBase" instance=ExtResource( 3 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.5, 0.5, -4.5 )
 
 [node name="Rail" type="StaticBody" parent="RedBase"]
 transform = Transform( 0.0424264, 0, -2.43952, 0, 0.06, 0, 0.0424264, 0, 2.43952, -1.5, 1.825, -3.5 )
@@ -234,11 +224,8 @@ shape = SubResource( 7 )
 mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
 
-[node name="BlueSpawn" type="MeshInstance" parent="BlueBase"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.025, 4.5 )
-mesh = SubResource( 11 )
-skeleton = NodePath("../..")
-material/0 = SubResource( 13 )
+[node name="BlueBase" parent="BlueBase" instance=ExtResource( 4 )]
+transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2.5, 0.5, 4.5 )
 
 [node name="Rail" type="StaticBody" parent="BlueBase"]
 transform = Transform( 0.0424264, 0, -2.43952, 0, 0.06, 0, 0.0424264, 0, 2.43952, 1.5, 1.825, 3.5 )
