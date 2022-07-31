@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://art/Dark Gray.material" type="Material" id=1]
+[ext_resource path="res://art/Map/RobomasterLogo.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://art/Light Gray.tres" type="Material" id=2]
 
 [sub_resource type="BoxShape" id=1]
@@ -138,19 +138,20 @@ transform = Transform( -6.55671e-09, 0, 2.536, 0, 1.531, 0, -0.15, 0, -1.10852e-
 shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="InnerWall1"]
-mesh = SubResource( 8 )
-material/0 = ExtResource( 1 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
 
 [node name="InnerWall2" type="StaticBody" parent="."]
-transform = Transform( 2.536, 0, 0, 0, 1.531, 0, 0, 0, 0.15, -0.25, 1.266, 1.288 )
+transform = Transform( -6.55671e-09, 0, 2.536, 0, 1.531, 0, -0.15, 0, -1.10852e-07, -0.25, 1.266, 1.288 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InnerWall2"]
 shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="InnerWall2"]
-mesh = SubResource( 8 )
-skeleton = NodePath("../../InnerWall2")
-material/0 = ExtResource( 1 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
 
 [node name="RedBase" type="Spatial" parent="."]
 
