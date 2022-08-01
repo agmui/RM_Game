@@ -11,7 +11,7 @@ var team
 export var health = 60
 var fire_cooldown = false
 var dead = false
-var sensitivity = .2
+var sensitivity;
 var barrel_heat = 0
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
 
@@ -39,7 +39,7 @@ func _ready():
 		UI.change_health(health)
 		$Head_Pivot/Camera.add_child(pause_menu)
 		pause_menu.hide()
-
+		sensitivity = UI.mouse_sensitivity;
 	# changes skin color
 	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
 	$Head_Pivot/Camera.current = is_network_master()
@@ -49,7 +49,7 @@ func _input(event):
 		return
 	if dead:
 		return
-	if event is InputEventMouseMotion and !pause_menu.paused:
+	if event is InputEventMouseMotion and !pause_menu.paused and !UI.paused:
 		var movement = event.relative
 		cam.rotation.x += -deg2rad(movement.y*sensitivity) # rotating virticaly
 		cam.rotation.x = clamp(cam.rotation.x, deg2rad(-40), deg2rad(60)) #limit cam rotation
@@ -66,6 +66,11 @@ func _physics_process(delta):
 				pause_menu.hide()
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			pause_menu.paused = !pause_menu.paused
+		if Input.is_action_just_pressed("f12"):
+			UI.toggle_tips()
+		if (Input.is_action_just_pressed("P")):
+			UI.toggle_settings()
+			sensitivity = UI.mouse_sensitivity;
 # ==============================================================
 		if dead: # power down animation
 			if $Head_Pivot.rotation_degrees.x > -30:
@@ -92,7 +97,7 @@ func _physics_process(delta):
 			$CollisionShape.rotation.y -= .08
 			$PanelHitbox.rotation.y -= .08
 			rpc_unreliable("update_beyblade")
-		if Input.is_action_pressed("fire") and !fire_cooldown and !pause_menu.paused:
+		if Input.is_action_pressed("fire") and !fire_cooldown and !pause_menu.paused and !UI.paused:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
 			$Head_Pivot/Barrel_Spawn.add_child(b) # spawning bullet to head
 			rpc_unreliable("fired")

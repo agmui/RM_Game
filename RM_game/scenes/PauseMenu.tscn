@@ -95,9 +95,9 @@ Boost: Shift"
 align = 2
 
 [node name="MiscKeys" type="Label" parent="ControlsContainer/Controls"]
-margin_left = 190.0
+margin_left = 169.0
 margin_top = 17.0
-margin_right = 278.0
+margin_right = 257.0
 margin_bottom = 65.0
 text = "Fire: Mouse 1
 Menu: Escape

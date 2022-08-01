@@ -1,8 +1,12 @@
 extends Node2D
 
 var id_to_player = {}
+var mouse_sensitivity = 0.2 setget set_mouse_sens, get_mouse_sens
+var paused = false
 
 func _ready():
+	$SettingsPanel/MouseSensText.text = String(mouse_sensitivity)
+	$SettingsPanel/MouseSensSlider.value = mouse_sensitivity
 	pass
 	$Bars/enemyBar2.hide()
 	for id in Network.player_list.keys():
@@ -44,3 +48,40 @@ func set_heat(heat_value):
 
 func change_enemy_health(id, health):
 	id_to_player[id].value = health
+
+func toggle_tips():
+	if ($TipsPanel.visible):
+		$TipsPanel.hide();
+	else:
+		$TipsPanel.show();
+
+func toggle_settings():
+	if ($SettingsPanel.visible):
+		paused = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		$SettingsPanel.hide()
+	else:
+		paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$SettingsPanel.show();
+
+func set_mouse_sens(sensitivity):
+	mouse_sensitivity = sensitivity;
+	$SettingsPanel/MouseSensText.text = sensitivity;
+	$SettingsPanel/MouseSensSlider.value = sensitivity;
+
+func get_mouse_sens():
+	return mouse_sensitivity;
+
+
+func _on_MouseSensSlider_value_changed(value):
+	print("Sensitivity changed to " + String(value))
+	mouse_sensitivity = value;
+	$SettingsPanel/MouseSensText.text = String(mouse_sensitivity)
+
+func _on_MouseSensText_text_entered(new_text):
+	if (new_text.is_float):
+		mouse_sensitivity = new_text.to_float()
+		$SettingsPanel/MouseSensSlider.value = mouse_sensitivity
+	else:
+		$SettingsPanel/MouseSensText.text = String(mouse_sensitivity)
