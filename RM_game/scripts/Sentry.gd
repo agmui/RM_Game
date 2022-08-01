@@ -24,7 +24,7 @@ var puppet_velocity = Vector3.ZERO
 var puppet_rotation = Vector2.ZERO
 
 func _ready():
-	Global.connect("change_health", self, "change_health")
+	# Global.connect("change_health", self, "change_health")
 	rng.randomize()
 
 	# changes skin color
