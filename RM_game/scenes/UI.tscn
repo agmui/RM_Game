@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://art/game_UI.png" type="Texture" id=1]
 [ext_resource path="res://art/barHorizontal_red.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://art/UI/Loading.png" type="Texture" id=8]
 [ext_resource path="res://art/UI/Tips.png" type="Texture" id=9]
 [ext_resource path="res://art/UI/Settings.png" type="Texture" id=10]
+[ext_resource path="res://art/UI/Lobby.png" type="Texture" id=11]
 
 [node name="UI" type="Node2D"]
 scale = Vector2( 0.530774, 0.553621 )
@@ -156,6 +157,7 @@ margin_bottom = 574.0
 texture = ExtResource( 9 )
 
 [node name="SettingsPanel" type="Node2D" parent="."]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="SettingsPanel"]
 margin_left = 270.0
@@ -178,6 +180,13 @@ margin_left = 1209.55
 margin_top = 496.73
 margin_right = 1267.55
 margin_bottom = 520.73
+
+[node name="LobbyScreen" type="TextureRect" parent="."]
+visible = false
+margin_right = 1931.0
+margin_bottom = 1078.0
+texture = ExtResource( 11 )
+expand = true
 
 [connection signal="value_changed" from="SettingsPanel/MouseSensSlider" to="." method="_on_MouseSensSlider_value_changed"]
 [connection signal="text_entered" from="SettingsPanel/MouseSensText" to="." method="_on_MouseSensText_text_entered"]
