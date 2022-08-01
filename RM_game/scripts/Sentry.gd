@@ -24,15 +24,14 @@ var puppet_velocity = Vector3.ZERO
 var puppet_rotation = Vector2.ZERO
 
 func _ready():
-	if is_network_master():
-		Global.connect("change_enemy_health", self, "change_health")
-		rng.randomize()
+	Global.connect("change_enemy_health", self, "change_health")
+	rng.randomize()
 
 	# changes skin color
 	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
 
 func _physics_process(delta):
-	if is_network_master():
+	if true:#is_network_master(): #FIXME
 		if dead: # power down animation
 			if $Spatial/Pivot.rotation_degrees.x > -30:
 				head_acc-= deg2rad(35)*delta
@@ -47,7 +46,6 @@ func _physics_process(delta):
 			offset = random_number#Vector2(random_number, random_number).dot(Vector2.RIGHT)
 		if offset+current_offset>rail_len/2 or offset+current_offset<(-rail_len+24)/2:
 			offset = -offset
-			# random_number = -random_number
 
 		if offset > 0:
 			body_dir.x += offset

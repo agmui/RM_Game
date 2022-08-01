@@ -150,6 +150,7 @@ func _on_PanelHitbox_body_entered(body):
 	if Global.server: # TODO disconnect when not LAN
 		return
 	#TODO check if bullet is moving fast enough
+	print(body, is_network_master())
 	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
 		if !dead:#if you get hit
 			print(Network.player_list[id].name, " is taking dmg")
