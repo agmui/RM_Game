@@ -21,7 +21,7 @@ func _physics_process(delta):
 
 func _on_Area_body_entered(body): # collision detection
 	if !body.is_in_group("players"):
-		print(body)
+		# print(body)
 		queue_free()
 
 
