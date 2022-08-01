@@ -2,7 +2,7 @@ extends Node
 
 signal instance_player(id, cord, team)
 signal toggle_network_setup(toggle)
-signal change_enemy_health(id, health)
+signal change_health(id, health)
 
 var server:bool = false
 

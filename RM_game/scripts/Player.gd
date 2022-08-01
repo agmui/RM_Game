@@ -34,7 +34,7 @@ func _ready():
 	if is_network_master():
 		# UI = preload("res://scenes/UI.tscn").instance()
 
-		Global.connect("change_enemy_health", self, "change_health")
+		Global.connect("change_health", self, "change_health")
 		$Head_Pivot/Camera.add_child(UI)
 		UI.change_health(health)
 		$Head_Pivot/Camera.add_child(pause_menu)
@@ -175,7 +175,7 @@ puppet func hit_panel(current_health):
 	if !is_network_master():
 		#STEP 2
 		#go to global to find right node
-		Global.emit_signal("change_enemy_health", 
+		Global.emit_signal("change_health", 
 		get_tree().get_rpc_sender_id(), current_health)
 
 remote func hit_panel_server(p_id, current_health):
@@ -183,7 +183,7 @@ remote func hit_panel_server(p_id, current_health):
 	if !is_network_master():
 		#STEP 2
 		#go to global to find right node
-		Global.emit_signal("change_enemy_health", 
+		Global.emit_signal("change_health", 
 		p_id, current_health)
 	else:
 		print(Network.player_list[id].name, " is taking dmg")
@@ -222,7 +222,7 @@ puppet func revived():
 	var player_id = get_tree().get_rpc_sender_id()
 	print(Network.player_list[player_id].name," revived")
 	health = 100
-	Global.emit_signal("change_enemy_health", player_id, health)
+	Global.emit_signal("change_health", player_id, health)
 	
 # may cause problems when running LAN because it is suppose to be puppet
 remote func update_state(p_position, p_velocity, p_rotation):
