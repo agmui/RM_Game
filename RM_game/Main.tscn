@@ -214,18 +214,18 @@ rect_min_size = Vector2( 175, 60 )
 text = "Quit"
 
 [node name="debugButton" type="Button" parent="NetworkSetup"]
-margin_left = -278.0
-margin_top = 106.0
-margin_right = -238.0
-margin_bottom = 126.0
+margin_left = 137.0
+margin_top = 98.0
+margin_right = 177.0
+margin_bottom = 118.0
 rect_scale = Vector2( 5.01198, 5.01198 )
 text = "host"
 
 [node name="debugButton2" type="Button" parent="NetworkSetup"]
-margin_left = 85.0
-margin_top = 117.0
-margin_right = 136.0
-margin_bottom = 137.0
+margin_left = -342.0
+margin_top = 107.0
+margin_right = -291.0
+margin_bottom = 127.0
 rect_scale = Vector2( 4.16184, 4.16184 )
 text = "player"
 

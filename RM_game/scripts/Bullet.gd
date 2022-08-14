@@ -13,7 +13,7 @@ const ERROR_AMOUNT = 0.00001
 func _ready():
 	set_as_toplevel(true)  # makes it no longer a chiled of what ever object it is added too
 	# continuous_cd = true
-	# set_use_continuous_collision_detection(2)
+	#set_use_continuous_collision_detection(1)
 	apply_impulse(transform.basis.z, -transform.basis.z * SPEED)  # applys a sudden push to bullet
 	contact_monitor = true
 	contacts_reported = 1
@@ -22,6 +22,7 @@ func _ready():
 the bullet moves to fast so the bullet
 draws a ray cast each frame so the bullet
 does not phase between the walls
+"""
 """
 func _integrate_forces(state):
 	var delta = state.get_step()
@@ -42,16 +43,23 @@ func _integrate_forces(state):
 		if dist_to_wall / (future_distance * delta) < 1.0 + ERROR_AMOUNT:
 			# Should put the object inside the wall a little,
 			# so it can be detected.
-			state.set_transform(Transform.translated(cast_result.position))
+			
+			
+			#state.set_transform(Transform.translated(cast_result.position))
 
 			# do_bullet_impact_here()
 			sleeping = true
-			# queue_free()
+			# $Timer.start()
 			return
+"""
+func _on_Timer_timeout():
+	queue_free()
 
 
 func _on_Area_body_entered(body):  # collision detection
-	pass
-	# if !body.is_in_group("players"):
-	# 	print(get_tree().get_network_unique_id(), " says that: ", body, " has been hit")
-	# 	queue_free()
+	
+	if !body.is_in_group("players"):
+		print(get_tree().get_network_unique_id(), " says that: ", body, " has been hit")
+	queue_free()
+
+
