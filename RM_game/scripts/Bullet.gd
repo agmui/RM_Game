@@ -22,8 +22,7 @@ func _ready():
 the bullet moves to fast so the bullet
 draws a ray cast each frame so the bullet
 does not phase between the walls
-"""
-"""
+
 func _integrate_forces(state):
 	var delta = state.get_step()
 	var lv = state.get_linear_velocity()
@@ -52,9 +51,6 @@ func _integrate_forces(state):
 			# $Timer.start()
 			return
 """
-func _on_Timer_timeout():
-	queue_free()
-
 
 func _on_Area_body_entered(body):  # collision detection
 	
