@@ -35,6 +35,11 @@ multirun/other_window_args="join"
 
 enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
 
+[global]
+
+display=false
+re=false
+
 [input]
 
 ui_cancel={

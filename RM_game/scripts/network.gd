@@ -133,8 +133,11 @@ func start_game():
 			spawn_locations.append([id, cord])
 		rpc("recived_spawn", spawn_locations)
 		recived_spawn(spawn_locations)
+		#start sentry movment
+		Global.emit_signal("start_sentry")
 
 remote func recived_spawn(cord):
+	#send spawn cords to players
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 	Global.emit_signal("toggle_network_setup", false)
 	for i in cord:

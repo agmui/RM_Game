@@ -6,8 +6,8 @@ export var speed = 1
 const rail_len = 100
 
 var velocity = Vector3.ZERO
-var team
-export var health = 60
+export var team = ""
+export var health = 600
 var fire_cooldown = false
 var dead = false
 var sensitivity = .2
@@ -15,7 +15,7 @@ var head_acc = 0 # when the player dies or overheats just have the head exponeta
 var rng = RandomNumberGenerator.new()
 var current_offset = 0
 var offset = 0
-var move = 0
+# var move = 0
 
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
 
@@ -29,21 +29,25 @@ func _ready():
 
 	# changes skin color
 	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
+	Global.connect("start_sentry", self, "_start_timer")
+
+func _start_timer():
+	$NetworkTickRate.start()
 
 func _physics_process(delta):
-	if true:#is_network_master(): #FIXME
+	if is_network_master():
 		if dead: # power down animation
 			if $Spatial/Pivot.rotation_degrees.x > -30:
-				head_acc-= deg2rad(35)*delta
+				head_acc -= deg2rad(35)*delta
 				$Spatial/Pivot.rotation.x += head_acc
 			return
 		# We create a local variable to store the input direction.
 		var body_dir = Vector3.ZERO
 
-		var random_number = 0#rng.randf_range(-10.0, 10.0)	
+		var random_number = rng.randf_range(-10.0, 10.0)	
 		# randomly change offset
 		if random_number<1 and random_number>-1:
-			offset = random_number#Vector2(random_number, random_number).dot(Vector2.RIGHT)
+			offset = random_number*speed#Vector2(random_number, random_number).dot(Vector2.RIGHT)
 		if offset+current_offset>rail_len/2 or offset+current_offset<(-rail_len+24)/2:
 			offset = -offset
 
@@ -55,23 +59,19 @@ func _physics_process(delta):
 			body_dir.z -= offset
 		current_offset += offset
 		
-		"""
 		if !fire_cooldown:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
-			$Spatial/Pivot/Barrel.add_child(b) # spawning bullet to head
+			$Spatial/Pivot/Barrel/Spatial.add_child(b) # spawning bullet to head
 			rpc_unreliable("fired")
 			b.shoot = true # lets bullet move
 			$FireCooldown.start()
 			fire_cooldown = true
-		"""
-
-		
 		# Ground velocity
 		velocity.x = body_dir.x
 		velocity.z = body_dir.z
+		auto_aim()
 	else:
 		# global_transform.origin = puppet_position
-		
 		velocity.x = puppet_velocity.x
 		velocity.y = puppet_velocity.y
 		
@@ -84,15 +84,36 @@ func _physics_process(delta):
 func _on_FireCooldown_timeout():
 	fire_cooldown = false
 
+#aim bot code
+func auto_aim():
+	var closest = 100000#FIXME
+	var closest_point
+	var player_data = get_tree().get_nodes_in_group("players")
+	for player in player_data:
+		""" # TODO add back
+		if player.team != team:
+			continue
+		"""
+		var plates = player.get_node("PanelHitbox")
+		for p in plates.get_children():
+			var cords = p.get_node("Spatial").global_transform.origin
+			var distance = $Spatial/Pivot.transform.origin.distance_to(cords)
+			if distance < closest:
+				closest = distance
+				closest_point = cords
+	if closest_point!=null:
+		$Spatial/Pivot.look_at(closest_point, Vector3.UP)
+
+
 """
 func _on_ReviveTimer_timeout():
 	head_acc = 0
 	dead = false
 	$ReviveTimer.stop()
-	health = 100
-	# UI.change_health(health)
+	health = 600
 	print("revived")
 	rpc_unreliable("revived")
+"""
 
 func _on_PanelHitbox_body_entered(body):
 	if Global.server: # TODO disconnect when not LAN
@@ -100,25 +121,20 @@ func _on_PanelHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
 		if !dead:#if you get hit
-			print(Network.player_list[id].name, " is taking dmg")
+			print(team, " Sentry is taking dmg")
 			health -= 10
-			UI.change_health(health)# FIXME should not be posible
 			if health == 0:
 				#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
 				print("dead")
 				dead = true
 				$ReviveTimer.start()
 				if !Global.server:
-					rpc_unreliable("killed_player")
-			#STEP 1
-			rpc_unreliable("hit_panel", health) #tell eveyonelse ui to you getting hit
+					rpc_unreliable("killed ", team, " Sentry")
+			rpc_unreliable("hit_panel", team, health) #tell other senttry
+			Global.emit_signal("change_health", team+"_sentry", health) #tell master player ui sentry got hit
 
-puppet func hit_panel(current_health):
-	if !is_network_master():
-		#STEP 2
-		#go to global to find right node
-		Global.emit_signal("change_enemy_health", 
-		get_tree().get_rpc_sender_id(), current_health)
+puppet func hit_panel(other_team, current_health):
+	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
 
 remote func hit_panel_server(p_id, current_health):
 	#STEP 2 for server
@@ -128,21 +144,24 @@ remote func hit_panel_server(p_id, current_health):
 		Global.emit_signal("change_enemy_health", 
 		p_id, current_health)
 	else:
-		print(Network.player_list[id].name, " is taking dmg")
+		print(team, " Sentry is taking dmg")
 		health -= 10
-		UI.change_health(health)# FIXME should not be posible
+		# UI.change_health(health)# FIXME should not be posible
 
+"""
 master func change_health(player_id, current_health):
 	#STEP 3
 	#after returning from global
 	print("changing health for ",Network.player_list[player_id].name)
 	UI.change_enemy_health(player_id, current_health)
 
+"""
 master func killed_server():
 	print("dead")
 	dead = true
 	$ReviveTimer.start() # TODO make this server side
 
+"""
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
 	$Head_Pivot/head.add_child(b) # spawning bullet to head
@@ -160,6 +179,7 @@ puppet func revived():
 	health = 100
 	Global.emit_signal("change_enemy_health", player_id, health)
 
+"""
 puppet func update_state(p_position, p_velocity, p_rotation):
 	puppet_position = p_position
 	puppet_velocity = p_velocity
@@ -177,4 +197,3 @@ func _on_NetworkTickRate_timeout():
 	else:
 		$NetworkTickRate.stop()
 
-"""

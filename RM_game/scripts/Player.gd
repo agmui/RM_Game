@@ -71,7 +71,7 @@ func _physics_process(delta):
 		if (Input.is_action_just_pressed("P")):
 			UI.toggle_settings()
 			sensitivity = UI.mouse_sensitivity;
-# ==============================================================
+	# ==============================================================
 		if dead: # power down animation
 			if $Head_Pivot.rotation_degrees.x > -30:
 				head_acc-= deg2rad(35)*delta
@@ -160,7 +160,6 @@ func _on_PanelHitbox_body_entered(body):
 	if is_network_master():
 		print("HIT ")
 	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
-		# body.queue_free()
 		if !dead:#if you get hit
 			print(Network.player_list[id].name, " is taking dmg")
 			health -= 10
@@ -197,8 +196,12 @@ remote func hit_panel_server(p_id, current_health):
 master func change_health(player_id, current_health):
 	#STEP 3
 	#after returning from global
-	print("changing health for ",Network.player_list[player_id].name)
-	UI.change_enemy_health(player_id, current_health)
+	if player_id=="blue_sentry" or player_id=="red_sentry":
+		print("changing " ,player_id, "\'s health")
+		UI.change_sentry(player_id, current_health)
+	else:
+		print("changing health for ",Network.player_list[player_id].name)
+		UI.change_enemy_health(player_id, current_health)
 
 master func killed_server():
 	print("dead")

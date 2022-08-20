@@ -53,9 +53,8 @@ func _integrate_forces(state):
 """
 
 func _on_Area_body_entered(body):  # collision detection
-	
-	if !body.is_in_group("players"):
-		print(get_tree().get_network_unique_id(), " says that: ", body, " has been hit")
+	# if !body.is_in_group("players"):
+	# 	print(get_tree().get_network_unique_id(), " says that: ", body, " has been hit")
 	queue_free()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://art/head.glb" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -9,8 +9,6 @@ extents = Vector3( 0.23, 0.05, 0.3 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.7, 1.587, 6.499 )
-
-[sub_resource type="CubeMesh" id=3]
 
 [node name="Player" type="KinematicBody" groups=["players"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0520018, 0 )
@@ -56,33 +54,25 @@ monitorable = false
 transform = Transform( 0.0600635, -0.0243342, 0, 0.0212661, 0.068729, 0, 0, 0, 0.0181041, 0.277683, 0.302762, 0.05638 )
 shape = SubResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PanelHitbox/right"]
-transform = Transform( 0.955688, 0.245983, 0, 0.187865, 1.48673, 0, 0, 0, 5.44327, 0, 0, 0 )
-mesh = SubResource( 3 )
+[node name="Spatial" type="Spatial" parent="PanelHitbox/right"]
 
 [node name="left" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
 transform = Transform( 0.0600635, 0.0243342, 0, -0.0212661, 0.068729, 0, 0, 0, 0.0181041, -0.278, 0.303, 0.056 )
 shape = SubResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PanelHitbox/left"]
-transform = Transform( 1.0627, 0.202629, 0, 0.154755, 1.50014, 0, 0, 0, 5.44327, 0, 0, 0 )
-mesh = SubResource( 3 )
+[node name="Spatial" type="Spatial" parent="PanelHitbox/left"]
 
 [node name="back" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
 transform = Transform( -2.62486e-09, -1.06562e-09, 0.0181041, -0.0213048, 0.0687133, 0, -0.0600497, -0.0243785, -7.91355e-10, 0, 0.305877, 0.546989 )
 shape = SubResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PanelHitbox/back"]
-transform = Transform( 1.0627, 0.202629, 0, 0.154755, 1.50014, 0, 0, 0, 5.44327, 0, 0, 0 )
-mesh = SubResource( 3 )
+[node name="Spatial" type="Spatial" parent="PanelHitbox/back"]
 
 [node name="front" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
 transform = Transform( -2.6172e-09, 1.09001e-09, 0.0181041, 0.0213048, 0.0687132, -6.4362e-12, -0.0600498, 0.0243786, -7.91329e-10, 0, 0.310046, -0.490203 )
 shape = SubResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PanelHitbox/front"]
-transform = Transform( 1.0627, 0.202629, 0, 0.154755, 1.50014, 0, 0, 0, 5.44327, 0, 0, 0 )
-mesh = SubResource( 3 )
+[node name="Spatial" type="Spatial" parent="PanelHitbox/front"]
 
 [node name="NetworkTickRate" type="Timer" parent="."]
 wait_time = 0.03

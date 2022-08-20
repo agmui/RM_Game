@@ -49,6 +49,13 @@ func set_heat(heat_value):
 func change_enemy_health(id, health):
 	id_to_player[id].value = health
 
+func change_sentry(team, health):
+	if team=="blue_sentry":
+		$BluSentry.text = str(health)
+	else:
+		$RedSentry.text = str(health)
+
+
 func toggle_tips():
 	if ($TipsPanel.visible):
 		$TipsPanel.hide();
@@ -72,7 +79,6 @@ func set_mouse_sens(sensitivity):
 
 func get_mouse_sens():
 	return mouse_sensitivity;
-
 
 func _on_MouseSensSlider_value_changed(value):
 	print("Sensitivity changed to " + String(value))
