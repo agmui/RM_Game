@@ -92,8 +92,8 @@ func auto_aim():
 	shoot = false
 	for player in Global.player_pos:
 		#to stop friendly fire
-		# if Network.player_list[player].team == team:#FIXME handle players leaving
-		# 	continue
+		if Network.player_list[player].team == team:#FIXME handle players leaving
+			continue
 		var plates = Global.player_pos[player]
 		for cords in plates:
 			$RayCast.look_at(cords, Vector3.UP) # TODO make it so it does not snap to the opponate
