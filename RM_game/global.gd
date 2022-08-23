@@ -6,6 +6,7 @@ signal change_health(id, health)
 signal start_sentry()
 
 var server:bool = false
+var player_pos = {}
 
 func _input(event):
 	if event is InputEventKey:

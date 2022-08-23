@@ -133,6 +133,11 @@ func _physics_process(delta):
 	if !$Tween.is_active():
 		# Moving the character	
 		velocity = move_and_slide(velocity, Vector3.UP)
+	# tell sentry the position of players
+	Global.player_pos[id] = [$PanelHitbox/right.global_translation,
+							$PanelHitbox/left.global_translation,
+							$PanelHitbox/front.global_translation,
+							$PanelHitbox/back.global_translation]
 
 func _on_OverheatTimer_timeout():
 	head_acc = 0
@@ -196,7 +201,7 @@ remote func hit_panel_server(p_id, current_health):
 master func change_health(player_id, current_health):
 	#STEP 3
 	#after returning from global
-	if player_id=="blue_sentry" or player_id=="red_sentry":
+	if typeof(player_id) == TYPE_STRING:
 		print("changing " ,player_id, "\'s health")
 		UI.change_sentry(player_id, current_health)
 	else:

@@ -16,6 +16,7 @@ var rng = RandomNumberGenerator.new()
 var current_offset = 0
 var offset = 0
 # var move = 0
+var shoot = false
 
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
 
@@ -44,7 +45,7 @@ func _physics_process(delta):
 		# We create a local variable to store the input direction.
 		var body_dir = Vector3.ZERO
 
-		var random_number = rng.randf_range(-10.0, 10.0)	
+		var random_number = 0#rng.randf_range(-10.0, 10.0)	
 		# randomly change offset
 		if random_number<1 and random_number>-1:
 			offset = random_number*speed#Vector2(random_number, random_number).dot(Vector2.RIGHT)
@@ -59,7 +60,7 @@ func _physics_process(delta):
 			body_dir.z -= offset
 		current_offset += offset
 		
-		if !fire_cooldown:
+		if !fire_cooldown and shoot:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
 			$Spatial/Pivot/Barrel/Spatial.add_child(b) # spawning bullet to head
 			rpc_unreliable("fired")
@@ -86,23 +87,27 @@ func _on_FireCooldown_timeout():
 
 #aim bot code
 func auto_aim():
-	var closest = 100000#FIXME
+	var closest = 100#FIXME
 	var closest_point
-	var player_data = get_tree().get_nodes_in_group("players")
-	for player in player_data:
-		""" # TODO add back
-		if player.team != team:
-			continue
-		"""
-		var plates = player.get_node("PanelHitbox")
-		for p in plates.get_children():
-			var cords = p.get_node("Spatial").global_transform.origin
-			var distance = $Spatial/Pivot.transform.origin.distance_to(cords)
-			if distance < closest:
-				closest = distance
-				closest_point = cords
+	shoot = false
+	for player in Global.player_pos:
+		#to stop friendly fire
+		# if Network.player_list[player].team == team:#FIXME handle players leaving
+		# 	continue
+		var plates = Global.player_pos[player]
+		for cords in plates:
+			$RayCast.look_at(cords, Vector3.UP) # TODO make it so it does not snap to the opponate
+			$RayCast.force_raycast_update() # raycasts get up dated every _physics_prosses()
+			# checking if the sentry can see the player
+			var obj_hit = $RayCast.get_collider()	
+			if obj_hit !=null and "KinematicBody".is_subsequence_of(obj_hit.to_string()):
+				var distance = $RayCast.global_translation.distance_to(cords)#$RayCast.get_collision_point())#$Spatial/Pivot.transform.origin.distance_to(cords)S
+				if distance < closest:
+					closest = distance
+					closest_point = cords
 	if closest_point!=null:
 		$Spatial/Pivot.look_at(closest_point, Vector3.UP)
+		shoot = true
 
 
 """
@@ -161,18 +166,20 @@ master func killed_server():
 	dead = true
 	$ReviveTimer.start() # TODO make this server side
 
-"""
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
-	$Head_Pivot/head.add_child(b) # spawning bullet to head
+	$Spatial/Pivot/Barrel/Spatial.add_child(b) # spawning bullet to head
 	b.shoot = true # lets bullet move
 
+"""
 puppet func overheat():
 	print(Network.player_list[get_tree().get_rpc_sender_id()]," overheated")
 
+"""
 puppet func killed_player():
 	print(Network.player_list[get_tree().get_rpc_sender_id()].name," was killed")
 
+"""
 puppet func revived():
 	var player_id = get_tree().get_rpc_sender_id()
 	print(Network.player_list[player_id].name," revived")
