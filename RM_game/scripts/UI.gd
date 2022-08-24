@@ -20,7 +20,6 @@ func _ready():
 			id_to_player[id] = $Bars/enemyBar
 		else:
 			id_to_player[id] = $Bars/enemyBar2
-	print(id_to_player)
 	if len(id_to_player) >= 2:
 		$Bars/enemyBar2.show()
 

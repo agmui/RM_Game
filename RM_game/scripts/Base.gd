@@ -29,3 +29,9 @@ func _on_PanelHitbox_body_entered(body):
 
 puppet func hit_panel(other_team, current_health):
 	Global.emit_signal("change_health", other_team+"_base", current_health) #tell master player ui sentry got hit
+
+master func killed(t):
+	if team == t:
+		print("base destroyed")
+		dead = true
+		health = 0

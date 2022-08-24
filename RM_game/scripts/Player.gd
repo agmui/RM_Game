@@ -162,7 +162,6 @@ func _on_PanelHitbox_body_entered(body):
 	if Global.server: # TODO disconnect when not LAN
 		return
 	#TODO check if bullet is moving fast enough
-	# print(body, is_network_master())
 	if is_network_master():
 		print("HIT ")
 	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
@@ -176,7 +175,7 @@ func _on_PanelHitbox_body_entered(body):
 				dead = true
 				$ReviveTimer.start()
 				if !Global.server:
-					rpc_unreliable("killed_player")
+					rpc_unreliable("killed_player")#FIXME
 			#STEP 1
 			rpc_unreliable("hit_panel", health) #tell eveyonelse ui to you getting hit
 

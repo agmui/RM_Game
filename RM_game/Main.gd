@@ -1,6 +1,6 @@
 extends Spatial
 
-var player = preload("scenes/Player.tscn")
+var player = preload("res://scenes/Player.tscn")
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")

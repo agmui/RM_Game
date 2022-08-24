@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Sentry.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Skybox.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -9,4 +12,22 @@ script = ExtResource( 1 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0, -0.965926, 0.258819, 0, 0.258819, 0.965926, -1, 0, 0, 2, 6, 0 )
 
-[node name="Spatial" parent="." instance=ExtResource( 2 )]
+[node name="Map" parent="." instance=ExtResource( 2 )]
+
+[node name="Skybox" parent="." instance=ExtResource( 5 )]
+
+[node name="SentryRed" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.658, 1.656, -3.414 )
+team = "red"
+
+[node name="SentryBlue" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 1.229, 1.656, 3.77 )
+team = "blue"
+
+[node name="RedBase" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.5, 0.5, -4.5 )
+team = "red"
+
+[node name="BlueBase" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2.5, 0.5, 4.5 )
+team = "blue"

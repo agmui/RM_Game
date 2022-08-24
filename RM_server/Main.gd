@@ -1,6 +1,6 @@
 extends Spatial
 
-var player = preload("scenes/Player.tscn")
+var player = preload("res://scenes/Player.tscn")
 
 
 func _ready():
@@ -17,6 +17,7 @@ func _instance_player(id):
 	player_instance.set_network_master(id)
 	player_instance.name = str(id)
 	player_instance.id = id
+	# player_instance.team = team
 	
 	add_child(player_instance)
 	print("added player")

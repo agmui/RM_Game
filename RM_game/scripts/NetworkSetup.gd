@@ -40,7 +40,7 @@ func _on_Local_pressed():
 	connection = 2
 	$Server_or_LAN.hide()
 	$Lan.show()
-	$Lan/IpShow.text = "Your local IP: "+IP.get_local_addresses()[0]
+	$Lan/IpShow.text = "Your local IP: "+IP.get_local_addresses()[3]
 
 func _on_IpAddress_text_changed(new_text):
 	Network.ip_address = new_text

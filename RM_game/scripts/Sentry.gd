@@ -36,7 +36,7 @@ func _start_timer():
 	$NetworkTickRate.start()
 
 func _physics_process(delta):
-	if is_network_master():
+	if is_network_master() and !Global.server:
 		if dead: # power down animation
 			if $Spatial/Pivot.rotation_degrees.x > -30:
 				head_acc -= deg2rad(35)*delta
@@ -60,6 +60,7 @@ func _physics_process(delta):
 			body_dir.z -= offset
 		current_offset += offset
 		
+		auto_aim()
 		if !fire_cooldown and shoot:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
 			$Spatial/Pivot/Barrel/Spatial.add_child(b) # spawning bullet to head
@@ -70,7 +71,6 @@ func _physics_process(delta):
 		# Ground velocity
 		velocity.x = body_dir.x
 		velocity.z = body_dir.z
-		auto_aim()
 	else:
 		# global_transform.origin = puppet_position
 		velocity.x = puppet_velocity.x
@@ -132,26 +132,21 @@ func _on_PanelHitbox_body_entered(body):
 				#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
 				print("dead")
 				dead = true
-				$ReviveTimer.start()
+				# $ReviveTimer.start()
 				if !Global.server:
 					rpc_unreliable("killed ", team, " Sentry")
 			rpc_unreliable("hit_panel", team, health) #tell other senttry
 			Global.emit_signal("change_health", team+"_sentry", health) #tell master player ui sentry got hit
 
-puppet func hit_panel(other_team, current_health):
-	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
+# puppet func hit_panel(other_team, current_health):
+# 	#STEP 2 for server
+# 	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
 
-remote func hit_panel_server(p_id, current_health):
+remote func hit_panel_server(other_team, current_health):
 	#STEP 2 for server
-	if !is_network_master():
-		#STEP 2
-		#go to global to find right node
-		Global.emit_signal("change_enemy_health", 
-		p_id, current_health)
-	else:
-		print(team, " Sentry is taking dmg")
-		health -= 10
-		# UI.change_health(health)# FIXME should not be posible
+	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
+	print(team, " Sentry is taking dmg")
+	health -= 10
 
 """
 master func change_health(player_id, current_health):
@@ -164,7 +159,7 @@ master func change_health(player_id, current_health):
 master func killed_server():
 	print("dead")
 	dead = true
-	$ReviveTimer.start() # TODO make this server side
+	# $ReviveTimer.start() # TODO make this server side
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
@@ -175,11 +170,9 @@ puppet func fired():
 puppet func overheat():
 	print(Network.player_list[get_tree().get_rpc_sender_id()]," overheated")
 
-"""
 puppet func killed_player():
 	print(Network.player_list[get_tree().get_rpc_sender_id()].name," was killed")
 
-"""
 puppet func revived():
 	var player_id = get_tree().get_rpc_sender_id()
 	print(Network.player_list[player_id].name," revived")
