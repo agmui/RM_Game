@@ -92,7 +92,7 @@ func auto_aim():
 	shoot = false
 	for player in Global.player_pos:
 		#to stop friendly fire
-		if Network.player_list[player].team == team:#FIXME handle players leaving
+		if Network.player_list.has(player) and Network.player_list[player].team == team:#FIXME handle players leaving
 			continue
 		var plates = Global.player_pos[player]
 		for cords in plates:

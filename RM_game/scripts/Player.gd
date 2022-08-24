@@ -18,8 +18,8 @@ var head_acc = 0 # when the player dies or overheats just have the head exponeta
 var UI = preload("res://scenes/UI.tscn").instance()
 
 var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
-#var blue_standard = preload("res://art/blue_standard.glb").instance()
-#var red_standard = preload("res://art/red_standard.glb").instance()
+var blue_standard = preload("res://art/CarBlue.glb").instance()
+var red_standard = preload("res://art/CarRed.glb").instance()
 
 onready var cam = get_node("Head_Pivot")
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
@@ -41,7 +41,8 @@ func _ready():
 		pause_menu.hide()
 		sensitivity = UI.mouse_sensitivity;
 	# changes skin color
-	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
+	$Pivot/CarRed.queue_free()
+	$Pivot.add_child(blue_standard if team=="blue" else red_standard)
 	$Head_Pivot/Camera.current = is_network_master()
 
 func _input(event):
@@ -201,12 +202,19 @@ remote func hit_panel_server(p_id, current_health):
 master func change_health(player_id, current_health):
 	#STEP 3
 	#after returning from global
-	if typeof(player_id) == TYPE_STRING:
-		print("changing " ,player_id, "\'s health")
-		UI.change_sentry(player_id, current_health)
-	else:
-		print("changing health for ",Network.player_list[player_id].name)
-		UI.change_enemy_health(player_id, current_health)
+	print("changing " ,player_id, "\'s health")
+	match player_id:
+		"red_sentry":
+			UI.change_sentry(player_id, current_health)
+		"blue_sentry":
+			UI.change_sentry(player_id, current_health)
+		"red_base":
+			UI.change_base(player_id, current_health)
+		"blue_base":
+			UI.change_base(player_id, current_health)
+		_:
+			print("changing health for ",Network.player_list[player_id].name)
+			UI.change_enemy_health(player_id, current_health)
 
 master func killed_server():
 	print("dead")

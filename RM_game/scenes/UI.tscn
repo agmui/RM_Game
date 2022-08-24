@@ -82,14 +82,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BaseHealth" type="TextureProgress" parent="Bars"]
+[node name="RedBaseHealth" type="TextureProgress" parent="Bars"]
 margin_left = 728.026
 margin_top = 51.7404
 margin_right = 1942.03
 margin_bottom = 143.74
 rect_scale = Vector2( -0.341907, 0.341992 )
-max_value = 600.0
-value = 600.0
+max_value = 2000.0
+value = 2000.0
+rounded = true
+texture_progress = ExtResource( 3 )
+
+[node name="BlueBaseHealth" type="TextureProgress" parent="Bars"]
+margin_left = 1194.48
+margin_top = 51.74
+margin_right = 2408.49
+margin_bottom = 143.74
+rect_scale = Vector2( 0.342, 0.342 )
+max_value = 2000.0
+value = 2000.0
 rounded = true
 texture_progress = ExtResource( 3 )
 

@@ -7,7 +7,7 @@ var paused = false
 func _ready():
 	$SettingsPanel/MouseSensText.text = String(mouse_sensitivity)
 	$SettingsPanel/MouseSensSlider.value = mouse_sensitivity
-	pass
+	# pass
 	$Bars/enemyBar2.hide()
 	for id in Network.player_list.keys():
 		var p = Network.player_list[id]
@@ -20,7 +20,8 @@ func _ready():
 			id_to_player[id] = $Bars/enemyBar
 		else:
 			id_to_player[id] = $Bars/enemyBar2
-	if len(id_to_player) == 2:
+	print(id_to_player)
+	if len(id_to_player) >= 2:
 		$Bars/enemyBar2.show()
 
 func change_health(health):
@@ -47,6 +48,7 @@ func set_heat(heat_value):
 		$Bars/HeatWhite.value = heat_value
 
 func change_enemy_health(id, health):
+	print(id)
 	id_to_player[id].value = health
 
 func change_sentry(team, health):
@@ -55,6 +57,11 @@ func change_sentry(team, health):
 	else:
 		$RedSentry.text = str(health)
 
+func change_base(team, health):
+	if team=="blue_base":#FIXME
+		$Bars/BlueBaseHealth.value = health
+	else:
+		$Bars/RedBaseHealth.value = health
 
 func toggle_tips():
 	if ($TipsPanel.visible):

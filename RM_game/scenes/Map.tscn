@@ -1,9 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://art/Map/RobomasterLogo.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://art/Light Gray.tres" type="Material" id=2]
-[ext_resource path="res://scenes/RedBase.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/BlueBase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/Map/BlueSupplier.tres" type="ArrayMesh" id=5]
 [ext_resource path="res://art/Map/RedSupplier.tres" type="ArrayMesh" id=6]
 [ext_resource path="res://art/Map/CenterBuff.tres" type="ArrayMesh" id=7]
@@ -94,18 +92,15 @@ material/0 = ExtResource( 2 )
 [node name="Blue Supply" type="MeshInstance" parent="."]
 transform = Transform( -0.498097, 0, -0.0435778, 0, 0.5, 0, 0.0435778, 0, -0.498097, -3.5, 0.025, 5.5 )
 mesh = ExtResource( 5 )
-material/0 = null
 
 [node name="Red Supply" type="MeshInstance" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.5, 0.025, -5.5 )
 mesh = ExtResource( 6 )
 skeleton = NodePath("../Outer Box/Ground")
-material/0 = null
 
 [node name="Bunker" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.025, 0 )
 mesh = ExtResource( 7 )
-material/0 = null
 
 [node name="InnerWall1" type="StaticBody" parent="."]
 transform = Transform( -6.55671e-09, 0, 2.536, 0, 1.531, 0, -0.15, 0, -1.10852e-07, 0.25, 1.266, -1.288 )
@@ -116,7 +111,6 @@ shape = SubResource( 7 )
 [node name="MeshInstance" type="MeshInstance" parent="InnerWall1"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 mesh = ExtResource( 1 )
-material/0 = null
 
 [node name="InnerWall2" type="StaticBody" parent="."]
 transform = Transform( -6.55671e-09, 0, 2.536, 0, 1.531, 0, -0.15, 0, -1.10852e-07, -0.25, 1.266, 1.288 )
@@ -127,7 +121,6 @@ shape = SubResource( 7 )
 [node name="MeshInstance" type="MeshInstance" parent="InnerWall2"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 mesh = ExtResource( 1 )
-material/0 = null
 
 [node name="RedBase" type="Spatial" parent="."]
 
@@ -150,9 +143,6 @@ shape = SubResource( 7 )
 [node name="MeshInstance" type="MeshInstance" parent="RedBase/RedBaseWall2"]
 mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
-
-[node name="RedBase" parent="RedBase" instance=ExtResource( 3 )]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.5, 0.5, -4.5 )
 
 [node name="Rail" type="StaticBody" parent="RedBase"]
 transform = Transform( 0.0424264, 0, -2.43952, 0, 0.06, 0, 0.0424264, 0, 2.43952, -1.5, 1.825, -3.5 )
@@ -206,9 +196,6 @@ shape = SubResource( 7 )
 [node name="MeshInstance" type="MeshInstance" parent="BlueBase/BlueBaseWall2"]
 mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
-
-[node name="BlueBase" parent="BlueBase" instance=ExtResource( 4 )]
-transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2.5, 0.5, 4.5 )
 
 [node name="Rail" type="StaticBody" parent="BlueBase"]
 transform = Transform( 0.0424264, 0, -2.43952, 0, 0.06, 0, 0.0424264, 0, 2.43952, 1.5, 1.825, 3.5 )
