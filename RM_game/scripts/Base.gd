@@ -14,6 +14,13 @@ func _ready():
 func _on_PanelHitbox_body_entered(body):
 	if Global.server: # TODO disconnect when not LAN
 		return
+	if team == "blue" and Global.blue_sentry_alive:
+		print("sentry not dead")
+		return
+	elif team == "red" and Global.red_sentry_alive:
+		print("sentry not dead")
+		return
+
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
 		if !dead:#if you get hit

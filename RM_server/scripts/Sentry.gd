@@ -102,16 +102,6 @@ func auto_aim():
 		shoot = true
 
 
-"""
-func _on_ReviveTimer_timeout():
-	head_acc = 0
-	dead = false
-	$ReviveTimer.stop()
-	health = 600
-	print("revived")
-	rpc_unreliable("revived")
-"""
-
 func _on_PanelHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
 	if body.is_in_group("bullet"):# iff a bullet hits yourself
@@ -121,7 +111,6 @@ func _on_PanelHitbox_body_entered(body):
 			if health == 0:
 				print("dead")
 				dead = true
-				# $ReviveTimer.start()
 				rpc_unreliable("killed_server")
 			rpc_unreliable("hit_panel_server", team, health) #tell other senttry
 			Global.emit_signal("change_health", team+"_sentry", health) #tell master player ui sentry got hit

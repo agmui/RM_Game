@@ -110,16 +110,6 @@ func auto_aim():
 		shoot = true
 
 
-"""
-func _on_ReviveTimer_timeout():
-	head_acc = 0
-	dead = false
-	$ReviveTimer.stop()
-	health = 600
-	print("revived")
-	rpc_unreliable("revived")
-"""
-
 func _on_PanelHitbox_body_entered(body):
 	if Global.server: # TODO disconnect when not LAN
 		return
@@ -132,14 +122,16 @@ func _on_PanelHitbox_body_entered(body):
 				#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
 				print("dead")
 				dead = true
-				# $ReviveTimer.start()
-				if !Global.server:
-					rpc_unreliable("killed ", team, " Sentry")
+				if team == "blue":
+					Global.blue_sentry_alive = false
+				else:
+					Global.red_sentry_alive = false
+				rpc("killed_lan", team)
 			rpc_unreliable("hit_panel", team, health) #tell other senttry
 			Global.emit_signal("change_health", team+"_sentry", health) #tell master player ui sentry got hit
 
 puppet func hit_panel(other_team, current_health):
-	#STEP 
+	#STEP 2 
 	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
 
 remote func hit_panel_server(other_team, current_health):
@@ -156,10 +148,21 @@ master func change_health(player_id, current_health):
 	UI.change_enemy_health(player_id, current_health)
 
 """
-master func killed_server():
+remote func killed_server():
+	print("dead")#FIXME
+	dead = true
+	if team == "blue":
+		Global.blue_sentry_alive = false
+	else:
+		Global.red_sentry_alive = false
+
+puppet func killed_lan(other_sentry):
 	print("dead")
 	dead = true
-	# $ReviveTimer.start() # TODO make this server side
+	if other_sentry == "blue":
+		Global.blue_sentry_alive = false
+	else:
+		Global.red_sentry_alive = false
 
 puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
@@ -172,13 +175,6 @@ puppet func overheat():
 
 puppet func killed_player():
 	print(Network.player_list[get_tree().get_rpc_sender_id()].name," was killed")
-
-puppet func revived():
-	var player_id = get_tree().get_rpc_sender_id()
-	print(Network.player_list[player_id].name," revived")
-	health = 100
-	Global.emit_signal("change_enemy_health", player_id, health)
-
 """
 puppet func update_state(p_position, p_velocity, p_rotation):
 	puppet_position = p_position

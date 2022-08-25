@@ -72,9 +72,6 @@ material/0 = SubResource( 5 )
 [node name="FireCooldown" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="ReviveTimer" type="Timer" parent="."]
-wait_time = 10.0
-
 [node name="NetworkTickRate" type="Timer" parent="."]
 wait_time = 0.03
 autostart = true
@@ -85,5 +82,4 @@ shape = SubResource( 6 )
 
 [connection signal="body_entered" from="PanelHitbox" to="." method="_on_PanelHitbox_body_entered"]
 [connection signal="timeout" from="FireCooldown" to="." method="_on_FireCooldown_timeout"]
-[connection signal="timeout" from="ReviveTimer" to="." method="_on_ReviveTimer_timeout"]
 [connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]
