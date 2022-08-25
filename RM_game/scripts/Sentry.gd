@@ -138,9 +138,9 @@ func _on_PanelHitbox_body_entered(body):
 			rpc_unreliable("hit_panel", team, health) #tell other senttry
 			Global.emit_signal("change_health", team+"_sentry", health) #tell master player ui sentry got hit
 
-# puppet func hit_panel(other_team, current_health):
-# 	#STEP 2 for server
-# 	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
+puppet func hit_panel(other_team, current_health):
+	#STEP 
+	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
 
 remote func hit_panel_server(other_team, current_health):
 	#STEP 2 for server

@@ -48,3 +48,5 @@ remote func start_game_server():
 		team_size[player.team] += 1
 		spawn_locations.append([id, cord])
 	rpc("recived_spawn", spawn_locations)
+	#start sentry movment
+	Global.emit_signal("start_sentry")

@@ -44,7 +44,7 @@ func _physics_process(delta):
 	# We create a local variable to store the input direction.
 	var body_dir = Vector3.ZERO
 
-	var random_number = 0#rng.randf_range(-10.0, 10.0)	
+	var random_number = rng.randf_range(-10.0, 10.0)	
 	# randomly change offset
 	if random_number<1 and random_number>-1:
 		offset = random_number*speed#Vector2(random_number, random_number).dot(Vector2.RIGHT)
@@ -123,7 +123,7 @@ func _on_PanelHitbox_body_entered(body):
 				dead = true
 				# $ReviveTimer.start()
 				rpc_unreliable("killed_server")
-			rpc_unreliable("hit_panel", team, health) #tell other senttry
+			rpc_unreliable("hit_panel_server", team, health) #tell other senttry
 			Global.emit_signal("change_health", team+"_sentry", health) #tell master player ui sentry got hit
 
 

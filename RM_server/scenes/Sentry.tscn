@@ -77,7 +77,6 @@ wait_time = 10.0
 
 [node name="NetworkTickRate" type="Timer" parent="."]
 wait_time = 0.03
-autostart = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.305266, 0, 0, 0, 0.140965, 0, 0, 0, 0.207845, 0, 0.144548, 0 )
