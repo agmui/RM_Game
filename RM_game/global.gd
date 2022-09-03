@@ -13,5 +13,5 @@ var red_sentry_alive = true
 
 func _input(event):
 	if event is InputEventKey:
-		if event.scancode == KEY_1:
+		if event.scancode == KEY_F4:
 			get_tree().quit() # quits game
