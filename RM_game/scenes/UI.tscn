@@ -17,7 +17,6 @@
 [ext_resource path="res://art/lv2.png" type="Texture" id=15]
 
 [node name="UI" type="Node2D"]
-scale = Vector2( 0.530774, 0.553621 )
 script = ExtResource( 4 )
 
 [node name="overheat" type="Sprite" parent="."]

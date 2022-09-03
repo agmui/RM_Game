@@ -31,6 +31,11 @@ multirun/add_custom_args=true
 multirun/first_window_args="listen"
 multirun/other_window_args="join"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
@@ -39,6 +44,7 @@ enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
 
 display=false
 re=false
+res=false
 
 [input]
 
