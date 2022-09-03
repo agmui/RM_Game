@@ -14,10 +14,10 @@ var fire_cooldown = false
 var dead = false
 var sensitivity;
 var barrel_heat = 0
-var barrel_heat_rate = 1
+var barrel_heat_rate = 10
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
 var xp = 0
-var num_bullets = 100
+var num_bullets = 0#100
 var money = 200
 
 

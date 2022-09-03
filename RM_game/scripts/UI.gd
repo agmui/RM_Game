@@ -52,9 +52,11 @@ func change_enemy_health(id, health):
 
 func change_sentry(team, health):
 	if team=="blue_sentry":
-		$BluSentry.text = str(health)
+		$Bars/BlueSentryBar.value = health
+		$Bars/BlueSentryBar/BlueSentry.text = str(health)
 	else:
-		$RedSentry.text = str(health)
+		$Bars/RedSentryBar.value = health
+		$Bars/RedSentryBar/RedSentry.text = str(health)
 
 func change_base(team, health):
 	if team=="blue_base":#FIXME
