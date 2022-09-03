@@ -128,7 +128,7 @@ func _on_PanelHitbox_body_entered(body):
 					Global.red_sentry_alive = false
 				rpc("killed_lan", team)
 			rpc_unreliable("hit_panel", team, health) #tell other senttry
-			Global.emit_signal("change_health", team+"_sentry", health) #tell master player ui sentry got hit
+			Global.emit_signal("change_health", team+"_sentry", health, body.player_owner) #tell master player ui sentry got hit
 
 puppet func hit_panel(other_team, current_health):
 	#STEP 2 

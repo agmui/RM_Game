@@ -40,6 +40,15 @@ margin_bottom = 1079.18
 rect_scale = Vector2( 1, 0.999731 )
 texture = ExtResource( 1 )
 
+[node name="AmmoCount" type="Label" parent="."]
+margin_left = 1375.35
+margin_top = 567.175
+margin_right = 1415.35
+margin_bottom = 581.175
+rect_scale = Vector2( 1.71875, 1.56712 )
+text = "0"
+align = 1
+
 [node name="RedSentry" type="RichTextLabel" parent="."]
 margin_left = 205.0
 margin_top = 69.0
@@ -94,6 +103,14 @@ value = 2000.0
 rounded = true
 texture_progress = ExtResource( 3 )
 
+[node name="Label" type="Label" parent="Bars/RedBaseHealth"]
+margin_left = 1120.91
+margin_top = 1.87726
+margin_right = 1160.91
+margin_bottom = 15.8773
+rect_scale = Vector2( -7.08126, 7.08126 )
+text = "2000"
+
 [node name="BlueBaseHealth" type="TextureProgress" parent="Bars"]
 margin_left = 1194.48
 margin_top = 51.74
@@ -104,6 +121,14 @@ max_value = 2000.0
 value = 2000.0
 rounded = true
 texture_progress = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="Bars/BlueBaseHealth"]
+margin_left = 936.518
+margin_top = 1.87837
+margin_right = 976.518
+margin_bottom = 15.8784
+rect_scale = Vector2( 6.56031, 6.56031 )
+text = "2000"
 
 [node name="HeatWhite" type="TextureProgress" parent="Bars"]
 margin_left = 879.847
@@ -124,31 +149,31 @@ texture_progress = ExtResource( 6 )
 fill_mode = 5
 
 [node name="enemyBar" type="TextureProgress" parent="Bars"]
-margin_left = 1382.88
-margin_top = 165.0
-margin_right = 2196.88
-margin_bottom = 257.0
-rect_scale = Vector2( 0.0915564, 0.0645129 )
+margin_left = 1379.12
+margin_top = 171.598
+margin_right = 2580.12
+margin_bottom = 263.598
+rect_scale = Vector2( 0.0833808, 0.157026 )
 max_value = 600.0
 value = 600.0
-texture_progress = ExtResource( 2 )
+texture_progress = ExtResource( 12 )
 
 [node name="enemyBar2" type="TextureProgress" parent="Bars"]
-margin_left = 1503.46
-margin_top = 165.0
-margin_right = 2317.46
-margin_bottom = 257.0
-rect_scale = Vector2( 0.0915564, 0.0645129 )
+margin_left = 1497.81
+margin_top = 171.598
+margin_right = 2698.81
+margin_bottom = 263.598
+rect_scale = Vector2( 0.0833808, 0.157026 )
 max_value = 600.0
 value = 600.0
-texture_progress = ExtResource( 2 )
+texture_progress = ExtResource( 12 )
 
 [node name="teamateBar" type="TextureProgress" parent="Bars"]
-margin_left = 465.358
-margin_top = 171.0
-margin_right = 1279.36
-margin_bottom = 263.0
-rect_scale = Vector2( 0.092, -0.065 )
+margin_left = 452.17
+margin_top = 186.048
+margin_right = 1266.17
+margin_bottom = 278.048
+rect_scale = Vector2( 0.118589, -0.17969 )
 max_value = 600.0
 value = 600.0
 texture_progress = ExtResource( 2 )
@@ -162,10 +187,10 @@ expand = true
 
 [node name="TipsPanel" type="TextureRect" parent="."]
 visible = false
-margin_left = 20.0
-margin_top = 200.0
-margin_right = 851.0
-margin_bottom = 574.0
+margin_left = 568.98
+margin_top = 359.452
+margin_right = 1399.98
+margin_bottom = 733.452
 texture = ExtResource( 9 )
 
 [node name="SettingsPanel" type="Node2D" parent="."]
@@ -200,5 +225,57 @@ margin_bottom = 1078.0
 texture = ExtResource( 11 )
 expand = true
 
+[node name="BuyScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuyScreen"]
+margin_left = 617.965
+margin_top = 411.834
+margin_right = 781.965
+margin_bottom = 521.834
+rect_scale = Vector2( 4.19181, 3.93767 )
+
+[node name="Label" type="Label" parent="BuyScreen/VBoxContainer"]
+margin_right = 164.0
+margin_bottom = 14.0
+text = "choose how much  to buy"
+
+[node name="Buy50" type="Button" parent="BuyScreen/VBoxContainer"]
+margin_top = 18.0
+margin_right = 164.0
+margin_bottom = 38.0
+text = "50"
+
+[node name="Buy100" type="Button" parent="BuyScreen/VBoxContainer"]
+margin_top = 42.0
+margin_right = 164.0
+margin_bottom = 62.0
+text = "100"
+
+[node name="Buy150" type="Button" parent="BuyScreen/VBoxContainer"]
+margin_top = 66.0
+margin_right = 164.0
+margin_bottom = 86.0
+text = "150"
+
+[node name="Buy200" type="Button" parent="BuyScreen/VBoxContainer"]
+margin_top = 90.0
+margin_right = 164.0
+margin_bottom = 110.0
+text = "200"
+
+[node name="Exit" type="Button" parent="BuyScreen"]
+margin_left = 1305.64
+margin_top = 326.938
+margin_right = 1325.64
+margin_bottom = 346.938
+rect_scale = Vector2( 4.08997, 3.02926 )
+text = "X"
+
 [connection signal="value_changed" from="SettingsPanel/MouseSensSlider" to="." method="_on_MouseSensSlider_value_changed"]
 [connection signal="text_entered" from="SettingsPanel/MouseSensText" to="." method="_on_MouseSensText_text_entered"]
+[connection signal="pressed" from="BuyScreen/VBoxContainer/Buy50" to="." method="_on_Buy50_pressed"]
+[connection signal="pressed" from="BuyScreen/VBoxContainer/Buy100" to="." method="_on_Buy100_pressed"]
+[connection signal="pressed" from="BuyScreen/VBoxContainer/Buy150" to="." method="_on_Buy150_pressed"]
+[connection signal="pressed" from="BuyScreen/VBoxContainer/Buy200" to="." method="_on_Buy200_pressed"]
+[connection signal="pressed" from="BuyScreen/Exit" to="." method="_on_Exit_pressed"]

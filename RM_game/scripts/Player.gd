@@ -17,6 +17,9 @@ var barrel_heat = 0
 var barrel_heat_rate = 1
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
 var xp = 0
+var num_bullets = 100
+var money = 200
+
 
 var UI = preload("res://scenes/UI.tscn").instance()
 
@@ -39,6 +42,7 @@ func _ready():
 
 		Global.connect("change_health", self, "change_health")
 		Global.connect("gain_xp", self, "gain_xp")
+		Global.connect("add_bullets", self, "add_bullets")
 		$Head_Pivot/Camera.add_child(UI)
 		UI.change_health(health)
 		$Head_Pivot/Camera.add_child(pause_menu)
@@ -102,7 +106,7 @@ func _physics_process(delta):
 			$CollisionShape.rotation.y -= .08
 			$PanelHitbox.rotation.y -= .08
 			rpc_unreliable("update_beyblade")
-		if Input.is_action_pressed("fire") and !fire_cooldown and !pause_menu.paused and !UI.paused:
+		if Input.is_action_pressed("fire") and !fire_cooldown and !pause_menu.paused and !UI.paused and num_bullets > 0:
 			var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
 			$Head_Pivot/Barrel_Spawn.add_child(b) # spawning bullet to head
 			rpc_unreliable("fired")
@@ -118,7 +122,10 @@ func _physics_process(delta):
 			else:
 				barrel_heat += barrel_heat_rate
 				UI.set_heat(barrel_heat)
-
+				num_bullets -= 1
+				UI.change_bullet_display(num_bullets)
+		if Input.is_action_just_pressed("buy"):
+			print("buy")
 		body_dir = body_dir.normalized()
 		body_dir = body_dir.rotated(Vector3.UP, cam.rotation.y) # rotating the vector we are moving in
 		
@@ -183,6 +190,19 @@ func _on_PanelHitbox_body_entered(body):
 					rpc_unreliable("killed_player", body.player_owner)#FIXME
 			#STEP 1
 			rpc_unreliable("hit_panel", health, body.player_owner) #tell eveyonelse ui to you getting hit
+
+
+func _on_rfid_area_entered(area):
+	if area.name == team and is_network_master():
+		UI.toggle_buy_screen(true)
+
+func _on_rfid_area_exited(area):
+	if area.name == team and is_network_master():
+		UI.toggle_buy_screen(false)
+
+func add_bullets(add_num):
+	num_bullets += add_num
+	UI.change_bullet_display(num_bullets)
 
 puppet func hit_panel(current_health, attacker):
 	if !is_network_master():

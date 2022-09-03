@@ -3,6 +3,7 @@ extends Node
 signal instance_player(id, cord, team)
 signal toggle_network_setup(toggle)
 signal change_health(id, health, attacker)
+signal add_bullets(add_num)
 signal start_sentry()
 
 var server:bool = false

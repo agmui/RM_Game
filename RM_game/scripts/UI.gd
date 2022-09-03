@@ -59,8 +59,10 @@ func change_sentry(team, health):
 func change_base(team, health):
 	if team=="blue_base":#FIXME
 		$Bars/BlueBaseHealth.value = health
+		$Bars/BlueBaseHealth/Label.text = str(health)
 	else:
 		$Bars/RedBaseHealth.value = health
+		$Bars/RedBaseHealth/Label.text = str(health)
 
 func toggle_tips():
 	if ($TipsPanel.visible):
@@ -97,3 +99,40 @@ func _on_MouseSensText_text_entered(new_text):
 		$SettingsPanel/MouseSensSlider.value = mouse_sensitivity
 	else:
 		$SettingsPanel/MouseSensText.text = String(mouse_sensitivity)
+
+func toggle_buy_screen(show):
+	if ($BuyScreen.visible):
+		paused = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		$BuyScreen.hide()
+	elif(show):
+		print("buy screen")
+		paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$BuyScreen.show();
+
+func _on_Buy50_pressed():
+	Global.emit_signal("add_bullets", 50)
+	_on_Exit_pressed()
+
+func _on_Buy100_pressed():
+	Global.emit_signal("add_bullets", 100)
+	_on_Exit_pressed()
+
+func _on_Buy150_pressed():
+	Global.emit_signal("add_bullets", 150)
+	_on_Exit_pressed()
+
+func _on_Buy200_pressed():
+	Global.emit_signal("add_bullets", 200)
+	print("hi")
+	_on_Exit_pressed()
+
+func _on_Exit_pressed():
+	if ($BuyScreen.visible):
+		paused = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		$BuyScreen.hide()
+
+func change_bullet_display(num):
+	$AmmoCount.text = str(num)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://art/head.glb" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -9,6 +9,9 @@ extents = Vector3( 0.23, 0.165405, 0.3 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.7, 1.587, 6.499 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.065, 0.02, 0.065 )
 
 [node name="Player" type="KinematicBody" groups=["players"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0520018, 0 )
@@ -74,6 +77,14 @@ shape = SubResource( 2 )
 
 [node name="Spatial" type="Spatial" parent="PanelHitbox/front"]
 
+[node name="rfid" type="Area" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="rfid"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0641735, 0.0244854 )
+shape = SubResource( 3 )
+
 [node name="NetworkTickRate" type="Timer" parent="."]
 wait_time = 0.03
 autostart = true
@@ -84,4 +95,6 @@ autostart = true
 [connection signal="timeout" from="ReviveTimer" to="." method="_on_ReviveTimer_timeout"]
 [connection signal="timeout" from="OverheatTimer" to="." method="_on_OverheatTimer_timeout"]
 [connection signal="body_entered" from="PanelHitbox" to="." method="_on_PanelHitbox_body_entered"]
+[connection signal="area_entered" from="rfid" to="." method="_on_rfid_area_entered"]
+[connection signal="area_exited" from="rfid" to="." method="_on_rfid_area_exited"]
 [connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]
