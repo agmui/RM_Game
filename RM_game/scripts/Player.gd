@@ -8,12 +8,15 @@ export var fall_acceleration = 75
 var velocity = Vector3.ZERO
 var id
 var team
-export var health = 60
+export var health = 100
+var revive_health = 100
 var fire_cooldown = false
 var dead = false
 var sensitivity;
 var barrel_heat = 0
+var barrel_heat_rate = 1
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
+var xp = 0
 
 var UI = preload("res://scenes/UI.tscn").instance()
 
@@ -35,6 +38,7 @@ func _ready():
 		# UI = preload("res://scenes/UI.tscn").instance()
 
 		Global.connect("change_health", self, "change_health")
+		Global.connect("gain_xp", self, "gain_xp")
 		$Head_Pivot/Camera.add_child(UI)
 		UI.change_health(health)
 		$Head_Pivot/Camera.add_child(pause_menu)
@@ -112,7 +116,7 @@ func _physics_process(delta):
 				$OverheatTimer.start()
 				rpc_unreliable("overheat")
 			else:
-				barrel_heat += 1
+				barrel_heat += barrel_heat_rate
 				UI.set_heat(barrel_heat)
 
 		body_dir = body_dir.normalized()
@@ -152,7 +156,7 @@ func _on_ReviveTimer_timeout():
 	head_acc = 0
 	dead = false
 	$ReviveTimer.stop()
-	health = 100
+	health = revive_health
 	UI.change_health(health)
 	print("revived")
 	rpc_unreliable("revived")
@@ -165,8 +169,9 @@ func _on_PanelHitbox_body_entered(body):
 	if is_network_master():
 		print("HIT ")
 	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
+		# print(body.player_owner)
 		if !dead:#if you get hit
-			print(Network.player_list[id].name, " is taking dmg")
+			print(Network.player_list[id].name, " is taking dmg from ", body.player_owner)
 			health -= 10
 			UI.change_health(health)# FIXME should not be posible
 			if health == 0:
@@ -175,16 +180,16 @@ func _on_PanelHitbox_body_entered(body):
 				dead = true
 				$ReviveTimer.start()
 				if !Global.server:
-					rpc_unreliable("killed_player")#FIXME
+					rpc_unreliable("killed_player", body.player_owner)#FIXME
 			#STEP 1
-			rpc_unreliable("hit_panel", health) #tell eveyonelse ui to you getting hit
+			rpc_unreliable("hit_panel", health, body.player_owner) #tell eveyonelse ui to you getting hit
 
-puppet func hit_panel(current_health):
+puppet func hit_panel(current_health, attacker):
 	if !is_network_master():
 		#STEP 2
 		#go to global to find right node
 		Global.emit_signal("change_health", 
-		get_tree().get_rpc_sender_id(), current_health)
+		get_tree().get_rpc_sender_id(), current_health, attacker)
 
 remote func hit_panel_server(p_id, current_health):
 	#STEP 2 for server
@@ -198,10 +203,10 @@ remote func hit_panel_server(p_id, current_health):
 		health -= 10
 		UI.change_health(health)# FIXME should not be posible
 
-master func change_health(player_id, current_health):
+master func change_health(player_id, current_health, attacker):
 	#STEP 3
 	#after returning from global
-	print("changing " ,player_id, "\'s health")
+	print("changing " ,player_id, "\'s health, got hit by ", attacker)
 	match player_id:
 		"red_sentry":
 			UI.change_sentry(player_id, current_health)
@@ -214,6 +219,20 @@ master func change_health(player_id, current_health):
 		_:
 			print("changing health for ",Network.player_list[player_id].name)
 			UI.change_enemy_health(player_id, current_health)
+	if attacker == id:
+		# add xp for attacker
+		print("add xp for ", attacker)
+		xp += 1
+		if current_health <= 0:
+			print("you killed ",Network.player_list[player_id].name)
+			xp += 10
+		if xp >= 30:# lv up
+			print("lv up")
+			xp -= 50
+			revive_health += 100
+			health = revive_health
+			barrel_heat_rate += 10
+			$ReviveTimer.wait_time /= 2
 
 master func killed_server():
 	print("dead")
@@ -224,6 +243,8 @@ puppet func fired():
 	var b = bullet.instance() # making an object b (kinda like Bullet b = new Bullet)
 	$Head_Pivot/head.add_child(b) # spawning bullet to head
 	b.shoot = true # lets bullet move
+	b.player_owner = id
+	# print(id)
 
 
 puppet func update_beyblade():
@@ -234,13 +255,13 @@ puppet func update_beyblade():
 puppet func overheat():
 	print(Network.player_list[get_tree().get_rpc_sender_id()]," overheated")
 
-puppet func killed_player():
-	print(Network.player_list[get_tree().get_rpc_sender_id()].name," was killed")
+puppet func killed_player(killer):
+	print(Network.player_list[get_tree().get_rpc_sender_id()].name," was killed by ", killer)
 
 puppet func revived():
 	var player_id = get_tree().get_rpc_sender_id()
 	print(Network.player_list[player_id].name," revived")
-	health = 100
+	health = revive_health
 	Global.emit_signal("change_health", player_id, health)
 	
 # may cause problems when running LAN because it is suppose to be puppet

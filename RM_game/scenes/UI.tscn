@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://art/game_UI.png" type="Texture" id=1]
 [ext_resource path="res://art/barHorizontal_red.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://art/UI/Tips.png" type="Texture" id=9]
 [ext_resource path="res://art/UI/Settings.png" type="Texture" id=10]
 [ext_resource path="res://art/UI/Lobby.png" type="Texture" id=11]
+[ext_resource path="res://art/baseHealth_blue.png" type="Texture" id=12]
 
 [node name="UI" type="Node2D"]
 scale = Vector2( 0.530774, 0.553621 )
@@ -102,7 +103,7 @@ rect_scale = Vector2( 0.342, 0.342 )
 max_value = 2000.0
 value = 2000.0
 rounded = true
-texture_progress = ExtResource( 3 )
+texture_progress = ExtResource( 12 )
 
 [node name="HeatWhite" type="TextureProgress" parent="Bars"]
 margin_left = 879.847
@@ -123,33 +124,33 @@ texture_progress = ExtResource( 6 )
 fill_mode = 5
 
 [node name="enemyBar" type="TextureProgress" parent="Bars"]
-margin_left = 1375.35
-margin_top = 167.985
-margin_right = 2189.35
-margin_bottom = 259.985
-rect_scale = Vector2( 0.153126, 0.304055 )
-max_value = 70.0
-value = 50.0
+margin_left = 1382.88
+margin_top = 165.0
+margin_right = 2196.88
+margin_bottom = 257.0
+rect_scale = Vector2( 0.0915564, 0.0645129 )
+max_value = 600.0
+value = 600.0
 texture_progress = ExtResource( 2 )
 
 [node name="enemyBar2" type="TextureProgress" parent="Bars"]
-margin_left = 1499.7
-margin_top = 167.985
-margin_right = 2313.7
-margin_bottom = 259.985
-rect_scale = Vector2( 0.153126, 0.304055 )
-max_value = 70.0
-value = 50.0
+margin_left = 1503.46
+margin_top = 165.0
+margin_right = 2317.46
+margin_bottom = 257.0
+rect_scale = Vector2( 0.0915564, 0.0645129 )
+max_value = 600.0
+value = 600.0
 texture_progress = ExtResource( 2 )
 
 [node name="teamateBar" type="TextureProgress" parent="Bars"]
-margin_left = 448.401
-margin_top = 167.985
-margin_right = 1262.4
-margin_bottom = 259.985
-rect_scale = Vector2( 0.153126, 0.304055 )
-max_value = 70.0
-value = 50.0
+margin_left = 465.358
+margin_top = 171.0
+margin_right = 1279.36
+margin_bottom = 263.0
+rect_scale = Vector2( 0.092, -0.065 )
+max_value = 600.0
+value = 600.0
 texture_progress = ExtResource( 2 )
 
 [node name="LoadingScreen" type="TextureRect" parent="."]
