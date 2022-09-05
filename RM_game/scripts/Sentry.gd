@@ -36,7 +36,7 @@ func _start_timer():
 	$NetworkTickRate.start()
 
 func _physics_process(delta):
-	if is_network_master() and !Global.server:
+	if is_network_master() and !Global.server: # FIXME it is calling is_network_master() before game starts
 		if dead: # power down animation
 			if $Spatial/Pivot.rotation_degrees.x > -30:
 				head_acc -= deg2rad(35)*delta

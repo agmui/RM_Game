@@ -1,7 +1,7 @@
 extends Node
 
 const DEFAULT_PORT = 10567
-const MAX_CLIENTS = 6
+const MAX_CLIENTS = 4
 
 var server = null
 var client = null
@@ -38,6 +38,9 @@ func create_server():
 		}
 	
 func join_server():
+	if not ip_address.is_valid_ip_address():
+		print("invalied ip")
+		return false
 	print("Joining Server")
 	client = NetworkedMultiplayerENet.new()
 	client.create_client(ip_address, DEFAULT_PORT)
@@ -49,6 +52,7 @@ func join_server():
 		 "team_id": 0,
 		 "host":is_host
 		}
+	return true
 
 func _connected_to_server():
 	print("Successfully connected to the server")

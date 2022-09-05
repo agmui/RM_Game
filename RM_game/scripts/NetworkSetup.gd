@@ -19,7 +19,7 @@ func _ready():
 	Network.connect("player_list_changed", self, "refresh_lobby")
 
 func _on_ContinueButton_pressed(): #Continues after adding name
-	if ($PlayerSetup/NameEdit.text == ""):
+	if $PlayerSetup/NameEdit.text == "":
 		$PlayerSetup/ErrorLabel.text = "Invalid Name!"
 	else:
 		Network.set_player_name($PlayerSetup/NameEdit.text)
@@ -54,7 +54,9 @@ func _on_Host_pressed():
 	$Connections.show()
 
 func _on_Join_pressed():
-	Network.join_server()
+	if Network.join_server() == false:
+		$Lan/ErrorLabel.text = "Invalid IP address!"
+		return
 	$Lan.hide()
 	$Connections/HBoxContainer/StartButton.disabled = true
 	Network.set_player_team(0)
