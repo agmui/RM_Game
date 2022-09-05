@@ -42,7 +42,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="ReviveTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 
 [node name="OverheatTimer" type="Timer" parent="."]
 wait_time = 3.0

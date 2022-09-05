@@ -17,6 +17,7 @@ var barrel_heat = 0
 var barrel_heat_rate = 10
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
 var xp = 0
+var lv = 1
 var num_bullets = 0#100
 var money = 200
 
@@ -186,6 +187,8 @@ func _on_PanelHitbox_body_entered(body):
 				print("dead")
 				dead = true
 				$ReviveTimer.start()
+				if $ReviveTimer.wait_time <= 45:
+					$ReviveTimer.wait_time += 5
 				if !Global.server:
 					rpc_unreliable("killed_player", body.player_owner)#FIXME
 			#STEP 1
@@ -246,13 +249,12 @@ master func change_health(player_id, current_health, attacker):
 		if current_health <= 0:
 			print("you killed ",Network.player_list[player_id].name)
 			xp += 10
-		if xp >= 30:# lv up
+		if xp >= 30 and lv != 3:# lv up
 			print("lv up")
 			xp -= 50
 			revive_health += 100
 			health = revive_health
 			barrel_heat_rate += 10
-			$ReviveTimer.wait_time /= 2
 
 master func killed_server():
 	print("dead")

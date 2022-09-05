@@ -25,11 +25,17 @@ Global="*res://global.gd"
 
 [debug]
 
-multirun/number_of_windows=6
+multirun/number_of_windows=2
 multirun/window_distance=900
 multirun/add_custom_args=true
 multirun/first_window_args="listen"
 multirun/other_window_args="join"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/fullscreen=true
 
 [editor_plugins]
 
