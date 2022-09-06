@@ -25,7 +25,7 @@ remote func register_player(cplayer_name, team, host):
 	player_list[id] = {"name":cplayer_name, "team":team, "team_id":0, "host": host}
 	if player_list.size() == 1:
 		rpc_id(id, "set_host", true)
-	print("set host")
+		print("set host")
 
 remote func unregister_player(id):
 	team_size[player_list[id].team] -= 1

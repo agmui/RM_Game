@@ -40,6 +40,7 @@ var puppet_rotation = Vector2()
 
 
 func _ready():
+	print("player ", id," spawned in")
 	#$Head_Pivot/Camera.add_child(UI)
 	UI.change_health(health)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
