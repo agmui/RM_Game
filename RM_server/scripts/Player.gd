@@ -7,15 +7,30 @@ export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
 var id
-export var health = 60
+var team
+export var health = 100
+var revive_health = 100
 var fire_cooldown = false
 var dead = false
-onready var cam = get_node("Head_Pivot")
-onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
+var sensitivity;
+var barrel_heat = 0
+var barrel_heat_rate = 10
+var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
+var xp = 0
+var lv = 1
+var num_bullets = 0#100
+var money = 200
+
+
 var UI = preload("res://scenes/UI.tscn").instance()
 
-var sensitivity = .2
-var track = true
+var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
+var blue_standard = preload("res://art/CarBlue.glb").instance()
+var red_standard = preload("res://art/CarRed.glb").instance()
+
+onready var cam = get_node("Head_Pivot")
+onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
+
 
 var puppet_position = Vector3()
 var puppet_velocity = Vector3()
@@ -26,7 +41,7 @@ var puppet_rotation = Vector2()
 
 func _ready():
 	#$Head_Pivot/Camera.add_child(UI)
-	UI.change_health(600)
+	UI.change_health(health)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # keep mouse in the middle of the screen
 	$Head_Pivot/Camera.current = false#is_network_master()
 
@@ -56,14 +71,14 @@ func _on_ReviveTimer_timeout():
 
 func _on_PanelHitbox_body_entered(body):
 	#TODO check if bullet is moving fast enough
-	if body.is_in_group("bullet"):# and !is_network_master():
-		if !dead:
-			print(Network.player_list[id].name, " is taking dmg")
+	if body.is_in_group("bullet") and is_network_master():# iff a bullet hits yourself
+		# print(body.player_owner)
+		if !dead:#if you get hit
+			print(Network.player_list[id].name, " is taking dmg from ", body.player_owner)
 			health -= 10
-			UI.change_health(health)
-			rpc_unreliable("hit_panel_server", id, health)
+			UI.change_health(health)# FIXME should not be posible
 			if health == 0:
-				$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
+				#$Head_Pivot.rotation.x = deg2rad(-30) #TODO lock all movement
 				print(id, " dead")
 				dead = true
 				$ReviveTimer.start()

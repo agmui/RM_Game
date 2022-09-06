@@ -1,8 +1,8 @@
 extends Node
 
 const DEFAULT_PORT = 10567
-const MAX_CLIENTS = 6
-const ip_address = "137.112.199.172"#"127.0.0.1" #"24.5.169.14"
+const MAX_CLIENTS = 4
+const ip_address = "137.112.199.172"#"127.0.0.1"
 var server = null
 
 var player_list = {}
