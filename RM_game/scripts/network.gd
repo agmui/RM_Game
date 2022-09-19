@@ -137,8 +137,7 @@ func start_game():
 			spawn_locations.append([id, cord])
 		rpc("recived_spawn", spawn_locations)
 		recived_spawn(spawn_locations)
-		#start sentry movment
-		Global.emit_signal("start_sentry")
+		Global.emit_signal("spawn_sentry")
 
 remote func recived_spawn(cord):
 	#send spawn cords to players

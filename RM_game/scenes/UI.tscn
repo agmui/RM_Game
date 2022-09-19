@@ -17,6 +17,7 @@
 [ext_resource path="res://art/lv2.png" type="Texture" id=15]
 
 [node name="UI" type="Node2D"]
+scale = Vector2( 0.530122, 0.554093 )
 script = ExtResource( 4 )
 
 [node name="PicUI" type="TextureRect" parent="."]

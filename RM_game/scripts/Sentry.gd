@@ -30,7 +30,7 @@ func _ready():
 
 	# changes skin color
 	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
-	Global.connect("start_sentry", self, "_start_timer")
+	Global.connect("spawn_sentry", self, "_start_timer")
 
 func _start_timer():
 	$NetworkTickRate.start()

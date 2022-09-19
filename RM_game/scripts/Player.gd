@@ -242,7 +242,7 @@ master func change_health(player_id, current_health, attacker):
 		_:
 			print("changing health for ",Network.player_list[player_id].name)
 			UI.change_enemy_health(player_id, current_health)
-	if attacker == id:
+	if attacker == str(id): # FIXME
 		# add xp for attacker
 		print("add xp for ", attacker)
 		xp += 1
@@ -254,7 +254,7 @@ master func change_health(player_id, current_health, attacker):
 			xp -= 50
 			revive_health += 100
 			health = revive_health
-			barrel_heat_rate += 10
+			barrel_heat_rate -= 2
 
 master func killed_server():
 	print("dead")
@@ -285,6 +285,7 @@ puppet func revived():
 	print(Network.player_list[player_id].name," revived")
 	health = revive_health
 	Global.emit_signal("change_health", player_id, health)
+	# FIXME update other players when revived
 	
 # may cause problems when running LAN because it is suppose to be puppet
 remote func update_state(p_position, p_velocity, p_rotation):
