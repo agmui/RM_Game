@@ -1,12 +1,14 @@
 extends Spatial
 
 var player = preload("res://scenes/Player.tscn")
+var sentry = preload("res://scenes/Sentry.tscn")
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
 	
 	Global.connect("instance_player", self, "_instance_player")
+	Global.connect("spawn_sentry", self, "spawn_sentry")
 
 	# OS.window_fullscreen = true
 	
@@ -24,6 +26,19 @@ func _instance_player(id, cord, team):
 	
 	add_child(player_instance)
 	player_instance.global_transform.origin = Vector3(cord[0], 5, cord[1])
+
+func spawn_sentry():
+	var blue_sentry = sentry.instance()
+	# blue_sentry.transform = [0,0,0]
+	var red_sentry = sentry.instance()
+	blue_sentry.global_transform.origin = Vector3(-1.6, 1.65, -3.41) #FIXME colides with rail
+	blue_sentry.rotation.y = deg2rad(45)
+	blue_sentry.team = "blue"
+	red_sentry.global_transform.origin = Vector3(1.22, 1.65, 3.77) 
+	red_sentry.rotation.y = deg2rad(-135)
+	blue_sentry.team = "red"
+	add_child(blue_sentry)
+	add_child(red_sentry)
 
 
 func _player_connected(id):

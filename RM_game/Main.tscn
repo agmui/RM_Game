@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Skybox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/NetworkSetup.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Sentry.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Base.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Spatial"]
@@ -243,14 +242,6 @@ margin_right = -57.0
 margin_bottom = 240.0
 rect_scale = Vector2( 5.01198, 5.01198 )
 text = "online"
-
-[node name="SentryRed" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.65812, 1.65563, -3.41411 )
-team = "red"
-
-[node name="SentryBlue" parent="." instance=ExtResource( 5 )]
-transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 1.22907, 1.65563, 3.77036 )
-team = "blue"
 
 [node name="RedBase" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.5, 0.5, -4.5 )

@@ -30,10 +30,6 @@ func _ready():
 
 	# changes skin color
 	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
-	Global.connect("spawn_sentry", self, "_start_timer")
-
-func _start_timer():
-	$NetworkTickRate.start()
 
 func _physics_process(delta):
 	if is_network_master() and !Global.server: # FIXME it is calling is_network_master() before game starts
