@@ -10,6 +10,7 @@ var server:bool = false
 var player_pos = {}
 var blue_sentry_alive = true
 var red_sentry_alive = true
+var debug = true
 
 func _input(event):
 	if event is InputEventKey:

@@ -29,14 +29,9 @@ func _instance_player(id, cord, team):
 
 func spawn_sentry():
 	var blue_sentry = sentry.instance()
-	# blue_sentry.transform = [0,0,0]
 	var red_sentry = sentry.instance()
-	blue_sentry.global_transform.origin = Vector3(-1.6, 1.65, -3.41) #FIXME colides with rail
-	blue_sentry.rotation.y = deg2rad(45)
-	blue_sentry.team = "blue"
-	red_sentry.global_transform.origin = Vector3(1.22, 1.65, 3.77) 
-	red_sentry.rotation.y = deg2rad(-135)
 	blue_sentry.team = "red"
+	red_sentry.team = "blue"
 	add_child(blue_sentry)
 	add_child(red_sentry)
 

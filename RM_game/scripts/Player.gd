@@ -18,8 +18,10 @@ var barrel_heat_rate = 10
 var head_acc = 0 # when the player dies or overheats just have the head exponetaly plop down
 var xp = 0
 var lv = 1
-var num_bullets = 0#100
+var num_bullets = 0
 var money = 200
+
+var debug = true
 
 
 var UI = preload("res://scenes/UI.tscn").instance()
@@ -38,11 +40,15 @@ var puppet_rotation = Vector2()
 #export(NodePath) onready var health_bar = get_node(health_bar) as TextureProgress
 
 func _ready():
+	# debugging======
+	if Global.debug:
+		barrel_heat_rate = 1
+		num_bullets = 200
+	#===============
 	if is_network_master():
 		# UI = preload("res://scenes/UI.tscn").instance()
 
 		Global.connect("change_health", self, "change_health")
-		Global.connect("gain_xp", self, "gain_xp")
 		Global.connect("add_bullets", self, "add_bullets")
 		$Head_Pivot/Camera.add_child(UI)
 		UI.change_health(health)
@@ -240,9 +246,9 @@ master func change_health(player_id, current_health, attacker):
 		"blue_base":
 			UI.change_base(player_id, current_health)
 		_:
-			print("changing health for ",Network.player_list[player_id].name)
+			# print("changing health for ",Network.player_list[player_id].name)
 			UI.change_enemy_health(player_id, current_health)
-	if attacker == str(id): # FIXME
+	if str(attacker) == str(id): # FIXME
 		# add xp for attacker
 		print("add xp for ", attacker)
 		xp += 1
@@ -275,7 +281,7 @@ puppet func update_beyblade():
 	$PanelHitbox.rotation.y -= .08
 
 puppet func overheat():
-	print(Network.player_list[get_tree().get_rpc_sender_id()]," overheated")
+	print(Network.player_list[get_tree().get_rpc_sender_id()].name," overheated")
 
 puppet func killed_player(killer):
 	print(Network.player_list[get_tree().get_rpc_sender_id()].name," was killed by ", killer)

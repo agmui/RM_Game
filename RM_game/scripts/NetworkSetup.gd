@@ -59,6 +59,7 @@ func _on_Join_pressed():
 		return
 	$Lan.hide()
 	$Connections/HBoxContainer/StartButton.disabled = true
+	yield(get_tree().create_timer(0.1), "timeout") # wait to connect to server
 	Network.set_player_team(0)
 	refresh_lobby()
 	$Connections.show()

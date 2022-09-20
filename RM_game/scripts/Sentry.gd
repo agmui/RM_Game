@@ -25,8 +25,16 @@ var puppet_velocity = Vector3.ZERO
 var puppet_rotation = Vector2.ZERO
 
 func _ready():
+	if Global.debug:
+		health = 60
 	# Global.connect("change_health", self, "change_health")
 	rng.randomize()
+	if team == "blue":
+		global_transform.origin = Vector3(1.22, 1.65, 3.77) 
+		rotation.y = deg2rad(-135)
+	else:
+		global_transform.origin = Vector3(-1.6, 1.65, -3.41) #FIXME colides with rail
+		rotation.y = deg2rad(45)
 
 	# changes skin color
 	#$Pivot.add_child(blue_standard if team=="blue" else red_standard)
@@ -123,14 +131,14 @@ func _on_PanelHitbox_body_entered(body):
 				else:
 					Global.red_sentry_alive = false
 				rpc("killed_lan", team)
-			rpc_unreliable("hit_panel", team, health) #tell other senttry
+			rpc_unreliable("hit_panel", team, health, body.player_owner) #tell other senttry
 			Global.emit_signal("change_health", team+"_sentry", health, body.player_owner) #tell master player ui sentry got hit
 
-puppet func hit_panel(other_team, current_health):
+puppet func hit_panel(other_team, current_health, attacker):
 	#STEP 2 
-	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
+	Global.emit_signal("change_health", other_team+"_sentry", current_health, attacker) #tell master player ui sentry got hit
 
-remote func hit_panel_server(other_team, current_health):
+remote func hit_panel_server(other_team, current_health): #FIXME may need attacker argument
 	#STEP 2 for server
 	Global.emit_signal("change_health", other_team+"_sentry", current_health) #tell master player ui sentry got hit
 	print(team, " Sentry is taking dmg")

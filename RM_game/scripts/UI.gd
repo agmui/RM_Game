@@ -7,20 +7,25 @@ var paused = false
 func _ready():
 	$SettingsPanel/MouseSensText.text = String(mouse_sensitivity)
 	$SettingsPanel/MouseSensSlider.value = mouse_sensitivity
-	# pass
+
 	$Bars/enemyBar2.hide()
+	var enemy1_taken:bool = false
 	for id in Network.player_list.keys():
 		var p = Network.player_list[id]
 		var personal_id = get_tree().get_network_unique_id()
+		#skip yourself
+		if id == personal_id:
+			pass
 		#same team
-		if id !=  personal_id && p.team == Network.player_list[personal_id].team:
+		elif p.team == Network.player_list[personal_id].team:
 			id_to_player[id] = $Bars/teamateBar
 		#diffrent team
-		elif p.team_id == 1:
+		elif !enemy1_taken:
 			id_to_player[id] = $Bars/enemyBar
+			enemy1_taken = true
 		else:
 			id_to_player[id] = $Bars/enemyBar2
-	if len(id_to_player) >= 2:
+	if len(id_to_player) >= 2:#FIXME
 		$Bars/enemyBar2.show()
 
 func change_health(health):
@@ -47,7 +52,6 @@ func set_heat(heat_value):
 		$Bars/HeatWhite.value = heat_value
 
 func change_enemy_health(id, health):
-	print(id)
 	id_to_player[id].value = health
 
 func change_sentry(team, health):
@@ -127,7 +131,6 @@ func _on_Buy150_pressed():
 
 func _on_Buy200_pressed():
 	Global.emit_signal("add_bullets", 200)
-	print("hi")
 	_on_Exit_pressed()
 
 func _on_Exit_pressed():

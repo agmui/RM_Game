@@ -31,11 +31,11 @@ func _on_PanelHitbox_body_entered(body):
 				dead = true
 				if !Global.server:
 					rpc_unreliable("killed ", team, " Base")
-			rpc_unreliable("hit_panel", team, health) #tell other base
-			Global.emit_signal("change_health", team+"_base", health) #tell master player ui sentry got hit
+			rpc_unreliable("hit_panel", team, health, body.player_owner) #tell other base
+			Global.emit_signal("change_health", team+"_base", health, body.player_owner) #tell master player ui sentry got hit
 
-puppet func hit_panel(other_team, current_health):
-	Global.emit_signal("change_health", other_team+"_base", current_health) #tell master player ui sentry got hit
+puppet func hit_panel(other_team, current_health, attacker):
+	Global.emit_signal("change_health", other_team+"_base", current_health, attacker) #tell master player ui sentry got hit
 
 master func killed(t):
 	if team == t:

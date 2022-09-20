@@ -8,8 +8,10 @@ height = 0.75
 radius = 0.41
 
 [sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.072078, 0.0563931, 0.0415351 )
 
 [sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.072078, 0.0563931, 0.0415351 )
 
 [node name="Base" type="StaticBody"]
 script = ExtResource( 2 )
@@ -20,16 +22,16 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0 )
 shape = SubResource( 1 )
 
-[node name="PanelHitbox" type="Area" parent="."]
+[node name="PanelHitbox" type="Area" parent="." groups=["plate"]]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionHitbox1" type="CollisionShape" parent="PanelHitbox"]
-transform = Transform( 0.08, 0, 0, 0, 0.0474729, 0.00784733, 0, -0.0156947, 0.0237365, 0, 0.493765, 0.152687 )
+[node name="CollisionHitbox1" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
+transform = Transform( 1, 0, 0, 0, 0.949458, 0.313894, 0, -0.313894, 0.949458, 0, 0.489856, 0.152687 )
 shape = SubResource( 3 )
 
-[node name="CollisionHitbox2" type="CollisionShape" parent="PanelHitbox"]
-transform = Transform( 0.0375257, 0.0115193, 0.0213145, -0.000839793, 0.0483381, -0.00638659, -0.0706479, 0.00554403, 0.0113975, -0.132605, 0.489885, -0.0834289 )
+[node name="CollisionHitbox2" type="CollisionShape" parent="PanelHitbox" groups=["plate"]]
+transform = Transform( 0.469832, 0.268772, 0.840845, 0.0187242, 0.949274, -0.313893, -0.882557, 0.163221, 0.440967, -0.132605, 0.489885, -0.0775434 )
 shape = SubResource( 4 )
 
 [connection signal="body_entered" from="PanelHitbox" to="." method="_on_PanelHitbox_body_entered"]

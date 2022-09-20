@@ -43,17 +43,19 @@ func _integrate_forces(state):
 			# Should put the object inside the wall a little,
 			# so it can be detected.
 			
-			
-			state.set_transform(Transform.translated(cast_result.position))
-			apply_impulse(lv*.9, -lv*.9)  # applys a sudden push backwards to bullet 
+			var translated_vector = Vector3(current_pos - cast_result.position).normalized()
+			# state.set_transform(Transform.translated(cast_result.position))
+			state.set_transform(Transform.translated(current_pos + translated_vector))
+			var pull_back = 0.9# have the bullet come back a sec or else it will phase though the wall
+			apply_impulse(lv*pull_back, -lv*pull_back)  # applys a sudden push backwards to bullet 
 
 			# do_bullet_impact_here()
 			# sleeping = true
 			return
 
 func _on_Area_body_entered(body):  # collision detection
-	if !body.is_in_group("players") or !body.is_in_group("sentry"):
-		# print(get_tree().get_network_unique_id(), " says that: ", body, " has been hit")
+	if !body.is_in_group("plate"):#!body.is_in_group("players") or !body.is_in_group("sentry") or !body.is_in_group("base"):
+		print(get_tree().get_network_unique_id(), " says that: ", body, " has been hit")
 		queue_free()
 	visible = false #FIXME
 
