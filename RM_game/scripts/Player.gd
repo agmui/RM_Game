@@ -20,6 +20,7 @@ var xp = 0
 var lv = 1
 var num_bullets = 0
 var money = 200
+var health_packs = 0
 
 var debug = true
 
@@ -202,12 +203,26 @@ func _on_PanelHitbox_body_entered(body):
 
 
 func _on_rfid_area_entered(area):
-	if area.name == team and is_network_master():
+	if !is_network_master():
+		return
+	if area.name == team:
 		UI.toggle_buy_screen(true)
-
+	elif area.name == "CenterBuff":
+		$health_pack.start()
+		
+func _on_health_pack_timeout():
+	health_packs += 1
+	#$health_pack.start()
+	$health_pack.start()
+	
 func _on_rfid_area_exited(area):
-	if area.name == team and is_network_master():
+	if !is_network_master():
+		return
+	if area.name == team:
 		UI.toggle_buy_screen(false)
+	elif area.name == "CenterBuff":
+		$health_pack.stop()
+		#$health_pack.set(1)
 
 func add_bullets(add_num):
 	num_bullets += add_num
@@ -314,3 +329,6 @@ func _on_NetworkTickRate_timeout():
 			UI.set_heat(barrel_heat)
 	else:
 		$NetworkTickRate.stop()
+
+
+

@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &687078895
+SpriteAtlas:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SchoolAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300002, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300004, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300006, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300008, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300010, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300012, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300014, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300016, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300018, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300020, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300022, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300024, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300026, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300028, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300030, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300032, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300034, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300036, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300038, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300040, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300042, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300044, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300046, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300048, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300050, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300052, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300054, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300056, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300058, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300060, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300062, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300064, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300066, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300068, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300070, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300072, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300074, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300076, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300078, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300080, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300082, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300084, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300086, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300088, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300090, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300092, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300094, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300096, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300098, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300100, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300102, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300104, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300106, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300108, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300110, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300112, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    - {fileID: 21300114, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300002, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300004, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300006, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300008, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300010, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300012, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300014, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300016, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300018, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300020, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300022, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300024, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300026, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300028, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300030, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300032, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300034, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300036, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300038, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300040, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300042, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300044, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300046, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300048, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300050, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300052, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300054, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300056, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300058, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300060, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300062, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300064, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300066, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300068, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300070, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300072, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300074, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300076, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300078, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300080, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300082, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300084, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300086, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300088, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300090, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300092, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300094, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300096, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300098, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300100, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300102, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300104, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300106, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300108, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300110, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300112, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  - {fileID: 21300114, guid: a53634f5998f3cb4792362c24b04fb2e, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 山东科技大学
+  - 同济大学
+  - 加州大学圣地亚哥
+  - 东南大学
+  - 上理中英
+  - 香港科技大学
+  - 西安电子科技大学
+  - 北京理工珠海学院
+  - 华南理工大学
+  - school_red
+  - 北京理工大学
+  - 弗吉尼亚理工大学
+  - 粤台&中正
+  - 深圳大学
+  - 佛山科学技术学院
+  - 麦克马斯特
+  - 浙大-UIUC
+  - 东北大学
+  - 俄亥俄州立
+  - 桂林电子科技大学
+  - 中央民族大学
+  - 华南农业大学
+  - 大连交通大学
+  - 宁波诺丁汉大学
+  - 哈工大威海
+  - 普渡大学
+  - 德州农工
+  - 华北理工大学
+  - 福冈联合大学
+  - 西南民族大学
+  - 香港大学
+  - 电子科技大学
+  - 太原理工大学
+  - 罗斯霍曼理工学院
+  - 西北工业大学
+  - 女王大学
+  - 西浦&利大
+  - 燕山大学
+  - 南京理工大学
+  - 哈尔滨工程大学
+  - school_blue
+  - 中石油（华东）
+  - 华盛顿大学
+  - 华中科技大学
+  - 北方工业大学
+  - 福建工程学院
+  - 四川大学
+  - 浙江大学
+  - 西安交通大学
+  - 哈尔滨工业大学
+  - 华北科技学院
+  - 东北林业大学
+  - 河北科技大学
+  - 太原工业学院
+  - 西北农林科技大学
+  - 浙江纺织服装职院
+  - 上海交通大学
+  - 中国矿业大学
+  m_Tag: SchoolAtlas
+  m_IsVariant: 0

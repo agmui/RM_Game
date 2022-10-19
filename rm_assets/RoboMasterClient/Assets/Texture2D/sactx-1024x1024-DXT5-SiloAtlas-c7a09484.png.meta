@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 76dcf299f29d8da428cf30f8c78a7e48
+timeCreated: 1666170901
+licenseType: Free
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: silo_border_green
+  - first:
+      213: 21300002
+    second: silo_background_2
+  - first:
+      213: 21300004
+    second: silo_border_normal
+  - first:
+      213: 21300006
+    second: silo_border_red
+  - first:
+      213: 21300008
+    second: silo_icon_darts
+  - first:
+      213: 21300010
+    second: silo_background_1
+  - first:
+      213: 21300012
+    second: silo_icon_aim
+  - first:
+      213: 21300014
+    second: silo_border_big
+  - first:
+      213: 21300016
+    second: silo_icon_speed
+  externalObjects: {}
+  usedFileIDs: []
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 12
+  maxTextureSize: 1024
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: silo_border_green
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 68
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: -24}
+        - {x: -24, y: -23}
+        - {x: -24, y: 23}
+        - {x: -23, y: 24}
+        - {x: 23, y: 24}
+        - {x: 24, y: 23}
+        - {x: 24, y: -23}
+        - {x: 23, y: -24}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccfbccf90754ec8b8a35d66db27f43c
+      internalID: 21300000
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silo_background_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 448
+        height: 620
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 219, y: -310}
+        - {x: -224, y: -310}
+        - {x: -224, y: 310}
+        - {x: 219, y: 310}
+        - {x: 224, y: 305}
+        - {x: 224, y: -304}
+      physicsShape:
+      - - {x: -224, y: 310}
+        - {x: -224, y: -310}
+        - {x: 217, y: -310}
+        - {x: 224, y: -306}
+        - {x: 224, y: 308}
+        - {x: 219, y: 310}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb24c421f2844a94a1bbc0a4d4732df7
+      internalID: 21300002
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silo_border_normal
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 120
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24, y: -24}
+        - {x: -24, y: -24}
+        - {x: -24, y: 24}
+        - {x: 24, y: 24}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5381061d421429fa4a5a177ba3a010f
+      internalID: 21300004
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silo_border_red
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 172
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: -24}
+        - {x: -24, y: -23}
+        - {x: -24, y: 23}
+        - {x: -23, y: 24}
+        - {x: 23, y: 24}
+        - {x: 24, y: 23}
+        - {x: 24, y: -23}
+        - {x: 23, y: -24}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0581a4198a1e47ef83917587afa8ac65
+      internalID: 21300006
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silo_icon_darts
+      rect:
+        serializedVersion: 2
+        x: 452.0761
+        y: 224.0761
+        width: 29.84776
+        height: 29.84776
+      alignment: 9
+      pivot: {x: 0.5335034, y: 0.5335034}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: -15}
+        - {x: -15, y: -7}
+        - {x: -15, y: 4}
+        - {x: -14, y: 9}
+        - {x: 0, y: 15}
+        - {x: 15, y: 15}
+        - {x: 15, y: 1}
+        - {x: 1, y: -15}
+      physicsShape:
+      - - {x: 3, y: 9}
+        - {x: -8.999999, y: 3}
+        - {x: -14, y: 0}
+        - {x: -14, y: -5}
+        - {x: -7, y: -14}
+        - {x: 0, y: -14}
+        - {x: 4, y: -11}
+        - {x: 9, y: -1}
+        - {x: 9, y: 4}
+        - {x: 6, y: 9}
+      - - {x: 8, y: 14}
+        - {x: 5, y: 11}
+        - {x: 5, y: 7}
+        - {x: 8, y: 5}
+        - {x: 13, y: 5}
+        - {x: 13, y: 6}
+        - {x: 14, y: 8}
+        - {x: 14, y: 14}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962c37cd9a724fe6b9d19d6851cbf17f
+      internalID: 21300008
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silo_background_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 624
+        width: 448
+        height: 340
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 219, y: -170}
+        - {x: -224, y: -170}
+        - {x: -224, y: 170}
+        - {x: 219, y: 170}
+        - {x: 224, y: 164}
+        - {x: 224, y: -165}
+      physicsShape:
+      - - {x: -224, y: 170}
+        - {x: -224, y: -170}
+        - {x: 224, y: -170}
+        - {x: 224, y: 170}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3bdff65e05a4cae94ef354d8590cd43
+      internalID: 21300010
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silo_icon_aim
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: -16}
+        - {x: -16, y: -14}
+        - {x: -16, y: 13}
+        - {x: -11, y: 16}
+        - {x: 14, y: 16}
+        - {x: 16, y: 14}
+        - {x: 16, y: -12}
+        - {x: 12, y: -16}
+      physicsShape:
+      - - {x: -12, y: 16}
+        - {x: -16, y: 14}
+        - {x: -16, y: -16}
+        - {x: 14, y: -16}
+        - {x: 16, y: -15}
+        - {x: 16, y: 14}
+        - {x: 11, y: 16}
+      - - {x: -5, y: 2}
+        - {x: 5, y: 2}
+        - {x: 3, y: -4}
+        - {x: -2, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c53d5f9cea844a29bfe4c38dbdc1f243
+      internalID: 21300012
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silo_border_big
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32, y: -32}
+        - {x: -32, y: -32}
+        - {x: -32, y: 31}
+        - {x: -31, y: 32}
+        - {x: 32, y: 32}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8402f5bedf4d4b08b542e839a475a8a6
+      internalID: 21300014
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silo_icon_speed
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 258.0268
+        width: 31.92388
+        height: 25.9465
+      alignment: 9
+      pivot: {x: 0.5011922, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.03806, y: -13}
+        - {x: -15.96194, y: -13}
+        - {x: -15.96194, y: -1}
+        - {x: -6.96194, y: 0}
+        - {x: -15.96194, y: 1}
+        - {x: -15.96194, y: 10}
+        - {x: -14.96194, y: 12}
+        - {x: -6.96194, y: 13}
+        - {x: 11.03806, y: 13}
+        - {x: 15.03806, y: 11}
+        - {x: 16.03806, y: 9}
+        - {x: 16.03806, y: 3}
+        - {x: 11.03806, y: 0}
+        - {x: 16.03806, y: -3}
+      physicsShape:
+      - - {x: -5.96194, y: -1}
+        - {x: -7.96194, y: -3}
+        - {x: -7.96194, y: -12}
+        - {x: 12.03806, y: -12}
+        - {x: 15.03806, y: -11}
+        - {x: 15.03806, y: -4}
+        - {x: 10.03806, y: -1}
+      - - {x: -7.96194, y: 12}
+        - {x: -7.96194, y: 1}
+        - {x: 13.03806, y: 1}
+        - {x: 15.03806, y: 6}
+        - {x: 15.03806, y: 9}
+        - {x: 8.03806, y: 12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 983c28eb4bef4c69a91930f8be7308c2
+      internalID: 21300016
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID:
+    internalID: 0
+    vertices: []
+    indices:
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag:
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData:
+  assetBundleName:
+  assetBundleVariant:

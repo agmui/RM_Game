@@ -47,6 +47,8 @@ wait_time = 5.0
 [node name="OverheatTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="health_pack" type="Timer" parent="."]
+
 [node name="PanelHitbox" type="Area" parent="." groups=["plate"]]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 collision_layer = 0
@@ -94,6 +96,7 @@ autostart = true
 [connection signal="timeout" from="FireCooldown" to="." method="_on_FireCooldown_timeout"]
 [connection signal="timeout" from="ReviveTimer" to="." method="_on_ReviveTimer_timeout"]
 [connection signal="timeout" from="OverheatTimer" to="." method="_on_OverheatTimer_timeout"]
+[connection signal="timeout" from="health_pack" to="." method="_on_health_pack_timeout"]
 [connection signal="body_entered" from="PanelHitbox" to="." method="_on_PanelHitbox_body_entered"]
 [connection signal="area_entered" from="rfid" to="." method="_on_rfid_area_entered"]
 [connection signal="area_exited" from="rfid" to="." method="_on_rfid_area_exited"]

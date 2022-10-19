@@ -1,0 +1,1724 @@
+fileFormatVersion: 2
+guid: 42f0cb55e4625d145b7d0c1f3fbcb11b
+timeCreated: 1666170900
+licenseType: Free
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: sundry_speed_1_online
+  - first:
+      213: 21300002
+    second: sundry_rfid_online
+  - first:
+      213: 21300004
+    second: sundry_armor_3_online
+  - first:
+      213: 21300006
+    second: sundry_rfid_offline
+  - first:
+      213: 21300008
+    second: sundry_armor_3_offline
+  - first:
+      213: 21300010
+    second: sundry_dart_offline
+  - first:
+      213: 21300012
+    second: sundry_uwb_online
+  - first:
+      213: 21300014
+    second: sundry_speed_2_online
+  - first:
+      213: 21300016
+    second: sundry_gray
+  - first:
+      213: 21300018
+    second: sundry_offline
+  - first:
+      213: 21300020
+    second: sundry_armor_1_offline
+  - first:
+      213: 21300022
+    second: sundry_golf
+  - first:
+      213: 21300024
+    second: sundry_uwb_offline
+  - first:
+      213: 21300026
+    second: sundry_bg
+  - first:
+      213: 21300028
+    second: sundry_online
+  - first:
+      213: 21300030
+    second: sundry_icon
+  - first:
+      213: 21300032
+    second: sundry_dart_online
+  - first:
+      213: 21300034
+    second: sundry_speed_1_offline
+  - first:
+      213: 21300036
+    second: sundry_armor_4_online
+  - first:
+      213: 21300038
+    second: sundry_armor_1_online
+  - first:
+      213: 21300040
+    second: sundry_armor_4_offline
+  - first:
+      213: 21300042
+    second: sundry_hud_online
+  - first:
+      213: 21300044
+    second: sundry_hud_offline
+  - first:
+      213: 21300046
+    second: sundry_bullet
+  - first:
+      213: 21300048
+    second: sundry_key
+  - first:
+      213: 21300050
+    second: sundry_armor_2_offline
+  - first:
+      213: 21300052
+    second: sundry_armor_2_online
+  - first:
+      213: 21300054
+    second: sundry_speed_2_offline
+  externalObjects: {}
+  usedFileIDs: []
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 12
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sundry_speed_1_online
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1580
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -40, y: 6}
+        - {x: -40, y: -16}
+        - {x: -38, y: -17}
+        - {x: -33, y: -17}
+        - {x: -25, y: -9}
+        - {x: -25, y: 3}
+        - {x: -27, y: 6}
+      - - {x: -58, y: 11}
+        - {x: -60, y: 7}
+        - {x: -60, y: -11}
+        - {x: -57, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: 7}
+        - {x: -44, y: 11}
+      - - {x: -23, y: 0}
+        - {x: -23, y: -9}
+        - {x: -21, y: -12}
+        - {x: -11, y: -12}
+        - {x: -7, y: -11}
+        - {x: -7, y: 4}
+        - {x: -8, y: 6}
+        - {x: -19, y: 6}
+        - {x: -22, y: 3}
+      - - {x: 6, y: 6}
+        - {x: 0, y: 6}
+        - {x: -5, y: 2}
+        - {x: -5, y: -8}
+        - {x: -1, y: -12}
+        - {x: 6, y: -12}
+        - {x: 9.999999, y: -8}
+        - {x: 9.999999, y: 3}
+      - - {x: 21, y: 11}
+        - {x: 12, y: 5}
+        - {x: 12, y: -11}
+        - {x: 17, y: -12}
+        - {x: 28, y: -12}
+        - {x: 28, y: 11}
+      - - {x: 43, y: 11}
+        - {x: 41, y: 9}
+        - {x: 41, y: -12}
+        - {x: 56, y: -12}
+        - {x: 56, y: -3}
+        - {x: 52, y: 11}
+      - - {x: -33, y: -1}
+        - {x: -32, y: -1}
+        - {x: -32, y: -5}
+        - {x: -33, y: -5}
+      - - {x: 20, y: -1}
+        - {x: 21, y: -1}
+        - {x: 21, y: -5}
+        - {x: 20, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57f0e98a5a848b39efeadd150897379
+      internalID: 21300000
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_rfid_online
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1648
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -34, y: 11}
+        - {x: -34, y: -12}
+        - {x: -16, y: -12}
+        - {x: -16, y: 8}
+        - {x: -17, y: 11}
+      - - {x: -13, y: 11}
+        - {x: -13, y: -12}
+        - {x: -5, y: -12}
+        - {x: 2, y: -8}
+        - {x: 2, y: 11}
+      - - {x: 4, y: 11}
+        - {x: 4, y: -12}
+        - {x: 11, y: -12}
+        - {x: 11, y: 11}
+      - - {x: 14, y: 11}
+        - {x: 14, y: -12}
+        - {x: 28, y: -12}
+        - {x: 31, y: -11}
+        - {x: 31, y: 7}
+        - {x: 27, y: 11}
+      - - {x: 21, y: 4}
+        - {x: 24, y: 4}
+        - {x: 24, y: -5}
+        - {x: 21, y: -5}
+      - - {x: -26, y: 4}
+        - {x: -24, y: 4}
+        - {x: -24, y: 3}
+        - {x: -26, y: 3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f619c75136464e42a2622979a6b14c64
+      internalID: 21300002
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_armor_3_online
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1716
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -48, y: 11}
+        - {x: -54, y: 11}
+        - {x: -57, y: 9.999999}
+        - {x: -62, y: -9.999999}
+        - {x: -62, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: -7}
+        - {x: -47, y: 7}
+      - - {x: -40, y: 6}
+        - {x: -40, y: -12}
+        - {x: -28, y: -12}
+        - {x: -26, y: -11}
+        - {x: -26, y: 4}
+        - {x: -28, y: 6}
+      - - {x: -25, y: 6}
+        - {x: -25, y: -12}
+        - {x: -3, y: -12}
+        - {x: -3, y: 3}
+        - {x: -6, y: 6}
+      - - {x: 9.999999, y: 6}
+        - {x: 3, y: 6}
+        - {x: 0, y: 3}
+        - {x: -1, y: 0}
+        - {x: -1, y: -8}
+        - {x: 3, y: -12}
+        - {x: 14, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: 4}
+        - {x: 13, y: 5}
+      - - {x: 29, y: 6}
+        - {x: 17, y: 6}
+        - {x: 17, y: -12}
+        - {x: 23, y: -12}
+        - {x: 30, y: -3}
+        - {x: 31, y: 0}
+        - {x: 31, y: 5}
+      - - {x: 42, y: 11}
+        - {x: 42, y: -12}
+        - {x: 55, y: -12}
+        - {x: 58, y: -11}
+        - {x: 58, y: 9.999999}
+        - {x: 55, y: 11}
+      - - {x: 7, y: -1}
+        - {x: 8, y: -1}
+        - {x: 8, y: -5}
+        - {x: 7, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce14d4fcdc224d42ab19466293904e11
+      internalID: 21300004
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_rfid_offline
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1580
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -34, y: 11}
+        - {x: -34, y: -12}
+        - {x: -16, y: -12}
+        - {x: -16, y: 8}
+        - {x: -17, y: 11}
+      - - {x: -13, y: 11}
+        - {x: -13, y: -12}
+        - {x: -5, y: -12}
+        - {x: 2, y: -8}
+        - {x: 2, y: 11}
+      - - {x: 4, y: 11}
+        - {x: 4, y: -12}
+        - {x: 11, y: -12}
+        - {x: 11, y: 11}
+      - - {x: 14, y: 11}
+        - {x: 14, y: -12}
+        - {x: 28, y: -12}
+        - {x: 31, y: -11}
+        - {x: 31, y: 7}
+        - {x: 27, y: 11}
+      - - {x: 21, y: 4}
+        - {x: 24, y: 4}
+        - {x: 24, y: -5}
+        - {x: 21, y: -5}
+      - - {x: -26, y: 4}
+        - {x: -24, y: 4}
+        - {x: -24, y: 3}
+        - {x: -26, y: 3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac22bfd219954bc098e6bac3744128a9
+      internalID: 21300006
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_armor_3_offline
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1784
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -48, y: 11}
+        - {x: -54, y: 11}
+        - {x: -57, y: 9.999999}
+        - {x: -62, y: -9.999999}
+        - {x: -62, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: -7}
+        - {x: -47, y: 7}
+      - - {x: -40, y: 6}
+        - {x: -40, y: -12}
+        - {x: -28, y: -12}
+        - {x: -26, y: -11}
+        - {x: -26, y: 4}
+        - {x: -28, y: 6}
+      - - {x: -25, y: 6}
+        - {x: -25, y: -12}
+        - {x: -3, y: -12}
+        - {x: -3, y: 3}
+        - {x: -6, y: 6}
+      - - {x: 9.999999, y: 6}
+        - {x: 3, y: 6}
+        - {x: 0, y: 3}
+        - {x: -1, y: 0}
+        - {x: -1, y: -8}
+        - {x: 3, y: -12}
+        - {x: 14, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: 4}
+        - {x: 13, y: 5}
+      - - {x: 29, y: 6}
+        - {x: 17, y: 6}
+        - {x: 17, y: -12}
+        - {x: 23, y: -12}
+        - {x: 30, y: -3}
+        - {x: 31, y: 0}
+        - {x: 31, y: 5}
+      - - {x: 42, y: 11}
+        - {x: 42, y: -12}
+        - {x: 55, y: -12}
+        - {x: 58, y: -11}
+        - {x: 58, y: 9.999999}
+        - {x: 55, y: 11}
+      - - {x: 7, y: -1}
+        - {x: 8, y: -1}
+        - {x: 8, y: -5}
+        - {x: 7, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244a9ee196534ddda1d03f627a510297
+      internalID: 21300008
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_dart_offline
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1648
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -33, y: 11}
+        - {x: -33, y: -12}
+        - {x: -16, y: -12}
+        - {x: -15, y: -9.999999}
+        - {x: -15, y: 9.999999}
+        - {x: -17, y: 11}
+      - - {x: -14, y: 6}
+        - {x: -14, y: -12}
+        - {x: 2, y: -12}
+        - {x: 2, y: 6}
+      - - {x: 31, y: 11}
+        - {x: 11, y: 11}
+        - {x: 5, y: 9}
+        - {x: 5, y: -9.999999}
+        - {x: 7, y: -12}
+        - {x: 9, y: -12}
+        - {x: 11, y: -9.999999}
+        - {x: 16, y: -12}
+        - {x: 31, y: -12}
+      - - {x: -25, y: 4}
+        - {x: -23, y: 4}
+        - {x: -23, y: -5}
+        - {x: -25, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71cc3b72cbba4278a73c5eb29d623390
+      internalID: 21300010
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_uwb_online
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1852
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -32, y: 11}
+        - {x: -32, y: -11}
+        - {x: -30, y: -12}
+        - {x: -18, y: -12}
+        - {x: -15, y: -9.999999}
+        - {x: -15, y: 11}
+      - - {x: 9.999999, y: 11}
+        - {x: -14, y: 11}
+        - {x: -14, y: 0}
+        - {x: -9, y: -12}
+        - {x: 6, y: -12}
+        - {x: 9, y: -11}
+        - {x: 12, y: 9}
+      - - {x: 15, y: 11}
+        - {x: 13, y: 9}
+        - {x: 13, y: -12}
+        - {x: 28, y: -12}
+        - {x: 30, y: -9.999999}
+        - {x: 30, y: 8}
+        - {x: 26, y: 11}
+      - - {x: 20, y: -4}
+        - {x: 23, y: -4}
+        - {x: 22, y: -5}
+        - {x: 20, y: -5}
+      - - {x: 23, y: 4}
+        - {x: 20, y: 4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7bbfc8ea7946739da721820ff60423
+      internalID: 21300012
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_speed_2_online
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1580
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -40, y: 6}
+        - {x: -40, y: -16}
+        - {x: -38, y: -17}
+        - {x: -33, y: -17}
+        - {x: -25, y: -9}
+        - {x: -25, y: 3}
+        - {x: -27, y: 6}
+      - - {x: -58, y: 11}
+        - {x: -60, y: 7}
+        - {x: -60, y: -11}
+        - {x: -57, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: 7}
+        - {x: -44, y: 11}
+      - - {x: -23, y: 0}
+        - {x: -23, y: -9}
+        - {x: -21, y: -12}
+        - {x: -11, y: -12}
+        - {x: -7, y: -11}
+        - {x: -7, y: 4}
+        - {x: -8, y: 6}
+        - {x: -19, y: 6}
+        - {x: -22, y: 3}
+      - - {x: 6, y: 6}
+        - {x: 0, y: 6}
+        - {x: -5, y: 2}
+        - {x: -5, y: -8}
+        - {x: -1, y: -12}
+        - {x: 6, y: -12}
+        - {x: 9.999999, y: -8}
+        - {x: 9.999999, y: 3}
+      - - {x: 21, y: 11}
+        - {x: 12, y: 5}
+        - {x: 12, y: -11}
+        - {x: 17, y: -12}
+        - {x: 28, y: -12}
+        - {x: 28, y: 11}
+      - - {x: 44, y: 11}
+        - {x: 40, y: 9}
+        - {x: 40, y: -12}
+        - {x: 54, y: -12}
+        - {x: 56, y: -11}
+        - {x: 56, y: 7}
+        - {x: 54, y: 11}
+      - - {x: -33, y: -1}
+        - {x: -32, y: -1}
+        - {x: -32, y: -5}
+        - {x: -33, y: -5}
+      - - {x: 20, y: -1}
+        - {x: 21, y: -1}
+        - {x: 21, y: -5}
+        - {x: 20, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78fd110fda1e4106b7c96c7e857de684
+      internalID: 21300014
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_gray
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 0
+        width: 152
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76, y: -16}
+        - {x: -76, y: 16}
+        - {x: 76, y: 16}
+        - {x: 76, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbffa7a8425f49819d76dcad68dd94c5
+      internalID: 21300016
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_offline
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 36
+        width: 152
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76, y: -16}
+        - {x: -76, y: -16}
+        - {x: -76, y: 16}
+        - {x: 76, y: 16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddbb3f66c0dd40dcb15d2676bb5c2f46
+      internalID: 21300018
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_armor_1_offline
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1716
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -48, y: 11}
+        - {x: -54, y: 11}
+        - {x: -57, y: 9.999999}
+        - {x: -62, y: -9.999999}
+        - {x: -62, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: -7}
+        - {x: -47, y: 7}
+      - - {x: -40, y: 6}
+        - {x: -40, y: -12}
+        - {x: -28, y: -12}
+        - {x: -26, y: -11}
+        - {x: -26, y: 4}
+        - {x: -28, y: 6}
+      - - {x: -25, y: 6}
+        - {x: -25, y: -12}
+        - {x: -3, y: -12}
+        - {x: -3, y: 3}
+        - {x: -6, y: 6}
+      - - {x: 9.999999, y: 6}
+        - {x: 3, y: 6}
+        - {x: 0, y: 3}
+        - {x: -1, y: 0}
+        - {x: -1, y: -8}
+        - {x: 3, y: -12}
+        - {x: 14, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: 4}
+        - {x: 13, y: 5}
+      - - {x: 29, y: 6}
+        - {x: 17, y: 6}
+        - {x: 17, y: -12}
+        - {x: 23, y: -12}
+        - {x: 30, y: -3}
+        - {x: 31, y: 0}
+        - {x: 31, y: 5}
+      - - {x: 43, y: 11}
+        - {x: 43, y: -12}
+        - {x: 58, y: -12}
+        - {x: 58, y: 11}
+      - - {x: 7, y: -1}
+        - {x: 8, y: -1}
+        - {x: 8, y: -5}
+        - {x: 7, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c082172c7b543038c48fa32292cd4ac
+      internalID: 21300020
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_golf
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 172
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: -32}
+        - {x: -32, y: -24}
+        - {x: -32, y: 21}
+        - {x: -21, y: 32}
+        - {x: 21, y: 32}
+        - {x: 32, y: 21}
+        - {x: 32, y: -30}
+        - {x: 24, y: -32}
+      physicsShape:
+      - - {x: -11, y: 26}
+        - {x: -26, y: 18}
+        - {x: -26, y: -9}
+        - {x: -24, y: -16}
+        - {x: -11, y: -26}
+        - {x: 19, y: -26}
+        - {x: 26, y: -8}
+        - {x: 26, y: 18}
+        - {x: 17, y: 26}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b382d50a9e8a400b983dbdc6b60d4060
+      internalID: 21300022
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_uwb_offline
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1784
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -32, y: 11}
+        - {x: -32, y: -11}
+        - {x: -30, y: -12}
+        - {x: -18, y: -12}
+        - {x: -15, y: -9.999999}
+        - {x: -15, y: 11}
+      - - {x: 9.999999, y: 11}
+        - {x: -14, y: 11}
+        - {x: -14, y: 0}
+        - {x: -9, y: -12}
+        - {x: 6, y: -12}
+        - {x: 9, y: -11}
+        - {x: 12, y: 9}
+      - - {x: 15, y: 11}
+        - {x: 13, y: 9}
+        - {x: 13, y: -12}
+        - {x: 28, y: -12}
+        - {x: 30, y: -9.999999}
+        - {x: 30, y: 8}
+        - {x: 26, y: 11}
+      - - {x: 20, y: -4}
+        - {x: 23, y: -4}
+        - {x: 22, y: -5}
+        - {x: 20, y: -5}
+      - - {x: 23, y: 4}
+        - {x: 20, y: 4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64154ba02a5849ff8f9552cf3c9aac2e
+      internalID: 21300024
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_bg
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 760
+        height: 1576
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 380, y: -770}
+        - {x: 379, y: -771}
+        - {x: 379, y: -773}
+        - {x: 377, y: -778}
+        - {x: 370, y: -785}
+        - {x: 365, y: -787}
+        - {x: 362, y: -788}
+        - {x: -370, y: -788}
+        - {x: -374, y: -787}
+        - {x: -379, y: -782}
+        - {x: -380, y: -778}
+        - {x: -380, y: 778}
+        - {x: -379, y: 782}
+        - {x: -374, y: 787}
+        - {x: -370, y: 788}
+        - {x: 360, y: 788}
+        - {x: 365, y: 787}
+        - {x: 370, y: 785}
+        - {x: 377, y: 778}
+        - {x: 379, y: 773}
+        - {x: 379, y: 771}
+        - {x: 380, y: 770}
+      physicsShape:
+      - - {x: 362, y: -770}
+        - {x: 362, y: 770}
+        - {x: -362, y: 770}
+        - {x: -362, y: -770}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ae9c74c35c46858a2694ce80f9c9dc
+      internalID: 21300026
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_online
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 136
+        width: 152
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76, y: -16}
+        - {x: -76, y: -16}
+        - {x: -76, y: 16}
+        - {x: 76, y: 16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c2d7f6b4e4c4f8d8168bf9778c41c4d
+      internalID: 21300028
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_icon
+      rect:
+        serializedVersion: 2
+        x: 764.0761
+        y: 240.0761
+        width: 51.84776
+        height: 51.84776
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: -26}
+        - {x: -26, y: -24}
+        - {x: -26, y: 24}
+        - {x: -24, y: 26}
+        - {x: 24, y: 26}
+        - {x: 26, y: 24}
+        - {x: 26, y: -24}
+        - {x: 24, y: -26}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4864c6840cb49b8808e2589aaa71ad1
+      internalID: 21300030
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_dart_online
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1852
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -33, y: 11}
+        - {x: -33, y: -12}
+        - {x: -16, y: -12}
+        - {x: -15, y: -9.999999}
+        - {x: -15, y: 9.999999}
+        - {x: -17, y: 11}
+      - - {x: -14, y: 6}
+        - {x: -14, y: -12}
+        - {x: 2, y: -12}
+        - {x: 2, y: 6}
+      - - {x: 31, y: 11}
+        - {x: 11, y: 11}
+        - {x: 5, y: 9}
+        - {x: 5, y: -9.999999}
+        - {x: 7, y: -12}
+        - {x: 9, y: -12}
+        - {x: 11, y: -9.999999}
+        - {x: 16, y: -12}
+        - {x: 31, y: -12}
+      - - {x: -25, y: 4}
+        - {x: -23, y: 4}
+        - {x: -23, y: -5}
+        - {x: -25, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd0f79912994029ba0ebfcde7cb8601
+      internalID: 21300032
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_speed_1_offline
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1920
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -40, y: 6}
+        - {x: -40, y: -16}
+        - {x: -38, y: -17}
+        - {x: -33, y: -17}
+        - {x: -25, y: -9}
+        - {x: -25, y: 3}
+        - {x: -27, y: 6}
+      - - {x: -58, y: 11}
+        - {x: -60, y: 7}
+        - {x: -60, y: -11}
+        - {x: -57, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: 7}
+        - {x: -44, y: 11}
+      - - {x: -23, y: 0}
+        - {x: -23, y: -9}
+        - {x: -21, y: -12}
+        - {x: -11, y: -12}
+        - {x: -7, y: -11}
+        - {x: -7, y: 4}
+        - {x: -8, y: 6}
+        - {x: -19, y: 6}
+        - {x: -22, y: 3}
+      - - {x: 6, y: 6}
+        - {x: 0, y: 6}
+        - {x: -5, y: 2}
+        - {x: -5, y: -8}
+        - {x: -1, y: -12}
+        - {x: 6, y: -12}
+        - {x: 9.999999, y: -8}
+        - {x: 9.999999, y: 3}
+      - - {x: 21, y: 11}
+        - {x: 12, y: 5}
+        - {x: 12, y: -11}
+        - {x: 17, y: -12}
+        - {x: 28, y: -12}
+        - {x: 28, y: 11}
+      - - {x: 43, y: 11}
+        - {x: 41, y: 9}
+        - {x: 41, y: -12}
+        - {x: 56, y: -12}
+        - {x: 56, y: -3}
+        - {x: 52, y: 11}
+      - - {x: -33, y: -1}
+        - {x: -32, y: -1}
+        - {x: -32, y: -5}
+        - {x: -33, y: -5}
+      - - {x: 20, y: -1}
+        - {x: 21, y: -1}
+        - {x: 21, y: -5}
+        - {x: 20, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5daa700b1e854abb9ee0cc0da40eb27f
+      internalID: 21300034
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_armor_4_online
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1920
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -48, y: 11}
+        - {x: -54, y: 11}
+        - {x: -57, y: 9.999999}
+        - {x: -62, y: -9.999999}
+        - {x: -62, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: -7}
+        - {x: -47, y: 7}
+      - - {x: -40, y: 6}
+        - {x: -40, y: -12}
+        - {x: -28, y: -12}
+        - {x: -26, y: -11}
+        - {x: -26, y: 4}
+        - {x: -28, y: 6}
+      - - {x: -25, y: 6}
+        - {x: -25, y: -12}
+        - {x: -3, y: -12}
+        - {x: -3, y: 3}
+        - {x: -6, y: 6}
+      - - {x: 9.999999, y: 6}
+        - {x: 3, y: 6}
+        - {x: 0, y: 3}
+        - {x: -1, y: 0}
+        - {x: -1, y: -8}
+        - {x: 3, y: -12}
+        - {x: 14, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: 4}
+        - {x: 13, y: 5}
+      - - {x: 29, y: 6}
+        - {x: 17, y: 6}
+        - {x: 17, y: -12}
+        - {x: 23, y: -12}
+        - {x: 30, y: -3}
+        - {x: 31, y: 0}
+        - {x: 31, y: 5}
+      - - {x: 55, y: 11}
+        - {x: 50, y: 11}
+        - {x: 42, y: 0}
+        - {x: 42, y: -7}
+        - {x: 43, y: -9}
+        - {x: 53, y: -12}
+        - {x: 56, y: -12}
+        - {x: 59, y: -9}
+        - {x: 59, y: 5}
+        - {x: 58, y: 9.999999}
+      - - {x: 7, y: -1}
+        - {x: 8, y: -1}
+        - {x: 8, y: -5}
+        - {x: 7, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a5e2c0ee124343bb1387e655d8554a
+      internalID: 21300036
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_armor_1_online
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1648
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -48, y: 11}
+        - {x: -54, y: 11}
+        - {x: -57, y: 9.999999}
+        - {x: -62, y: -9.999999}
+        - {x: -62, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: -7}
+        - {x: -47, y: 7}
+      - - {x: -40, y: 6}
+        - {x: -40, y: -12}
+        - {x: -28, y: -12}
+        - {x: -26, y: -11}
+        - {x: -26, y: 4}
+        - {x: -28, y: 6}
+      - - {x: -25, y: 6}
+        - {x: -25, y: -12}
+        - {x: -3, y: -12}
+        - {x: -3, y: 3}
+        - {x: -6, y: 6}
+      - - {x: 9.999999, y: 6}
+        - {x: 3, y: 6}
+        - {x: 0, y: 3}
+        - {x: -1, y: 0}
+        - {x: -1, y: -8}
+        - {x: 3, y: -12}
+        - {x: 14, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: 4}
+        - {x: 13, y: 5}
+      - - {x: 29, y: 6}
+        - {x: 17, y: 6}
+        - {x: 17, y: -12}
+        - {x: 23, y: -12}
+        - {x: 30, y: -3}
+        - {x: 31, y: 0}
+        - {x: 31, y: 5}
+      - - {x: 43, y: 11}
+        - {x: 43, y: -12}
+        - {x: 58, y: -12}
+        - {x: 58, y: 11}
+      - - {x: 7, y: -1}
+        - {x: 8, y: -1}
+        - {x: 8, y: -5}
+        - {x: 7, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f792c4d2488d4b45a60801c0f83b13c5
+      internalID: 21300038
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_armor_4_offline
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1716
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -48, y: 11}
+        - {x: -54, y: 11}
+        - {x: -57, y: 9.999999}
+        - {x: -62, y: -9.999999}
+        - {x: -62, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: -7}
+        - {x: -47, y: 7}
+      - - {x: -40, y: 6}
+        - {x: -40, y: -12}
+        - {x: -28, y: -12}
+        - {x: -26, y: -11}
+        - {x: -26, y: 4}
+        - {x: -28, y: 6}
+      - - {x: -25, y: 6}
+        - {x: -25, y: -12}
+        - {x: -3, y: -12}
+        - {x: -3, y: 3}
+        - {x: -6, y: 6}
+      - - {x: 9.999999, y: 6}
+        - {x: 3, y: 6}
+        - {x: 0, y: 3}
+        - {x: -1, y: 0}
+        - {x: -1, y: -8}
+        - {x: 3, y: -12}
+        - {x: 14, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: 4}
+        - {x: 13, y: 5}
+      - - {x: 29, y: 6}
+        - {x: 17, y: 6}
+        - {x: 17, y: -12}
+        - {x: 23, y: -12}
+        - {x: 30, y: -3}
+        - {x: 31, y: 0}
+        - {x: 31, y: 5}
+      - - {x: 55, y: 11}
+        - {x: 50, y: 11}
+        - {x: 42, y: 0}
+        - {x: 42, y: -7}
+        - {x: 43, y: -9}
+        - {x: 53, y: -12}
+        - {x: 56, y: -12}
+        - {x: 59, y: -9}
+        - {x: 59, y: 5}
+        - {x: 58, y: 9.999999}
+      - - {x: 7, y: -1}
+        - {x: 8, y: -1}
+        - {x: 8, y: -5}
+        - {x: 7, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c5e5fad4c642488399f4c29efb5eb8
+      internalID: 21300040
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_hud_online
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1784
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -30, y: 11}
+        - {x: -30, y: -9.999999}
+        - {x: -28, y: -12}
+        - {x: -14, y: -12}
+        - {x: -12, y: -11}
+        - {x: -12, y: 11}
+      - - {x: 6, y: 11}
+        - {x: 2, y: 11}
+        - {x: 1, y: 9}
+        - {x: -2, y: 11}
+        - {x: -8, y: 11}
+        - {x: -9.999999, y: 9.999999}
+        - {x: -9.999999, y: -11}
+        - {x: -5, y: -12}
+        - {x: 6, y: -12}
+        - {x: 8, y: -6}
+        - {x: 8, y: 9.999999}
+      - - {x: 9.999999, y: 11}
+        - {x: 9.999999, y: -12}
+        - {x: 24, y: -12}
+        - {x: 27, y: -11}
+        - {x: 27, y: 7}
+        - {x: 23, y: 11}
+      - - {x: 17, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: -5}
+        - {x: 17, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ed7339a9c3437597dc182b99d4ba08
+      internalID: 21300042
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_hud_offline
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1852
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -30, y: 11}
+        - {x: -30, y: -9.999999}
+        - {x: -28, y: -12}
+        - {x: -14, y: -12}
+        - {x: -12, y: -11}
+        - {x: -12, y: 11}
+      - - {x: 6, y: 11}
+        - {x: 2, y: 11}
+        - {x: 1, y: 9}
+        - {x: -2, y: 11}
+        - {x: -8, y: 11}
+        - {x: -9.999999, y: 9.999999}
+        - {x: -9.999999, y: -11}
+        - {x: -5, y: -12}
+        - {x: 6, y: -12}
+        - {x: 8, y: -6}
+        - {x: 8, y: 9.999999}
+      - - {x: 9.999999, y: 11}
+        - {x: 9.999999, y: -12}
+        - {x: 24, y: -12}
+        - {x: 27, y: -11}
+        - {x: 27, y: 7}
+        - {x: 23, y: 11}
+      - - {x: 17, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: -5}
+        - {x: 17, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 479af7fca9e84a758e2f6f668caa1903
+      internalID: 21300044
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_bullet
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 172
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: -32}
+        - {x: -32, y: -24}
+        - {x: -32, y: 21}
+        - {x: -21, y: 32}
+        - {x: 21, y: 32}
+        - {x: 32, y: 21}
+        - {x: 32, y: -30}
+        - {x: 24, y: -32}
+      physicsShape:
+      - - {x: -11, y: 26}
+        - {x: -26, y: 18}
+        - {x: -26, y: -9}
+        - {x: -24, y: -16}
+        - {x: -11, y: -26}
+        - {x: 19, y: -26}
+        - {x: 26, y: -8}
+        - {x: 26, y: 18}
+        - {x: 17, y: 26}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14211b3f2ed34371beab1f6a9a5d64ee
+      internalID: 21300046
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_key
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 296
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24, y: -24}
+        - {x: -24, y: -24}
+        - {x: -24, y: 24}
+        - {x: 24, y: 24}
+      physicsShape:
+      - - {x: -22, y: 24}
+        - {x: -24, y: 22}
+        - {x: -24, y: -22}
+        - {x: -22, y: -24}
+        - {x: 22, y: -24}
+        - {x: 24, y: -22}
+        - {x: 24, y: 22}
+        - {x: 22, y: 24}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a06f827f6a764c319cf20eb04ffe426e
+      internalID: 21300048
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_armor_2_offline
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1920
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -48, y: 11}
+        - {x: -54, y: 11}
+        - {x: -57, y: 9.999999}
+        - {x: -62, y: -9.999999}
+        - {x: -62, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: -7}
+        - {x: -47, y: 7}
+      - - {x: -40, y: 6}
+        - {x: -40, y: -12}
+        - {x: -28, y: -12}
+        - {x: -26, y: -11}
+        - {x: -26, y: 4}
+        - {x: -28, y: 6}
+      - - {x: -25, y: 6}
+        - {x: -25, y: -12}
+        - {x: -3, y: -12}
+        - {x: -3, y: 3}
+        - {x: -6, y: 6}
+      - - {x: 9.999999, y: 6}
+        - {x: 3, y: 6}
+        - {x: 0, y: 3}
+        - {x: -1, y: 0}
+        - {x: -1, y: -8}
+        - {x: 3, y: -12}
+        - {x: 14, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: 4}
+        - {x: 13, y: 5}
+      - - {x: 29, y: 6}
+        - {x: 17, y: 6}
+        - {x: 17, y: -12}
+        - {x: 23, y: -12}
+        - {x: 30, y: -3}
+        - {x: 31, y: 0}
+        - {x: 31, y: 5}
+      - - {x: 44, y: 11}
+        - {x: 42, y: 9.999999}
+        - {x: 42, y: -12}
+        - {x: 58, y: -12}
+        - {x: 58, y: 8}
+        - {x: 54, y: 11}
+      - - {x: 7, y: -1}
+        - {x: 8, y: -1}
+        - {x: 8, y: -5}
+        - {x: 7, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ff5cb2ac7514d159c17ad1879753f9c
+      internalID: 21300050
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_armor_2_online
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 0
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -48, y: 11}
+        - {x: -54, y: 11}
+        - {x: -57, y: 9.999999}
+        - {x: -62, y: -9.999999}
+        - {x: -62, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: -7}
+        - {x: -47, y: 7}
+      - - {x: -40, y: 6}
+        - {x: -40, y: -12}
+        - {x: -28, y: -12}
+        - {x: -26, y: -11}
+        - {x: -26, y: 4}
+        - {x: -28, y: 6}
+      - - {x: -25, y: 6}
+        - {x: -25, y: -12}
+        - {x: -3, y: -12}
+        - {x: -3, y: 3}
+        - {x: -6, y: 6}
+      - - {x: 9.999999, y: 6}
+        - {x: 3, y: 6}
+        - {x: 0, y: 3}
+        - {x: -1, y: 0}
+        - {x: -1, y: -8}
+        - {x: 3, y: -12}
+        - {x: 14, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: 4}
+        - {x: 13, y: 5}
+      - - {x: 29, y: 6}
+        - {x: 17, y: 6}
+        - {x: 17, y: -12}
+        - {x: 23, y: -12}
+        - {x: 30, y: -3}
+        - {x: 31, y: 0}
+        - {x: 31, y: 5}
+      - - {x: 44, y: 11}
+        - {x: 42, y: 9.999999}
+        - {x: 42, y: -12}
+        - {x: 58, y: -12}
+        - {x: 58, y: 8}
+        - {x: 54, y: 11}
+      - - {x: 7, y: -1}
+        - {x: 8, y: -1}
+        - {x: 8, y: -5}
+        - {x: 7, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ee7ab0844f94d898966ff252096a43e
+      internalID: 21300052
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sundry_speed_2_offline
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 68
+        width: 304
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -32}
+        - {x: -152, y: -32}
+        - {x: -152, y: 32}
+        - {x: 152, y: 32}
+      physicsShape:
+      - - {x: -40, y: 6}
+        - {x: -40, y: -16}
+        - {x: -38, y: -17}
+        - {x: -33, y: -17}
+        - {x: -25, y: -9}
+        - {x: -25, y: 3}
+        - {x: -27, y: 6}
+      - - {x: -58, y: 11}
+        - {x: -60, y: 7}
+        - {x: -60, y: -11}
+        - {x: -57, y: -12}
+        - {x: -42, y: -12}
+        - {x: -42, y: 7}
+        - {x: -44, y: 11}
+      - - {x: -23, y: 0}
+        - {x: -23, y: -9}
+        - {x: -21, y: -12}
+        - {x: -11, y: -12}
+        - {x: -7, y: -11}
+        - {x: -7, y: 4}
+        - {x: -8, y: 6}
+        - {x: -19, y: 6}
+        - {x: -22, y: 3}
+      - - {x: 6, y: 6}
+        - {x: 0, y: 6}
+        - {x: -5, y: 2}
+        - {x: -5, y: -8}
+        - {x: -1, y: -12}
+        - {x: 6, y: -12}
+        - {x: 9.999999, y: -8}
+        - {x: 9.999999, y: 3}
+      - - {x: 21, y: 11}
+        - {x: 12, y: 5}
+        - {x: 12, y: -11}
+        - {x: 17, y: -12}
+        - {x: 28, y: -12}
+        - {x: 28, y: 11}
+      - - {x: 44, y: 11}
+        - {x: 40, y: 9}
+        - {x: 40, y: -12}
+        - {x: 54, y: -12}
+        - {x: 56, y: -11}
+        - {x: 56, y: 7}
+        - {x: 54, y: 11}
+      - - {x: -33, y: -1}
+        - {x: -32, y: -1}
+        - {x: -32, y: -5}
+        - {x: -33, y: -5}
+      - - {x: 20, y: -1}
+        - {x: 21, y: -1}
+        - {x: 21, y: -5}
+        - {x: 20, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2274ffab317d43d6887c99176208fab7
+      internalID: 21300054
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID:
+    internalID: 0
+    vertices: []
+    indices:
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag:
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData:
+  assetBundleName:
+  assetBundleVariant:

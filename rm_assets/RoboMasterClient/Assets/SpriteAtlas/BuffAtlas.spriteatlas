@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &687078895
+SpriteAtlas:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BuffAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300002, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300004, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300006, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300008, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300010, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300012, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300014, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300016, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300018, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300020, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300022, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300024, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300026, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300028, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300030, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300032, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300034, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300036, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300038, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300040, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300042, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300044, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300046, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300048, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300050, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300052, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    - {fileID: 21300054, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300002, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300004, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300006, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300008, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300010, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300012, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300014, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300016, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300018, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300020, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300022, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300024, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300026, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300028, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300030, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300032, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300034, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300036, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300038, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300040, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300042, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300044, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300046, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300048, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300050, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300052, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  - {fileID: 21300054, guid: 29455ded790aa264db0417c635aaee88, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - buff_2020_addhp_5
+  - buff_2020_rune_small
+  - buff_2020_addhp_10
+  - buff_cooling
+  - buff_2020_cool_3
+  - border_time_red
+  - buff_2020_cool_2
+  - buff_bullet
+  - buff_2020_addhp_2
+  - buff_flyslope
+  - buff_2020_cirle_green
+  - buff_2020_cirle_cyan
+  - buff_2020_cirle_empty
+  - border_time_blue
+  - buff_2020_rune_big
+  - buff_2020_fly_cyan
+  - buff_lightdefendence
+  - buff_heavydefendence
+  - border_time_green
+  - buff_smallrune
+  - buff_2020_cool_5
+  - buff_2020_shield_100
+  - buff_2020_fly_green
+  - buff_2020_shield_50
+  - buff_2020_42
+  - buffBigRune
+  - buff_restore
+  - buff_defendence80percent
+  m_Tag: BuffAtlas
+  m_IsVariant: 0
