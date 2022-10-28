@@ -28,8 +28,8 @@ var debug = true
 var UI = preload("res://scenes/UI.tscn").instance()
 
 var pause_menu = preload("res://scenes/PauseMenu.tscn").instance()
-var blue_standard = preload("res://art/CarBlue.glb").instance()
-var red_standard = preload("res://art/CarRed.glb").instance()
+var blue_standard = preload("res://art/player_model/CarBlue.glb").instance()
+var red_standard = preload("res://art/player_model/CarRed.glb").instance()
 
 onready var cam = get_node("Head_Pivot")
 onready var bullet = preload("res://scenes/Bullet.tscn") # loading in bullet into var
@@ -203,26 +203,12 @@ func _on_PanelHitbox_body_entered(body):
 
 
 func _on_rfid_area_entered(area):
-	if !is_network_master():
-		return
-	if area.name == team:
+	if area.name == team and is_network_master():
 		UI.toggle_buy_screen(true)
-	elif area.name == "CenterBuff":
-		$health_pack.start()
-		
-func _on_health_pack_timeout():
-	health_packs += 1
-	#$health_pack.start()
-	$health_pack.start()
-	
+
 func _on_rfid_area_exited(area):
-	if !is_network_master():
-		return
-	if area.name == team:
+	if area.name == team and is_network_master():
 		UI.toggle_buy_screen(false)
-	elif area.name == "CenterBuff":
-		$health_pack.stop()
-		#$health_pack.set(1)
 
 func add_bullets(add_num):
 	num_bullets += add_num
@@ -329,6 +315,3 @@ func _on_NetworkTickRate_timeout():
 			UI.set_heat(barrel_heat)
 	else:
 		$NetworkTickRate.stop()
-
-
-

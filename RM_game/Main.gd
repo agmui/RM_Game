@@ -30,8 +30,8 @@ func _instance_player(id, cord, team):
 func spawn_sentry():
 	var blue_sentry = sentry.instance()
 	var red_sentry = sentry.instance()
-	blue_sentry.team = "red"
-	red_sentry.team = "blue"
+	blue_sentry.team = "blue"
+	red_sentry.team = "red"
 	add_child(blue_sentry)
 	add_child(red_sentry)
 

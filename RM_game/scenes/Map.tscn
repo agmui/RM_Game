@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://art/Map/RobomasterLogo.tres" type="ArrayMesh" id=1]
-[ext_resource path="res://art/Light Gray.tres" type="Material" id=2]
+[ext_resource path="res://art/player_model/Light Gray.tres" type="Material" id=2]
 [ext_resource path="res://art/Map/BlueSupplier.tres" type="ArrayMesh" id=5]
 [ext_resource path="res://art/Map/RedSupplier.tres" type="ArrayMesh" id=6]
 [ext_resource path="res://art/Map/CenterBuff.tres" type="ArrayMesh" id=7]
