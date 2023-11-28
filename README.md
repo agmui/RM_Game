@@ -14,14 +14,14 @@ our team.
 Limited support for Multiplayer.
 
 ## Web Client
-**To just play by your self click:  
+**To just play by yourself click:  
 Continue -> Local (Lan) -> Host -> Start**
 
 https://robomasters-website.web.app/game/RoboMastersGame.html
 
 
 # Install
-Only suports linux and windows:
+Only supports linux and windows:
 [Install](https://github.com/agmui/RM_Game/releases/tag/v1.1)
 
 
@@ -30,8 +30,8 @@ To play download the `.exe` and `.pck`
 
 Chrome might prevent you from downloading the .exe just accept.
 
-Then windows defender page will show up.
-Just press more info at the top and then hit Run anyways.
+Then Windows Defender page will show up.
+Just press more info at the top and then hit Run anyway.
 
 ### Linux:
 download and run `chmod` +x on the `.x86_64` file
